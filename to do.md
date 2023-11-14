@@ -3,10 +3,13 @@
  - [ ] como unir js y php (ajax)
  - [x] conexion a php
  - [ ] usar framework cake.php
+
+ ## Problemas
+ - [ ] identificar usuarios de forma segura
 # NOTAS
-## Registro
+### Registro
 el usuario se regitra con intorduciendo todo lo necesario de la tabla user (DNI Opcional) y se le dará una **clave** de inicio de sesión
-## Tarjeta
+### Tarjeta
 en la tarjeta ves todos los datos del usuario (seguridad idk)
-## Lista de movimientos
+### Lista de movimientos
 acordion cerrado en el que se ve un resumen, al darle se muestran todos los datos
