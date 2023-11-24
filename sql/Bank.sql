@@ -45,5 +45,13 @@ CREATE TABLE Prestamos (
 CREATE TABLE Admins(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Nombre VARCHAR(50) NOT NULL,
-    Contrasena VARCHAR(50) NOT NULL
+    Clave VARCHAR(50) NOT NULL
 );
+/*
+los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
+Prestamos, si es null aparecerá que está en proceso,y si es true o false
+la notificación correspondiente*/
+/*
+El saldo se puede aumentar, disminuir 
+* y transferir
+*/
