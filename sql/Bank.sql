@@ -2,9 +2,6 @@ DROP DATABASE IF EXISTS clear_bank;
 CREATE DATABASE clear_bank;
 use clear_bank;
 
-DROP DATABASE IF EXISTS clear_bank;
-CREATE DATABASE clear_bank;
-use clear_bank;
 
 -- añadir boolean numero rojos¿?
 CREATE TABLE Direcciones (
@@ -64,11 +61,11 @@ CREATE TABLE Prestamos (
 -- );
 CREATE TABLE Operaciones(
     ID INT PRIMARY KEY AUTO_INCREMENT,
-    Cantidad INT
+    Cantidad INT,
     Tipo TEXT,
     Fecha_operacion DATE
 
-)
+);
 -- CREATE TABLE Enviar (
 --     Enviar_ID INT PRIMARY KEY AUTO_INCREMENT,
 --     Remitente_ID INT,
@@ -85,8 +82,8 @@ CREATE TABLE Mensajes (
     Contenido TEXT NOT NULL,
     FechaEnvio DATETIME NOT NULL,
     Leido BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (RemitenteID) REFERENCES Usuarios(ID),
-    FOREIGN KEY (DestinatarioID) REFERENCES Usuarios(ID)
+    FOREIGN KEY (RemitenteID) REFERENCES Users(ID),
+    FOREIGN KEY (DestinatarioID) REFERENCES Users(ID)
 );
 
 
@@ -95,6 +92,29 @@ CREATE TABLE Admins(
     Nombre VARCHAR(50) NOT NULL,
     Clave VARCHAR(50) NOT NULL
 );
+-- Insertar datos en la tabla Direcciones
+INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad, Direccion)
+VALUES ('ProvinciaEjemplo', '12345', 'CiudadEjemplo', 'DireccionEjemplo');
+
+-- Obtener el ID de la dirección recién insertada
+SET @direccion_id = LAST_INSERT_ID();
+
+-- Insertar datos en la tabla Users con referencia a la dirección insertada
+INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, Fecha_Nacimiento, Foto, Clave, Saldo, IBAN, Direccion_ID)
+VALUES (
+    'NombreEjemplo',
+    'ApellidosEjemplo',
+    '123456789',
+    'ejemplo@email.com',
+    'PaisEjemplo',
+    '2000-01-01',
+    'ruta/foto.jpg',
+    'ClaveEjemplo',
+    1000.00,
+    'IBANEjemplo',
+    @direccion_id  -- Utilizamos el ID de la dirección recién insertada
+);
+
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false

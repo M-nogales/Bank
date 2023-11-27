@@ -1,6 +1,6 @@
 <?php 
 include_once ('conex.php');
-$consult5 = "SELECT * FROM Users";
+$consult1 = "SELECT * FROM Users";
 
 // $conn procede de conex, es la ruta de la bbdd
 $result1 = mysqli_query($conn, $consult1) or die("Has hecho una mala consulta a la bbdd");
