@@ -1,7 +1,12 @@
 <?php 
 include_once ('conex.php');
 $consult1 = "SELECT * FROM Users";
-
+$clave = "12abc";
+$consult2 = "SELECT * from Users where clave='$clave'";
+$consult3 = "SELECT saldo_total from Users where clave ='$clave'";
+// registro
+//$consult4 ="INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad, Direccion) VALUES ('$provincia', '$cod_postal', '$ciudad', '$direccion')";
+//$consult5 ="INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, Fecha_Nacimiento, Foto, Saldo, Direccion_ID) VALUES ('$nombre', '$apellidos', '$dni', '$email', '$pais_nacimiento', '$fecha_nacimiento', '$ruta_foto', $saldo, $direccion_id)";
 // $conn procede de conex, es la ruta de la bbdd
 $result1 = mysqli_query($conn, $consult1) or die("Has hecho una mala consulta a la bbdd");
 

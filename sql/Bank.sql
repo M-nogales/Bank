@@ -29,7 +29,7 @@ CREATE TABLE Users (
     Fecha_Nacimiento DATE,
     Foto VARCHAR(255),
     Clave VARCHAR(50) NOT NULL,
-    Saldo DECIMAL(10, 2),
+    Saldo_total DECIMAL(10, 2),
     IBAN VARCHAR(30),
     Direccion_ID INT,
     FOREIGN KEY (Direccion_ID) REFERENCES Direcciones(ID)
@@ -100,7 +100,7 @@ VALUES ('ProvinciaEjemplo', '12345', 'CiudadEjemplo', 'DireccionEjemplo');
 SET @direccion_id = LAST_INSERT_ID();
 
 -- Insertar datos en la tabla Users con referencia a la dirección insertada
-INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, Fecha_Nacimiento, Foto, Clave, Saldo, IBAN, Direccion_ID)
+INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, Fecha_Nacimiento, Foto, Clave, Saldo_total, IBAN, Direccion_ID)
 VALUES (
     'NombreEjemplo',
     'ApellidosEjemplo',
@@ -109,7 +109,7 @@ VALUES (
     'PaisEjemplo',
     '2000-01-01',
     'ruta/foto.jpg',
-    'ClaveEjemplo',
+    '123abc',
     1000.00,
     'IBANEjemplo',
     @direccion_id  -- Utilizamos el ID de la dirección recién insertada
