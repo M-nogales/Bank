@@ -29,4 +29,6 @@ if (mysqli_num_rows($result1) > 0) {
   // en caso de no encontrar resultados en la consulta dejamos una fila con lo siguiente
   $resultado_conex1 .= "<tr><td colspan='" . mysqli_num_fields($result1) . "'>No se encontraron resultados</td></tr>";
 }
-$resultado_conex1 .= "</table>";?>
+$resultado_conex1 .= "</table>";
+echo $resultado_conex1;
+?>
