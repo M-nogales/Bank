@@ -1,5 +1,5 @@
 <?php
-include("./php/conex.php");
+include("../php/conex.php");
 $nombre=$_SESSION["usuario"];
 $clave=$_SESSION["clave"];
 

@@ -91,9 +91,12 @@ CREATE TABLE Admins(
     Nombre VARCHAR(50) NOT NULL,
     Clave VARCHAR(50) NOT NULL
 );
+-- Crear admin
+INSERT INTO Admins (Nombre, Clave)
+VALUES ('mns', 'admin');
 -- Insertar datos en la tabla Direcciones
-INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad, Direccion)
-VALUES ('ProvinciaEjemplo', '12345', 'CiudadEjemplo', 'DireccionEjemplo');
+INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad)
+VALUES ('ProvinciaEjemplo', '12345', 'CiudadEjemplo');
 
 -- Obtener el ID de la dirección recién insertada
 SET @direccion_id = LAST_INSERT_ID();
