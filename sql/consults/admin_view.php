@@ -1,5 +1,5 @@
 <?php
-include("./php/conex.php");
+include('../../php/conex.php');
 
 $usuarios ="SELECT * from Users ";
 $result_users = mysqli_query($conn, $usuarios) or die("Has hecho una mala consulta a la bbdd");

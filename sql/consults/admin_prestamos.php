@@ -1,5 +1,5 @@
 <?php
-include("./php/conex.php");
+include("../../php/conex.php");
 
 $prestamos ="SELECT * from Prestamos ";
 $result_prestamos = mysqli_query($conn, $prestamos) or die("Has hecho una mala consulta a la bbdd");
@@ -23,5 +23,5 @@ if (mysqli_num_rows($result_prestamos) > 0) {
   }
   echo "</table>";
 } else {
-  echo "No se encontraron resultados para la consulta de Usuarios.";
+  echo "No se encontraron resultados para la consulta de Prestamos.";
 }

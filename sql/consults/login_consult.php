@@ -56,5 +56,5 @@ if (mysqli_num_rows($result_user) > 0) {
   }
   echo "</table>";
 } else {
-  echo "No se encontraron resultados para la consulta de Usuarios.";
+  echo "No se encontraron resultados para la consulta de Usuarios.<br/>";
 }

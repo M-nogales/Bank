@@ -1,5 +1,5 @@
 <?php
-include("./php/conex.php");
+include("../../php/conex.php");
 //datos
 $provincia = $_POST["provincia"];
 $cod_postal = $_POST["cod_postal"];
