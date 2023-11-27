@@ -8,9 +8,8 @@ CREATE TABLE Direcciones (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Provincia VARCHAR(50),
     Cod_Postal VARCHAR(10),
-    Pais VARCHAR(10),
-    Ciudad VARCHAR(50),
-    Direccion VARCHAR(100)
+    Ciudad VARCHAR(50)
+    -- Direccion VARCHAR(100)
 );
 -- CREATE TABLE Residir (
 --     Residir_ID INT PRIMARY KEY AUTO_INCREMENT,

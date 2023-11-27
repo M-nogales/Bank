@@ -7,14 +7,18 @@ $_SESSION["clave"]=$_POST["clave"];
 $clave=$_SESSION["clave"];
 $_SESSION["acceso"]=false;
 
-$consult8 ="Select * from admins where nombre ='$nombre' AND clave ='$clave'";
+include("./sql/consults/login_consult.php");
 
-if(mysqli_num_rows($result8)>0){
+if(mysqli_num_rows($result_admins)>0){
   $_SESSION["acceso"]=true;
-  header("Location: bienvenida.html");
-}else if(mysqli_num_rows($result9)>0){
-  $consult8 ="Select * from user where nombre ='$nombre' AND clave ='$clave'";
+  echo "admin detectado";
+  // header("Location: admin_view.html");
+}elseif(mysqli_num_rows($result_users)>0){
+  $_SESSION["acceso"]=true;
+  echo "user detectado";
+  // header("Location: bienvenida.html");
 }else{
   $_SESSION["acceso"]=false;
-  header("Location: inicio_sesion.html");
-};
+  echo "no registrado";
+  // header("Location: login.html");
+}
