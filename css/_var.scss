@@ -11,3 +11,10 @@ $font-path2: '../resources/fonts/Muesli/regular.ttf';
 $font-family-Roboto:'Roboto',sans-serif;
 $font-family-Muesli:'Muesli',sans-serif;
 
+// tamaño icons
+$navbar-icon-size:3;
+$icon-md-xl-with:calc(#{$navbar-icon-size} * 1vw);
+$icon-md-xl-height:123 px;
+
+$icon-sm-with:123;
+$icon-sm-height:123;

@@ -1,4 +1,5 @@
 @import 'var';
+@import 'mixins';
 @font-face {
   font-family: "Roboto";
   src: url("#{$font-path1}") format("truetype");
@@ -14,8 +15,8 @@
 }
 
 nav {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -34,6 +35,13 @@ nav {
 
 
       a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        svg{
+          width: $icon-md-xl-with;
+          // height: ;
+        }
         font-size: clamp(0.9rem, calc(0.8rem + 0.3vw), 1.3rem);
         text-decoration: none;
       }

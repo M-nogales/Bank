@@ -11,8 +11,8 @@
   font-style: normal;
 }
 nav {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,8 +32,14 @@ nav ul li {
   display: flex;
 }
 nav ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.3rem);
   text-decoration: none;
+}
+nav ul li a svg {
+  width: calc(3 * 1vw);
 }
 nav ul .logo a {
   display: flex;
