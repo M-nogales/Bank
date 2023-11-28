@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../resources/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Muesli";
+  src: url("../resources/fonts/Muesli/regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: #77A3E0;
+}
+nav ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+nav ul li {
+  display: flex;
+}
+nav ul li a {
+  font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.3rem);
+  text-decoration: none;
+}
+nav ul .logo a {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: #77A3E0;
+}
+.nav ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  width: 25rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 0px 0px 16px 16px;
+}
+.nav ul li {
+  margin: 1rem;
+  display: flex;
+}
+.nav ul li a {
+  font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.3rem);
+  text-decoration: none;
+  color: #000454;
+}
+.nav .logo {
+  text-decoration: none;
+  background-color: transparent;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.nav .logo a {
+  background-color: transparent;
+}
+.nav .logo a svg {
+  height: 8vh;
+}
+.nav .logo a svg #tronco {
+  fill: #8c6d51;
+}
+@media only screen and (min-width: 768px) {
+  .nav ul li {
+    margin: 1rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .nav ul li {
+    margin: 1rem;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*# sourceMappingURL=style.css.map */

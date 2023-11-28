@@ -1,0 +1,129 @@
+@import 'var';
+@font-face {
+  font-family: "Roboto";
+  src: url("#{$font-path1}") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muesli";
+  src: url("#{$font-path2}") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: $palette-Light-Blue;
+  ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    li {
+      display: flex;
+
+
+      a {
+        font-size: clamp(0.9rem, calc(0.8rem + 0.3vw), 1.3rem);
+        text-decoration: none;
+      }
+    }
+    .logo{
+      a{
+        display: flex;
+        flex-direction: row;
+      }
+
+    }
+  }
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: $palette-Light-Blue;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+
+    width: 25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 0px 0px 16px 16px;
+    li {
+      margin: 1rem;
+      display: flex;
+      a {
+        // font-family: $font-family-GT-Planar;
+        font-size: clamp(0.9rem, calc(0.8rem + 0.3vw), 1.3rem);
+        text-decoration: none;
+        color: $palette-Black;
+        &:hover {
+          // color: $palette-Light-Green;
+        }
+        &:active {
+          // color: $palette-Light-Black;
+        }
+      }
+    }
+  }
+}
+.nav .logo {
+  text-decoration: none;
+  background-color: transparent;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  a {
+    background-color: transparent;
+    svg {
+      height: 8vh;
+      #tronco {
+        fill: #8c6d51;
+      }
+      .ramas {
+        // fill: $palette-Light-Green;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 768px) {
+  // Estilos específicos para tablets
+  .nav {
+    ul {
+      li {
+        margin: 1rem;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  // Estilos específicos para PC
+  .nav {
+    ul {
+      li {
+        margin: 1rem;
+      }
+    }
+  }
+}
