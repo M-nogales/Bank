@@ -12,8 +12,9 @@ $font-family-Roboto:'Roboto',sans-serif;
 $font-family-Muesli:'Muesli',sans-serif;
 
 // tamaño icons
-$navbar-icon-size:3;
-$icon-md-xl-with:calc(#{$navbar-icon-size} * 1vw);
+$navbar-icon-size:6;
+$nav-text:clamp(10px, 3.5vw, 16px);
+$icon-md-xl-with:calc(#{$navbar-icon-size} * 1.3vw);
 $icon-md-xl-height:123 px;
 
 $icon-sm-with:123;

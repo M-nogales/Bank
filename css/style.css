@@ -10,6 +10,18 @@
   font-weight: normal;
   font-style: normal;
 }
+body {
+  background-color: #3457C8;
+}
+
+.block {
+  width: 100%;
+  height: 100vh;
+  background-color: #8c6d51;
+  display: flex;
+  align-items: center;
+}
+
 nav {
   position: fixed;
   bottom: 0;
@@ -17,11 +29,13 @@ nav {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 10vh;
-  background-color: #77A3E0;
+  background-color: #5AC75E;
 }
 nav ul {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -30,54 +44,60 @@ nav ul {
 }
 nav ul li {
   display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 nav ul li a {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.3rem);
+  width: 100%;
+  height: 100%;
   text-decoration: none;
 }
 nav ul li a svg {
-  width: calc(3 * 1vw);
+  width: calc(6 * 1.3vw);
+  margin: 5px 0;
+}
+nav ul li a p {
+  font-size: clamp(10px, 3.5vw, 16px);
+  padding: 0 0 5px 0;
 }
 nav ul .logo a {
   display: flex;
   flex-direction: row;
 }
 
-.nav {
+.top-nav {
   position: sticky;
   top: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 10vh;
-  background-color: #77A3E0;
+  background-color: #5AC75E;
 }
-.nav ul {
+.top-nav ul {
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
   list-style: none;
-  width: 25rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 10px;
-  padding-left: 10px;
-  border-radius: 0px 0px 16px 16px;
 }
-.nav ul li {
+.top-nav ul li {
   margin: 1rem;
   display: flex;
 }
-.nav ul li a {
+.top-nav ul li a {
   font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.3rem);
   text-decoration: none;
   color: #000454;
 }
+
 .nav .logo {
   text-decoration: none;
   background-color: transparent;

@@ -13,7 +13,17 @@
   font-weight: normal;
   font-style: normal;
 }
+ body{
+  background-color: $palette-Blue;
 
+ }
+ .block{
+  width: 100%;
+  height: 100vh;
+  background-color: #8c6d51;
+  display: flex;
+  align-items: center;
+ }
 nav {
   position: fixed;
   bottom: 0;
@@ -21,10 +31,12 @@ nav {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 10vh;
-  background-color: $palette-Light-Blue;
+  background-color: $palette-Green;
   ul {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -32,18 +44,26 @@ nav {
     list-style: none;
     li {
       display: flex;
-
-
+      align-items: center;
+      width: 100%;
+      height: 100%;
       a {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        svg{
-          width: $icon-md-xl-with;
-          // height: ;
-        }
-        font-size: clamp(0.9rem, calc(0.8rem + 0.3vw), 1.3rem);
+        width: 100%;
+        height: 100%;
         text-decoration: none;
+        svg{
+          width: $icon-md-xl-with;//calc(#{$navbar-icon-size} * 1.3vw);
+          margin: 5px 0; // Añade margen inferior al icono SVG
+        }
+        p{
+          
+          font-size: $nav-text;
+          padding: 0 0 5px 0;
+        }
       }
     }
     .logo{
@@ -56,15 +76,16 @@ nav {
   }
 }
 
-.nav {
+.top-nav {
   position: sticky;
   top: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 10vh;
-  background-color: $palette-Light-Blue;
+  background-color: $palette-Green;
 
   ul {
     display: flex;
@@ -72,13 +93,6 @@ nav {
     flex-direction: row;
     align-items: center;
     list-style: none;
-
-    width: 25rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 0px 0px 16px 16px;
     li {
       margin: 1rem;
       display: flex;
@@ -87,12 +101,7 @@ nav {
         font-size: clamp(0.9rem, calc(0.8rem + 0.3vw), 1.3rem);
         text-decoration: none;
         color: $palette-Black;
-        &:hover {
-          // color: $palette-Light-Green;
-        }
-        &:active {
-          // color: $palette-Light-Black;
-        }
+
       }
     }
   }
