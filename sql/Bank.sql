@@ -3,44 +3,36 @@ CREATE DATABASE clear_bank;
 use clear_bank;
 
 
--- añadir boolean numero rojos¿?
 CREATE TABLE Direcciones (
     ID INT PRIMARY KEY AUTO_INCREMENT,
+    Pais VARCHAR(10) NOT NULL,
     Provincia VARCHAR(50),
     Cod_Postal VARCHAR(10),
-    Ciudad VARCHAR(50)
-    -- Direccion VARCHAR(100)
+    Ciudad VARCHAR(50),
 );
--- CREATE TABLE Residir (
---     Residir_ID INT PRIMARY KEY AUTO_INCREMENT,
---     Usuario_ID INT,
---     Direccion_ID INT,
---     FOREIGN KEY (Usuario_ID) REFERENCES Users(ID),
---     FOREIGN KEY (Direccion_ID) REFERENCES Direcciones(ID)
--- );
+
 CREATE TABLE Users (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Nombre VARCHAR(50) NOT NULL,
-    Apellidos VARCHAR(50),
-    DNI VARCHAR(9) UNIQUE,
-    Email VARCHAR(50) UNIQUE,
-    Pais VARCHAR(10),
-    Fecha_Nacimiento DATE,
+    Apellidos VARCHAR(50) NOT NULL,
+    DNI VARCHAR(9) UNIQUE NOT NULL,
+    Email VARCHAR(50) UNIQUE NOT NULL,
+    IBAN VARCHAR(30) NOT NULL,
     Foto VARCHAR(255),
     Clave VARCHAR(50) NOT NULL,
-    Saldo_total DECIMAL(10, 2),
-    IBAN VARCHAR(30),
-    Direccion_ID INT,
-    FOREIGN KEY (Direccion_ID) REFERENCES Direcciones(ID)
+    Saldo_total DECIMAL(10, 2)NOT NULL,
+    Fecha_Nacimiento DATE NOT NULL,
+    Direcciones_ID INT,
+    FOREIGN KEY (Direcciones_ID) REFERENCES Direcciones(ID)
 );
 
--- CREATE TABLE Solicitar (
---     Solicitar_ID INT PRIMARY KEY AUTO_INCREMENT,
---     Usuario_ID INT,
---     Prestamo_ID INT,
---     FOREIGN KEY (Usuario_ID) REFERENCES Users(ID),
---     FOREIGN KEY (Prestamo_ID) REFERENCES Prestamos(ID)
--- );
+CREATE TABLE Solicitar (
+    Solicitar_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Usuario_ID INT,
+    Prestamo_ID INT,
+    FOREIGN KEY (Usuario_ID) REFERENCES Users(ID),
+    FOREIGN KEY (Prestamo_ID) REFERENCES Prestamos(ID)
+);
 
 CREATE TABLE Prestamos (
     ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -51,38 +43,24 @@ CREATE TABLE Prestamos (
     Aceptada boolean,
     FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
--- CREATE TABLE Realizar (
---     Realizar_ID INT PRIMARY KEY AUTO_INCREMENT,
---     Usuario_ID INT,
---     Operacion_ID INT,
---     FOREIGN KEY (Usuario_ID) REFERENCES Users(ID),
---     FOREIGN KEY (Operacion_ID) REFERENCES Operaciones(ID)
--- );
+
 CREATE TABLE Operaciones(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Cantidad INT,
     Tipo TEXT,
-    Fecha_operacion DATE
-
+    Usuario_ID INT,
+    Fecha_operacion DATE,
+    FOREIGN KEY (Usuario_ID) REFERENCES Users(ID)
 );
--- CREATE TABLE Enviar (
---     Enviar_ID INT PRIMARY KEY AUTO_INCREMENT,
---     Remitente_ID INT,
---     Destinatario_ID INT,
---     Mensaje_ID INT,
---     FOREIGN KEY (Remitente_ID) REFERENCES Users(ID),
---     FOREIGN KEY (Destinatario_ID) REFERENCES Users(ID),
---     FOREIGN KEY (Mensaje_ID) REFERENCES Mensajes(ID)
--- );
-CREATE TABLE Mensajes (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    RemitenteID INT,
-    DestinatarioID INT,
+
+CREATE TABLE enviar (
+    Enviar_ID INT PRIMARY KEY AUTO_INCREMENT,
     Contenido TEXT NOT NULL,
     FechaEnvio DATETIME NOT NULL,
     Leido BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (RemitenteID) REFERENCES Users(ID),
-    FOREIGN KEY (DestinatarioID) REFERENCES Users(ID)
+    RemitenteID INT,
+    FOREIGN KEY (RemitenteID) REFERENCES Users(ID)
+
 );
 
 
@@ -91,31 +69,55 @@ CREATE TABLE Admins(
     Nombre VARCHAR(50) NOT NULL,
     Clave VARCHAR(50) NOT NULL
 );
+
+-- trigger que evita la repetición de tablas de direcciones
+DELIMITER //
+CREATE TRIGGER before_insert_direcciones
+BEFORE INSERT ON Direcciones
+FOR EACH ROW
+BEGIN
+    DECLARE existing_user_id INT;
+
+    -- Buscar si la dirección ya está asociada a algún usuario
+    SELECT Direcciones_ID INTO existing_user_id
+    FROM Users
+    WHERE Pais = NEW.Pais
+      AND Provincia = NEW.Provincia
+      AND Cod_Postal = NEW.Cod_Postal
+      AND Ciudad = NEW.Ciudad
+    LIMIT 1;
+
+    -- Si la dirección ya existe, asignar ese ID al nuevo usuario
+    IF existing_user_id IS NOT NULL THEN
+        SET NEW.ID = existing_user_id;
+    ELSE
+        -- Si la dirección no existe, asignar un nuevo ID
+        SET NEW.ID = (SELECT MAX(ID) + 1 FROM Direcciones);
+    END IF;
+END;
+//
+DELIMITER ;
+
 -- Crear admin
 INSERT INTO Admins (Nombre, Clave)
 VALUES ('mns', 'admin');
 -- Insertar datos en la tabla Direcciones
-INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad)
-VALUES ('ProvinciaEjemplo', '12345', 'CiudadEjemplo');
 
--- Obtener el ID de la dirección recién insertada
-SET @direccion_id = LAST_INSERT_ID();
+-- Insertar una dirección y un usuario asociado (la dirección ya existe)
+INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
+VALUES ('España', 'Barcelona', '08001', 'Barcelona');
 
--- Insertar datos en la tabla Users con referencia a la dirección insertada
-INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, Fecha_Nacimiento, Foto, Clave, Saldo_total, IBAN, Direccion_ID)
-VALUES (
-    'NombreEjemplo',
-    'ApellidosEjemplo',
-    '123456789',
-    'ejemplo@email.com',
-    'PaisEjemplo',
-    '2000-01-01',
-    'ruta/foto.jpg',
-    '123abc',
-    1000.00,
-    'IBANEjemplo',
-    @direccion_id  -- Utilizamos el ID de la dirección recién insertada
-);
+-- El trigger asignará automáticamente el ID existente a la nueva dirección
+INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
+VALUES ('Juan', 'Pérez', '123456789', 'juan@example.com', 'ES12345678901234567890', 'url_foto_juan', '123', 1500.00, '1990-05-15', NULL);
+
+-- Insertar una dirección y un usuario asociado (la dirección no existe)
+INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
+VALUES ('España', 'Madrid', '28001', 'Madrid');
+
+-- El trigger asignará automáticamente un nuevo ID a la nueva dirección
+INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
+VALUES ('Ana', 'Gómez', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '123', 2000.00, '1985-10-20', NULL);
 
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
