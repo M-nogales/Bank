@@ -60,7 +60,9 @@ CREATE TABLE Enviar (
     FechaEnvio DATETIME NOT NULL,
     Leido BOOLEAN DEFAULT FALSE,
     RemitenteID INT,
-    FOREIGN KEY (RemitenteID) REFERENCES Users(ID)
+    DestinatarioID INT,
+    FOREIGN KEY (RemitenteID) REFERENCES Users(ID),
+    FOREIGN KEY (DestinatarioID) REFERENCES Users(ID)
 
 );
 
@@ -85,7 +87,7 @@ SET @ultimaDireccionID = LAST_INSERT_ID();
 
 -- El trigger asignará automáticamente el ID existente a la nueva dirección
 INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-VALUES ('Juan', 'Pérez', '123456789', 'juan@example.com', 'ES12345678901234567890', 'url_foto_juan', '123', 1500.00, '1990-05-15', @ultimaDireccionID);
+VALUES ('Juan 1', 'Pérez 1', '123456789', 'juan@example.com', 'ES12345678901234567890', 'url_foto_juan', '123', 1500.00, '1990-05-15', @ultimaDireccionID);
 
 -- Insertar una dirección y un usuario asociado (la dirección no existe)
 INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
@@ -95,7 +97,7 @@ SET @ultimaDireccionID = LAST_INSERT_ID();
 
 -- El trigger asignará automáticamente un nuevo ID a la nueva dirección
 INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-VALUES ('Ana', 'Gómez', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '123', 2000.00, '1985-10-20', @ultimaDireccionID);
+VALUES ('Ana 2', 'Gómez 2', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '123', 2000.00, '1985-10-20', @ultimaDireccionID);
 
 INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
 VALUES ('España', 'Barcelona', '08001', 'Barcelona');
@@ -104,7 +106,7 @@ SET @ultimaDireccionID = LAST_INSERT_ID();
 
 -- El trigger asignará automáticamente el ID existente a la nueva dirección
 INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-VALUES ('awd', 'awd', 'awd', 'juan@awd.com', 'awd', 'wd', 'wd', 1560.00, '1950-05-15', @ultimaDireccionID);
+VALUES ('awd 3', 'awd 3', 'awd', 'juan@awd.com', 'awd', 'wd', 'wd', 1560.00, '1950-05-15', @ultimaDireccionID);
 
 SELECT
     Users.ID AS Usuario_ID,
@@ -156,6 +158,24 @@ FROM
     Users
 JOIN
     Direcciones ON Users.Direcciones_ID = Direcciones.ID;
+    
+INSERT INTO Enviar (Contenido, FechaEnvio, RemitenteID, DestinatarioID)
+VALUES ('Contenido del mensaje', NOW(), 1, 3);
+
+SELECT Enviar.Contenido, Enviar.FechaEnvio, Enviar.Leido, 
+       Remitente.Nombre AS RemitenteNombre, Remitente.Apellidos AS RemitenteApellidos,
+       Destinatario.Nombre AS DestinatarioNombre, Destinatario.Apellidos AS DestinatarioApellidos
+FROM Enviar
+JOIN Users AS Remitente ON Enviar.RemitenteID = Remitente.ID
+JOIN Users AS Destinatario ON Enviar.DestinatarioID = Destinatario.ID
+WHERE Enviar.RemitenteID = 1; -- Este sería el ID del remitente (en este caso, 1)
+
+SELECT Enviar.Contenido, Enviar.FechaEnvio, Enviar.Leido, 
+       Destinatario.Nombre AS DestinatarioNombre, Destinatario.Apellidos AS DestinatarioApellidos
+FROM Enviar
+JOIN Users AS Destinatario ON Enviar.DestinatarioID = Destinatario.ID
+WHERE Enviar.DestinatarioID = 3; -- Este sería el ID del destinatario (en este caso, 3)
+
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
