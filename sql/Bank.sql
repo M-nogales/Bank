@@ -4,11 +4,11 @@ use clear_bank;
 
 
 CREATE TABLE Direcciones (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
+    ID INT PRIMARY KEY,
     Pais VARCHAR(10) NOT NULL,
     Provincia VARCHAR(50),
     Cod_Postal VARCHAR(10),
-    Ciudad VARCHAR(50),
+    Ciudad VARCHAR(50)
 );
 
 CREATE TABLE Users (
@@ -26,14 +26,6 @@ CREATE TABLE Users (
     FOREIGN KEY (Direcciones_ID) REFERENCES Direcciones(ID)
 );
 
-CREATE TABLE Solicitar (
-    Solicitar_ID INT PRIMARY KEY AUTO_INCREMENT,
-    Usuario_ID INT,
-    Prestamo_ID INT,
-    FOREIGN KEY (Usuario_ID) REFERENCES Users(ID),
-    FOREIGN KEY (Prestamo_ID) REFERENCES Prestamos(ID)
-);
-
 CREATE TABLE Prestamos (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     User_ID INT,
@@ -44,6 +36,15 @@ CREATE TABLE Prestamos (
     FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
 
+CREATE TABLE Solicitar (
+    Solicitar_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Usuario_ID INT,
+    Prestamo_ID INT,
+    FOREIGN KEY (Usuario_ID) REFERENCES Users(ID),
+    FOREIGN KEY (Prestamo_ID) REFERENCES Prestamos(ID)
+);
+
+
 CREATE TABLE Operaciones(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Cantidad INT,
@@ -53,7 +54,7 @@ CREATE TABLE Operaciones(
     FOREIGN KEY (Usuario_ID) REFERENCES Users(ID)
 );
 
-CREATE TABLE enviar (
+CREATE TABLE Enviar (
     Enviar_ID INT PRIMARY KEY AUTO_INCREMENT,
     Contenido TEXT NOT NULL,
     FechaEnvio DATETIME NOT NULL,
@@ -76,27 +77,28 @@ CREATE TRIGGER before_insert_direcciones
 BEFORE INSERT ON Direcciones
 FOR EACH ROW
 BEGIN
-    DECLARE existing_user_id INT;
+    DECLARE existing_direccion_id INT;
 
-    -- Buscar si la dirección ya está asociada a algún usuario
-    SELECT Direcciones_ID INTO existing_user_id
-    FROM Users
+    -- Buscar si la dirección ya existe en la tabla Direcciones
+    SELECT ID INTO existing_direccion_id
+    FROM Direcciones
     WHERE Pais = NEW.Pais
       AND Provincia = NEW.Provincia
       AND Cod_Postal = NEW.Cod_Postal
       AND Ciudad = NEW.Ciudad
     LIMIT 1;
 
-    -- Si la dirección ya existe, asignar ese ID al nuevo usuario
-    IF existing_user_id IS NOT NULL THEN
-        SET NEW.ID = existing_user_id;
+    -- Si la dirección ya existe, asignar ese ID a la nueva dirección
+    IF existing_direccion_id IS NOT NULL THEN
+        SET NEW.ID = existing_direccion_id;
     ELSE
-        -- Si la dirección no existe, asignar un nuevo ID
-        SET NEW.ID = (SELECT MAX(ID) + 1 FROM Direcciones);
+        -- Si la dirección no existe, asignar un nuevo ID manualmente el primero es 1 
+        SET NEW.ID = COALESCE((SELECT MAX(ID) + 1 FROM Direcciones), 1);
     END IF;
 END;
 //
 DELIMITER ;
+
 
 -- Crear admin
 INSERT INTO Admins (Nombre, Clave)
