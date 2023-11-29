@@ -176,6 +176,26 @@ FROM Enviar
 JOIN Users AS Destinatario ON Enviar.DestinatarioID = Destinatario.ID
 WHERE Enviar.DestinatarioID = 3; -- Este sería el ID del destinatario (en este caso, 3)
 
+-- Crear un préstamo para el usuario con ID 2
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Mensualidad, Motivo, Aceptada)
+VALUES (2, 1000.00, 150.00, 'Préstamo para gastos médicos', null);
+
+-- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
+INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
+VALUES (2, LAST_INSERT_ID());
+
+-- Ver los préstamos del usuario con ID 2
+SELECT Prestamos.ID AS Prestamo_ID,
+       Prestamos.Cantidada_solicitada,
+       Prestamos.Mensualidad,
+       Prestamos.Motivo,
+       Prestamos.Aceptada
+FROM Prestamos
+JOIN Solicitar ON Prestamos.ID = Solicitar.Prestamo_ID
+WHERE Solicitar.Usuario_ID = 2;
+
+
+
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
