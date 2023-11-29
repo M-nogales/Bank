@@ -70,7 +70,7 @@ nav ul .logo a {
   flex-direction: row;
 }
 
-.top-nav {
+header .top-nav {
   position: sticky;
   top: 0;
   display: flex;
@@ -81,48 +81,28 @@ nav ul .logo a {
   height: 10vh;
   background-color: #5AC75E;
 }
-.top-nav ul {
+header .top-nav .top-ul {
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
   list-style: none;
+  width: 0px;
+  height: 100%;
 }
-.top-nav ul li {
-  margin: 1rem;
+header .top-nav .top-ul .top-li {
   display: flex;
 }
-.top-nav ul li a {
-  font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.3rem);
+header .top-nav .top-ul .top-li .top-a {
+  width: 0px;
   text-decoration: none;
   color: #000454;
 }
+header .top-nav .top-ul .top-li .top-a svg {
+  width: calc(5 * 1vw);
+  margin: 5px 0;
+}
 
-.nav .logo {
-  text-decoration: none;
-  background-color: transparent;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-.nav .logo a {
-  background-color: transparent;
-}
-.nav .logo a svg {
-  height: 8vh;
-}
-.nav .logo a svg #tronco {
-  fill: #8c6d51;
-}
-@media only screen and (min-width: 768px) {
-  .nav ul li {
-    margin: 1rem;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .nav ul li {
-    margin: 1rem;
-  }
-}
 * {
   margin: 0;
   padding: 0;

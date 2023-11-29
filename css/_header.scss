@@ -56,7 +56,7 @@ nav {
         height: 100%;
         text-decoration: none;
         svg{
-          width: $icon-md-xl-with;//calc(#{$navbar-icon-size} * 1.3vw);
+          width: $icon-md-xl;//calc(#{$navbar-icon-size} * 1.3vw);
           margin: 5px 0; // Añade margen inferior al icono SVG
         }
         p{
@@ -75,72 +75,40 @@ nav {
     }
   }
 }
-
-.top-nav {
-  position: sticky;
-  top: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 10vh;
-  background-color: $palette-Green;
-
-  ul {
+header{
+  .top-nav {
+    position: sticky;
+    top: 0;
     display: flex;
-    justify-content: center;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    list-style: none;
-    li {
-      margin: 1rem;
+    width: 100%;
+    height: 10vh;
+    background-color: $palette-Green;
+  
+    .top-ul {
       display: flex;
-      a {
-        // font-family: $font-family-GT-Planar;
-        font-size: clamp(0.9rem, calc(0.8rem + 0.3vw), 1.3rem);
-        text-decoration: none;
-        color: $palette-Black;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      list-style: none;
+      width: 0px;
+      height: 100%;
+      .top-li {
+        display: flex;
+        .top-a {
+          width: 0px;
+          text-decoration: none;
+          color: $palette-Black;
+          svg{
+            width: $icon-md-xl-top;//calc(#{$navbar-icon-size} * 1.3vw);
+            margin: 5px 0; // Añade margen inferior al icono SVG
+          }
+        }
+      }
+    }
+  }
+}
 
-      }
-    }
-  }
-}
-.nav .logo {
-  text-decoration: none;
-  background-color: transparent;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  a {
-    background-color: transparent;
-    svg {
-      height: 8vh;
-      #tronco {
-        fill: #8c6d51;
-      }
-      .ramas {
-        // fill: $palette-Light-Green;
-      }
-    }
-  }
-}
-@media only screen and (min-width: 768px) {
-  // Estilos específicos para tablets
-  .nav {
-    ul {
-      li {
-        margin: 1rem;
-      }
-    }
-  }
-}
-@media only screen and (min-width: 1024px) {
-  // Estilos específicos para PC
-  .nav {
-    ul {
-      li {
-        margin: 1rem;
-      }
-    }
-  }
-}
+
