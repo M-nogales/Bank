@@ -4,7 +4,7 @@ use clear_bank;
 
 
 CREATE TABLE Direcciones (
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY AUTO_INCREMENT,
     Pais VARCHAR(10) NOT NULL,
     Provincia VARCHAR(50),
     Cod_Postal VARCHAR(10),
@@ -71,34 +71,6 @@ CREATE TABLE Admins(
     Clave VARCHAR(50) NOT NULL
 );
 
--- trigger que evita la repetición de tablas de direcciones
-DELIMITER //
-CREATE TRIGGER before_insert_direcciones
-BEFORE INSERT ON Direcciones
-FOR EACH ROW
-BEGIN
-    DECLARE existing_direccion_id INT;
-
-    -- Buscar si la dirección ya existe en la tabla Direcciones
-    SELECT ID INTO existing_direccion_id
-    FROM Direcciones
-    WHERE Pais = NEW.Pais
-      AND Provincia = NEW.Provincia
-      AND Cod_Postal = NEW.Cod_Postal
-      AND Ciudad = NEW.Ciudad
-    LIMIT 1;
-
-    -- Si la dirección ya existe, asignar ese ID a la nueva dirección
-    IF existing_direccion_id IS NOT NULL THEN
-        SET NEW.ID = existing_direccion_id;
-    ELSE
-        -- Si la dirección no existe, asignar un nuevo ID manualmente el primero es 1 
-        SET NEW.ID = COALESCE((SELECT MAX(ID) + 1 FROM Direcciones), 1);
-    END IF;
-END;
-//
-DELIMITER ;
-
 
 -- Crear admin
 INSERT INTO Admins (Nombre, Clave)
@@ -109,18 +81,81 @@ VALUES ('mns', 'admin');
 INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
 VALUES ('España', 'Barcelona', '08001', 'Barcelona');
 
+SET @ultimaDireccionID = LAST_INSERT_ID();
+
 -- El trigger asignará automáticamente el ID existente a la nueva dirección
 INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-VALUES ('Juan', 'Pérez', '123456789', 'juan@example.com', 'ES12345678901234567890', 'url_foto_juan', '123', 1500.00, '1990-05-15', NULL);
+VALUES ('Juan', 'Pérez', '123456789', 'juan@example.com', 'ES12345678901234567890', 'url_foto_juan', '123', 1500.00, '1990-05-15', @ultimaDireccionID);
 
 -- Insertar una dirección y un usuario asociado (la dirección no existe)
 INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
 VALUES ('España', 'Madrid', '28001', 'Madrid');
 
+SET @ultimaDireccionID = LAST_INSERT_ID();
+
 -- El trigger asignará automáticamente un nuevo ID a la nueva dirección
 INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-VALUES ('Ana', 'Gómez', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '123', 2000.00, '1985-10-20', NULL);
+VALUES ('Ana', 'Gómez', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '123', 2000.00, '1985-10-20', @ultimaDireccionID);
 
+INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
+VALUES ('España', 'Barcelona', '08001', 'Barcelona');
+
+SET @ultimaDireccionID = LAST_INSERT_ID();
+
+-- El trigger asignará automáticamente el ID existente a la nueva dirección
+INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
+VALUES ('awd', 'awd', 'awd', 'juan@awd.com', 'awd', 'wd', 'wd', 1560.00, '1950-05-15', @ultimaDireccionID);
+
+SELECT
+    Users.ID AS Usuario_ID,
+    Users.Nombre,
+    Users.Apellidos,
+    Users.DNI,
+    Users.Email,
+    Users.IBAN,
+    Users.Foto,
+    Users.Clave,
+    Users.Saldo_total,
+    Users.Fecha_Nacimiento,
+    Direcciones.ID AS Direccion_ID,
+    Direcciones.Pais,
+    Direcciones.Provincia,
+    Direcciones.Cod_Postal,
+    Direcciones.Ciudad
+FROM
+    Users
+JOIN
+    Direcciones ON Users.Direcciones_ID = Direcciones.ID;
+
+UPDATE Direcciones
+SET
+    Pais = 'España',
+    Provincia = 'Valencia',
+    Cod_Postal = '46003',
+    Ciudad = 'Valencia'
+WHERE
+    ID = (SELECT Direcciones_ID FROM Users WHERE ID = 2);
+
+SELECT
+    Users.ID AS Usuario_ID,
+    Users.Nombre,
+    Users.Apellidos,
+    Users.DNI,
+    Users.Email,
+    Users.IBAN,
+    Users.Foto,
+    Users.Clave,
+    Users.Saldo_total,
+    Users.Fecha_Nacimiento,
+    Direcciones.ID AS Direccion_ID,
+    Direcciones.Pais,
+    Direcciones.Provincia,
+    Direcciones.Cod_Postal,
+    Direcciones.Ciudad
+FROM
+    Users
+JOIN
+    Direcciones ON Users.Direcciones_ID = Direcciones.ID;
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
