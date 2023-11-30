@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Roboto";
   src: url("../resources/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
@@ -221,6 +222,48 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
     margin-right: 30px;
   }
 }
+.gradient_bg {
+  background: linear-gradient(to bottom, #77A3E0, #3457C8 50%, #000454);
+  display: flex;
+  height: 100vh;
+}
+
+.div_logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 5rem;
+  margin-right: 1rem;
+}
+
+form {
+  background-color: rgba(0, 0, 0, 0.053); /* Ajusta el valor alfa para controlar la opacidad */
+  border-radius: 1rem;
+}
+form h1 {
+  color: #EBF0F2 !important;
+}
+form .btn-primary {
+  background-color: #5AC75E !important;
+  border-color: #5AC75E !important;
+}
+form .btn-primary:hover {
+  background-color: #3cb241 !important; /* Hacemos el color más oscuro al hacer hover */
+  border-color: #3cb241 !important;
+}
+form p {
+  color: #EBF0F2;
+}
+
+.log_with {
+  max-width: 500px;
+  padding: 1rem;
+}
+
 * {
   margin: 0;
   padding: 0;
