@@ -1,5 +1,5 @@
-@import 'var';
-@import 'mixins';
+@import "var";
+@import "mixins";
 @font-face {
   font-family: "Roboto";
   src: url("#{$font-path1}") format("truetype");
@@ -13,69 +13,18 @@
   font-weight: normal;
   font-style: normal;
 }
- body{
+body {
   background-color: $palette-Blue;
-
- }
- .block{
+}
+.block {
   width: 100%;
   height: 100vh;
   background-color: #8c6d51;
   display: flex;
   align-items: center;
- }
-nav {
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 10vh;
-  background-color: $palette-Green;
-  ul {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    li {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      a {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        text-decoration: none;
-        svg{
-          width: $icon-md-xl;//calc(#{$navbar-icon-size} * 1.3vw);
-          margin: 5px 0; // Añade margen inferior al icono SVG
-        }
-        p{
-          
-          font-size: $nav-text;
-          padding: 0 0 5px 0;
-        }
-      }
-    }
-    .logo{
-      a{
-        display: flex;
-        flex-direction: row;
-      }
-
-    }
-  }
 }
-header{
+
+header {
   .top-nav {
     position: sticky;
     top: 0;
@@ -84,26 +33,128 @@ header{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 10vh;
+    height: 9vh;
     background-color: $palette-Green;
-  
+    .logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-decoration: none;
+      margin-right:auto;
+      width: 100%;
+      height: 100%;
+      svg {
+        width: $icon-md-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
+        margin: 5px 0; // Añade margen inferior al icono SVG
+        max-height:8vh;
+      }
+      h1 {
+        font-size: $logo-text;
+      }
+    }
     .top-ul {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       flex-direction: row;
       align-items: center;
       list-style: none;
-      width: 0px;
+      width: 100%;
       height: 100%;
+      margin: 0 10px;
       .top-li {
         display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: $margin-nav-li;
+        height: 100%;
         .top-a {
-          width: 0px;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
           text-decoration: none;
           color: $palette-Black;
-          svg{
-            width: $icon-md-xl-top;//calc(#{$navbar-icon-size} * 1.3vw);
+          height: 100%;
+          svg {
+            width: $icon-md-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
+            max-height:8vh;
             margin: 5px 0; // Añade margen inferior al icono SVG
+          }
+        }
+      }
+      .li-tablet{
+        display:none;
+        .a-tablet{
+          display:none;
+        }
+      }
+    }
+  }
+}
+
+nav:not(.top-nav) {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 9vh;
+  background-color: $palette-Green;
+  ul:not(.top-ul) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    li:not(.top-li) {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      a:not(.top-a) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        svg {
+          width: $icon-sm-md-bottom; //calc(#{$navbar-icon-size} * 1.3vw);
+          margin: 5px 0; // Añade margen inferior al icono SVG
+        }
+        p {
+          font-size: $nav-text;
+          padding: 0 0 5px 0;
+        }
+      }
+    }
+  }
+}
+.li-pc{
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  // quitamos la barra inferior
+  nav:not(.top-nav) {
+    position: fixed;
+  
+    border-top: 1px solid #000; // Cambia #000 al color que desees para el borde superior
+    top: 9vh;
+    ul:not(.top-ul) {
+      li:not(.top-li){
+        a:not(.top-a){
+          flex-direction: row;
+          svg{
+            max-height:8vh;
+          }
+          p{
+            margin-left:10px;
+            font-size: $nav-text-md;
+            padding: 0;
           }
         }
       }
@@ -111,4 +162,35 @@ header{
   }
 }
 
-
+@media only screen and (min-width: 1024px) {
+  nav:not(.top-nav) {
+  display: none;
+  }
+  .li-pc{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      margin-right: 16px;
+      a:not(.top-a) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        svg {
+          width: $icon-sm-md-bottom; //calc(#{$navbar-icon-size} * 1.3vw);
+          margin: 0; // Añade margen inferior al icono SVG
+        }
+        p {
+          font-size: $nav-text;
+          padding: 0;
+        }
+      }
+  }
+  .li-pc-extra{
+    margin-right: 60px;
+  }
+}

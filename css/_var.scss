@@ -12,12 +12,15 @@ $font-family-Roboto:'Roboto',sans-serif;
 $font-family-Muesli:'Muesli',sans-serif;
 
 // tamaño icons
-$navbar-icon-size:6;
 $nav-text:clamp(10px, 3.5vw, 16px);
-$icon-md-xl:calc(#{$navbar-icon-size} * 1.3vw);
+$nav-text-md:clamp(16px, 3.5vw, 20px);
 
-$navbar-icon-size-top:5;
-$icon-md-xl-top:calc(#{$navbar-icon-size-top} * 1vw);
+$logo-text:clamp(10px, 3.5vw, 20px);
+$navbar-icon-size-bottom:6;
+$icon-sm-md-bottom:calc(#{$navbar-icon-size-bottom} * 1.3vw);
 
-$icon-sm-with:123;
-$icon-sm-height:123;
+$navbar-icon-size-top:7;
+$icon-md-xl-top:calc(#{$navbar-icon-size-top} * 1.3vw);
+
+$margin-nav-li:16px;
+
