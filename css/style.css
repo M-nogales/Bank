@@ -235,7 +235,7 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
   margin-bottom: 1rem;
 }
 
-.logo {
+.logo_login {
   width: 5rem;
   margin-right: 1rem;
 }
@@ -259,7 +259,11 @@ form p {
   color: #EBF0F2;
 }
 
-.log_with {
+.label-text {
+  color: #EBF0F2;
+}
+
+.log_width {
   max-width: 500px;
   padding: 1rem;
 }

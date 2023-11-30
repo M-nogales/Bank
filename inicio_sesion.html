@@ -14,12 +14,12 @@
 
 </head>
 
-<body class="gradient_bg">
-
-  <main class="w-100 m-auto log_with">
-    <form class="p-5">
+<body>
+<div class="gradient_bg">
+  <main class="w-100 m-auto log_width">
+    <form class="p-5" action="sql/consults/registro_consult.php" method="POST">
       <div class="div_logo">
-        <svg class="logo" fill="url(#grad)" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg class="logo_login" fill="url(#grad)" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="grad" x1="0%" y1="100%" x2="100%" y2="0%">
               <stop offset="0%" style="stop-color:#3457C8" />
@@ -39,38 +39,18 @@
 
       <div class="form-floating">
         <input type="text" class="form-control" id="usuario" name="clave" placeholder="Nombre de ejemplo">
-        <label for="usuario">Nombre de usuario </label>
-
+        <label for="usuario">Nombre</label>
       </div>
       <div class="form-floating mt-4">
         <input type="password" class="form-control pt-4" id="clave" name="clave" placeholder="Clave">
         <label for="clave">Clave</label>
       </div>
 
-
-      <button class="btn btn-primary w-100 mt-4" type="submit">Login</button>
-      <p class="mt-5 mb-3">© 2017–2023</p>
+      <a class="mt-2 mb-4">Crear Cuenta</a>
+      <button class="btn btn-primary w-100 mb-3" type="submit">Login</button>
     </form>
   </main>
-
+</div>
 </body>
-
-<!-- <main class="container">
-    <form>
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
-
-      <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
-    </form>
-  </main> -->
 
 </html>

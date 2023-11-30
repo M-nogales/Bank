@@ -1,53 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bank Registro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
+
 <body>
-  <!-- pasar por js -->
-  <h2>Registro usuario</h2>
-  <form action="sql/consults/registro_consult.php" method="POST" enctype="multipart/form-data">
-    <!-- Datos de Dirección -->
-    <label for="provincia">Provincia:</label>
-    <input type="text" id="provincia" name="provincia" maxlength="50">
+  <div class="gradient_bg">
+    <main class="w-100 m-auto log_width">
+        <!-- Datos de Dirección -->
+        
 
-    <label for="cod_postal">Código Postal:</label>
-    <input type="text" id="cod_postal" name="cod_postal" maxlength="10">
+        <!-- <label for="provincia">Provincia:</label>
+        <input type="text" id="provincia" name="provincia" maxlength="50"> -->
 
-    <label for="direccion">Dirección:</label>
-    <input type="text" id="direccion" name="direccion" maxlength="100">
+        <!-- <label for="cod_postal">Código Postal:</label>
+        <input type="text" id="cod_postal" name="cod_postal" maxlength="10"> -->
 
-    <label for="ciudad">Ciudad:</label>
-    <input type="text" id="ciudad" name="ciudad" maxlength="50">
+        <!-- <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" maxlength="100"> -->
 
-    <!-- Datos Personales -->
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" maxlength="50" required>
+        <!-- <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" maxlength="50"> -->
 
-    <label for="apellidos">Apellidos:</label>
-    <input type="text" id="apellidos" name="apellidos" maxlength="50">
+        <!-- Datos Personales -->
+        <!-- <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" maxlength="50" required> -->
 
-    <label for="dni">DNI:</label>
-    <input type="text" id="dni" name="dni" maxlength="9" unique>
+        <!-- <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" maxlength="50"> -->
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" maxlength="50" unique>
+        <!-- <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" maxlength="9" unique> -->
 
-    <label for="pais_nacimiento">País de Nacimiento:</label>
-    <input type="text" id="pais_nacimiento" name="pais_nacimiento" maxlength="10">
+        <!-- <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="50" unique> -->
 
-    <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+        <!-- <label for="pais_nacimiento">País de Nacimiento:</label>
+        <input type="text" id="pais_nacimiento" name="pais_nacimiento" maxlength="10"> -->
 
-    <label for="foto">Foto:</label>
-    <input type="file" id="foto" name="foto">
+        <!-- <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
 
-    <label for="saldo">Saldo inicial:</label>
-    <input type="text" id="saldo" name="saldo" pattern="\d+(\.\d{2})?" placeholder="Formato: 12345.67">
+        <label for="foto">Foto:</label>
+        <input type="file" id="foto" name="foto"> -->
 
-    <input type="submit" value="Enviar">
-</form>
+        <!-- <label for="saldo">Saldo inicial:</label>
+        <input type="text" id="saldo" name="saldo" pattern="\d+(\.\d{2})?" placeholder="Formato: 12345.67"> -->
+
+        <!-- <input type="submit" value="Enviar"> -->
+      <form class="row g-3" action="sql/consults/registro_consult.php" method="POST">
+        <h1 class="h3 text-center">Formulario de registro</h1>
+        <div class="col-md-6">
+          <label for="usuario" class="form-label label-text">Nombre</label>
+          <input type="text" class="form-control" id="usuario" name="usuario">
+        </div>
+        <div class="col-md-6">
+          <label for="apellidos" class="form-label label-text">Apellidos</label>
+          <input type="text" class="form-control" id="apellidos" name="apellidos">
+        </div>
+        <div class="col-md-6">
+          <label for="fecha_nacimiento" class="form-label label-text">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+        </div>
+        <div class="col-md-6">
+          <label for="saldo_inicial" class="form-label label-text">Saldo inicial</label>
+          <input type="number" class="form-control" id="saldo_inicial" name="saldo_inicial">
+        </div>
+        <div class="col-12">
+          <label for="email" class="form-label label-text">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="ejemplo123@gmail.com">
+        </div>
+        <div class="col-12">
+          <label for="dni" class="form-label label-text">DNI</label>
+          <input type="text" class="form-control" id="dni" placeholder="29431510 X">
+        </div>
+        <div class="col-md-6">
+          <label for="direccion" class="form-label label-text">Dirección</label>
+          <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Calle Europa, Edificio Portugal">
+        </div>
+        <div class="col-md-6">
+          <label for="provincia" class="form-label label-text">Provincia</label>
+          <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Cuenca">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label label-text">Ciudad</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label label-text">País de nacimiento</label>
+          <select id="inputState" class="form-select">
+            <option selected>España</option>
+            <option>Alemania</option>
+            <option>Argentina</option>
+            <option>Australia</option>
+            <option>Brasil</option>
+            <option>Canadá</option>
+            <option>China</option>
+            <option>Corea del Sur</option>
+            <option>Egipto</option>
+            <option>Estados Unidos</option>
+            <option>Francia</option>
+            <option>India</option>
+            <option>Italia</option>
+            <option>Japón</option>
+            <option>México</option>
+            <option>Portugal</option>
+            <option>Reino Unido</option>
+            <option>Rusia</option>
+            <option>Sudáfrica</option>
+            <option>Turquía</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label label-text">CP</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+        <div class="col-12">
+          <label for="foto" class="form-label label-text">Foto</label>
+          <input type="file" class="form-control" id="foto" name="foto">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+    </main>
+  </div>
 </body>
+
 </html>

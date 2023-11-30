@@ -10,7 +10,7 @@
   align-items: center;
   margin-bottom: 1rem;
 }
-.logo{
+.logo_login{
   width: 5rem;
   margin-right: 1rem;
 }
@@ -21,7 +21,6 @@ form{
   h1{
     color: $palette-White !important;
   }
-
   .btn-primary{
     background-color: $palette-Green !important;
     border-color:$palette-Green !important;
@@ -34,7 +33,10 @@ form{
     color: $palette-White;
   }
 }
-.log_with{
+.label-text{
+  color: $palette-White;
+}
+.log_width{
   max-width: 500px;
   padding: 1rem;
 }
