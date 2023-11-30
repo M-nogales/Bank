@@ -20,7 +20,10 @@ $navbar-icon-size-bottom:6;
 $icon-sm-md-bottom:calc(#{$navbar-icon-size-bottom} * 1.3vw);
 
 $navbar-icon-size-top:7;
-$icon-md-xl-top:calc(#{$navbar-icon-size-top} * 1.3vw);
+$icon-sm-md-top:calc(#{$navbar-icon-size-top} * 1.3vw);
+
+$navbar-icon-size-xl-top:2;
+$icon-xl-top:calc(#{$navbar-icon-size-xl-top} * 1.3vw);
 
 $margin-nav-li:16px;
 

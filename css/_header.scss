@@ -40,13 +40,14 @@ header {
       flex-direction: row;
       align-items: center;
       text-decoration: none;
-      margin-right:auto;
+      margin-right: auto;
       width: 100%;
       height: 100%;
+      margin-left: 3vw;
       svg {
-        width: $icon-md-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
+        width: $icon-sm-md-top; //calc(#{$navbar-icon-size} * 1.3vw);
         margin: 5px 0; // Añade margen inferior al icono SVG
-        max-height:8vh;
+        max-height: 8vh;
       }
       h1 {
         font-size: $logo-text;
@@ -75,16 +76,16 @@ header {
           color: $palette-Black;
           height: 100%;
           svg {
-            width: $icon-md-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
-            max-height:8vh;
+            width: $icon-sm-md-top; //calc(#{$navbar-icon-size} * 1.3vw);
+            max-height: 8vh;
             margin: 5px 0; // Añade margen inferior al icono SVG
           }
         }
       }
-      .li-tablet{
-        display:none;
-        .a-tablet{
-          display:none;
+      .li-tablet {
+        display: none;
+        .a-tablet {
+          display: none;
         }
       }
     }
@@ -134,25 +135,25 @@ nav:not(.top-nav) {
     }
   }
 }
-.li-pc{
+.li-pc {
   display: none;
 }
 @media only screen and (min-width: 768px) {
   // quitamos la barra inferior
   nav:not(.top-nav) {
     position: fixed;
-  
+
     border-top: 1px solid #000; // Cambia #000 al color que desees para el borde superior
     top: 9vh;
     ul:not(.top-ul) {
-      li:not(.top-li){
-        a:not(.top-a){
+      li:not(.top-li) {
+        a:not(.top-a) {
           flex-direction: row;
-          svg{
-            max-height:8vh;
+          svg {
+            max-height: 8vh;
           }
-          p{
-            margin-left:10px;
+          p {
+            margin-left: 10px;
             font-size: $nav-text-md;
             padding: 0;
           }
@@ -164,24 +165,63 @@ nav:not(.top-nav) {
 
 @media only screen and (min-width: 1024px) {
   nav:not(.top-nav) {
-  display: none;
+    display: none;
   }
-  .li-pc{
+  header {
+    .top-nav {
+      .logo {
+        margin-left: 0.5vw;
+        svg {
+          width: $icon-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
+        }
+      }
+      .top-ul {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        width: 100%;
+        height: 100%;
+        margin: 0 10px;
+        .top-li {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          margin-right: $margin-nav-li;
+          height: 100%;
+          .top-a {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            text-decoration: none;
+            color: $palette-Black;
+            height: 100%;
+            svg {
+              width: $icon-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
+              max-height: 8vh;
+              margin: 5px 0; // Añade margen inferior al icono SVG
+            }
+          }
+        }
+      }
+    }
+    .li-pc {
       display: flex;
       align-items: center;
-      width: 100%;
+      justify-content: center;
+      padding: 1.5vw;
       height: 100%;
-      margin-right: 16px;
       a:not(.top-a) {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
+
         height: 100%;
         text-decoration: none;
         svg {
-          width: $icon-sm-md-bottom; //calc(#{$navbar-icon-size} * 1.3vw);
+          width: $icon-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
           margin: 0; // Añade margen inferior al icono SVG
         }
         p {
@@ -189,8 +229,9 @@ nav:not(.top-nav) {
           padding: 0;
         }
       }
-  }
-  .li-pc-extra{
-    margin-right: 60px;
+    }
+    .li-pc-extra {
+      margin-right: 30px;
+    }
   }
 }
