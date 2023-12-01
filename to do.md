@@ -3,4 +3,5 @@
  - [x] como unir js y php (get element by id..)
  - [x] conexion a php
  - [ ] enlaces relativos/estructura de carpeta conex/consultas
-
+ - [ ] mensajes relacion a si mismos
+ - [ ] user,direccion mensaje 
