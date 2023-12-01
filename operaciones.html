@@ -107,27 +107,22 @@
     </ul>
   </nav>
   <section class="section_operaciones">
-    <div class="container">
-      <form action="operaciones.php">
-        <div class="mb-3 row">
-          <label for="inputName" class="col-4 col-form-label">Destinatario</label>
-          <div class="col-8">
-            <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Name">
-          </div>
+    <main class="w-100 m-auto log_width">
+      <form class="p-5" action="sql/consults/registro_consult.php" method="POST">
+        <p> Escribe "yo" o "me" para añadirte o quitarte saldo a ti mismo</p>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="Destinatario" name="Destinatario" placeholder="Nombre de ejemplo">
+          <label for="Destinatario">Destinatario</label>
         </div>
-        <fieldset class="mb-3 row">
-          <legend class="col-form-legend col-4">Group name</legend>
-          <div class="col-8">
-            you can use radio and checkboxes here
-          </div>
-        </fieldset>
-        <div class="mb-3 row">
-          <div class="offset-sm-4 col-sm-8">
-            <button type="submit" class="btn btn-primary">Action</button>
-          </div>
+        <div class="form-floating mt-4 mb-4">
+          <input type="number" class="form-control pt-4" id="Cantidad" name="Cantidad" placeholder="Clave">
+          <label for="Cantidad">Cantidad</label>
         </div>
+  
+        <a class="mt-2" href="registro.html">Crear Cuenta</a>
+        <button class="btn btn-primary w-100 mb-3 mt-2" type="submit">Login</button>
       </form>
-    </div>
+    </main>
   </section>
 </body>
 </html>

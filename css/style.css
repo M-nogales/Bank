@@ -50,6 +50,8 @@ header .top-nav .logo svg {
   max-height: 8vh;
 }
 header .top-nav .logo h1 {
+  margin: 0px !important;
+  padding: 0px !important;
   font-size: clamp(10px, 4vw, 20px);
 }
 header .top-nav .top-ul {
@@ -60,13 +62,14 @@ header .top-nav .top-ul {
   list-style: none;
   width: 100%;
   height: 100%;
-  margin: 0 10px;
+  margin: 0 10px 0 0 !important;
+  padding: 0px !important;
 }
 header .top-nav .top-ul .top-li {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 16px;
+  margin-right: 10px;
   height: 100%;
 }
 header .top-nav .top-ul .top-li .top-a {
@@ -108,6 +111,8 @@ nav:not(.top-nav) ul:not(.top-ul) {
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  margin: 0 10px 0 0 !important;
+  padding: 0px !important;
 }
 nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) {
   display: flex;
@@ -131,6 +136,7 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) svg {
 nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
   font-size: clamp(10px, 3.5vw, 16px);
   padding: 0 0 5px 0;
+  margin: 0px;
 }
 
 .li-pc {
@@ -179,7 +185,7 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 16px;
+    margin-right: 10px;
     height: 100%;
   }
   header .top-nav .top-ul .top-li .top-a {
@@ -199,7 +205,8 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5vw;
+    padding-right: 1.5vw;
+    margin-top: 1.5vh;
     height: 100%;
   }
   header .li-pc a:not(.top-a) {
