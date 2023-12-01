@@ -50,7 +50,7 @@ header .top-nav .logo svg {
   max-height: 8vh;
 }
 header .top-nav .logo h1 {
-  font-size: clamp(10px, 3.5vw, 20px);
+  font-size: clamp(10px, 4vw, 20px);
 }
 header .top-nav .top-ul {
   display: flex;
@@ -268,6 +268,89 @@ form p {
   padding: 1rem;
 }
 
+body {
+  background-color: #3457C8;
+}
+
+.saldo {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2rem, 15vw, 7rem);
+  padding-top: 1vh;
+}
+.saldo .icon {
+  display: none;
+  width: calc(2 * 1.3vw + 10vw);
+  min-width: 15vw;
+  max-width: 10vw;
+  max-height: 10vh;
+}
+.saldo .select_moneda {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: clamp(1rem, 5vw, 2rem);
+}
+.saldo .select_moneda .form_select {
+  text-align: center;
+  width: 100%;
+}
+
+.operaciones {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.operaciones .card {
+  margin-top: 1rem;
+  background-color: #77A3E0;
+  border-radius: 18px;
+  padding: 18px;
+  width: 75%;
+}
+.operaciones .card .benef_cant {
+  display: flex;
+  flex-direction: row;
+}
+.operaciones .card .benef_cant .card_cant {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.operaciones .card .card_date {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (min-width: 768px) {
+  .saldo {
+    margin-top: 10vh;
+  }
+  .saldo .icon {
+    display: flex;
+    margin: 0 1vw;
+  }
+  .saldo .select_moneda {
+    margin-left: 0vw;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .saldo {
+    margin-top: 0;
+  }
+  .saldo .select_moneda {
+    margin-left: 0;
+  }
+  .operaciones .card {
+    width: 60%;
+  }
+}
 * {
   margin: 0;
   padding: 0;

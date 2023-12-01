@@ -15,7 +15,10 @@ $font-family-Muesli:'Muesli',sans-serif;
 $nav-text:clamp(10px, 3.5vw, 16px);
 $nav-text-md:clamp(16px, 3.5vw, 20px);
 
-$logo-text:clamp(10px, 3.5vw, 20px);
+$logo-text:clamp(10px, 4vw, 20px);
+$money-size:clamp(2rem, 15vw, 7rem);
+$select:clamp(1rem,5vw,2rem);
+
 $navbar-icon-size-bottom:6;
 $icon-sm-md-bottom:calc(#{$navbar-icon-size-bottom} * 1.3vw);
 
