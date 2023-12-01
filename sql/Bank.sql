@@ -195,7 +195,33 @@ JOIN Solicitar ON Prestamos.ID = Solicitar.Prestamo_ID
 WHERE Solicitar.Usuario_ID = 2;
 
 
+SET @usuarioOrigenID = 1;  -- ID del usuario que realiza la operación
+SET @usuarioDestinoID = 3;  -- ID del usuario cuyo saldo se modificará
 
+-- Definir la cantidad que se sumará o restará al saldo
+SET @cantidadOperacion = 500.00;  -- Puedes ajustar esta cantidad según la operación que desees realizar
+
+-- Obtener el saldo actual del usuario de destino
+SET @saldoDestinoActual = (SELECT Saldo_total FROM Users WHERE ID = @usuarioDestinoID);
+
+-- Realizar la actualización del saldo del usuario de destino
+UPDATE Users
+SET Saldo_total = @saldoDestinoActual + @cantidadOperacion
+WHERE ID = @usuarioDestinoID;
+
+-- Registrar la operación en la tabla de Operaciones
+INSERT INTO Operaciones (Cantidad, Tipo, Usuario_ID, Fecha_operacion)
+VALUES (@cantidadOperacion, 'Transferencia', @usuarioOrigenID, NOW());
+
+-- Verificar el resultado
+SELECT
+    Users.ID AS Usuario_ID,
+    Users.Nombre,
+    Users.Saldo_total
+FROM
+    Users
+WHERE
+    Users.ID IN (@usuarioOrigenID, @usuarioDestinoID);
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
