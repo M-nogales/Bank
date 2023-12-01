@@ -2,7 +2,7 @@
 @import "mixins";
 
 body {
-  background-color: $palette-Blue;
+  background-color: $palette-Blue !important;
 }
 .saldo{
   margin-top: 5vh;

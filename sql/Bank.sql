@@ -48,7 +48,7 @@ CREATE TABLE Solicitar (
 CREATE TABLE Operaciones(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Cantidad INT,
-    Tipo TEXT,
+    Tipo VARCHAR(20),
     Usuario_ID INT,
     Fecha_operacion DATE,
     FOREIGN KEY (Usuario_ID) REFERENCES Users(ID)

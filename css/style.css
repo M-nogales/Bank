@@ -269,7 +269,7 @@ form p {
 }
 
 body {
-  background-color: #3457C8;
+  background-color: #3457C8 !important;
 }
 
 .saldo {
@@ -351,6 +351,11 @@ body {
     width: 60%;
   }
 }
+.form-operac {
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;
