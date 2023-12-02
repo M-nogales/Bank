@@ -4,6 +4,8 @@ $palette-Green: #5AC75E;
 $palette-White: #EBF0F2;
 $palette-Black: #000454;
 
+$gradient-light-regular:linear-gradient(-45deg, $palette-Light-Blue , $palette-Black);
+
 //$special-font-size:calc(7rem + 3vw);//fontsize MNS start
 $font-path1: '../resources/fonts/Roboto/Roboto-Bold.ttf';
 $font-path2: '../resources/fonts/Muesli/regular.ttf';
