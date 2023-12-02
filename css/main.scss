@@ -1,11 +1,12 @@
 
 @use 'bucles';
 @use 'mixins';
-@use 'header';
 @use 'login';
 @use 'saldo';
 @use 'operac';
 @use 'creditC';
+@use 'msgs';
+@use 'header';
 @use 'footer';
 
 *{
