@@ -5,7 +5,7 @@ body {
   background-color: $palette-Blue !important;
 }
 .saldo{
-  margin-top: 5vh;
+  margin-top: 8vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -62,7 +62,7 @@ justify-content: center;
 }
 @media only screen and (min-width: 768px) {
   .saldo{
-    margin-top: 10vh;
+    margin-top: 16vh;
 
     .icon{
       display: flex;
@@ -75,7 +75,7 @@ justify-content: center;
 }
 @media only screen and (min-width: 1024px) {
   .saldo{
-    margin-top: 0;
+    margin-top: 8vh;
     .select_moneda{
       margin-left: 0;
     }

@@ -17,22 +17,22 @@
   margin-right: 1rem;
 }
 
-form {
+.login_form {
   background-color: rgba(0, 0, 0, 0.053); /* Ajusta el valor alfa para controlar la opacidad */
   border-radius: 1rem;
 }
-form h1 {
+.login_form h1 {
   color: #EBF0F2 !important;
 }
-form .btn-primary {
+.login_form .btn-primary {
   background-color: #5AC75E !important;
   border-color: #5AC75E !important;
 }
-form .btn-primary:hover {
+.login_form .btn-primary:hover {
   background-color: #3cb241 !important; /* Hacemos el color más oscuro al hacer hover */
   border-color: #3cb241 !important;
 }
-form p {
+.login_form p {
   color: #EBF0F2;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .saldo {
-  margin-top: 5vh;
+  margin-top: 8vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -107,7 +107,7 @@ body {
 
 @media only screen and (min-width: 768px) {
   .saldo {
-    margin-top: 10vh;
+    margin-top: 16vh;
   }
   .saldo .icon {
     display: flex;
@@ -119,7 +119,7 @@ body {
 }
 @media only screen and (min-width: 1024px) {
   .saldo {
-    margin-top: 0;
+    margin-top: 8vh;
   }
   .saldo .select_moneda {
     margin-left: 0;
@@ -229,13 +229,81 @@ body {
   }
 }
 .msg_card {
-  border: 1px solid #ccc;
+  border: 1px solid #5AC75E;
+  background-color: #E8F5E9;
   padding: 20px;
-  max-width: 400px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
+  margin-top: 1.6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.4rem;
+}
+.msg_card p {
+  padding-bottom: 0.5rem;
 }
 
+.msg_card_me {
+  border: 1px solid #9C27B0; /* Modificar*/
+  background-color: #F3E5F5; /* Modificar*/
+  padding: 20px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.msg_card_me p {
+  padding-bottom: 0.5rem;
+}
+
+.msg_date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.msg_date p {
+  padding-bottom: 0px;
+}
+
+.msg_section .msg_card:last-child,
+.msg_section .msg_card_me:last-child {
+  margin-bottom: calc(9vh + 1.6rem);
+}
+
+.msg_section .msg_card:first-child,
+.msg_section .msg_card_me:first-child {
+  margin-top: calc(9vh + 1.6rem);
+}
+
+@media only screen and (min-width: 768px) {
+  .msg_card, .msg_card_me {
+    max-width: calc(100% - 1rem);
+  }
+  .msg_section .msg_card:first-child,
+  .msg_section .msg_card_me:first-child {
+    margin-top: calc(18vh + 1.6rem);
+  }
+  .msg_section .msg_card:last-child,
+  .msg_section .msg_card_me:last-child {
+    margin-bottom: 1.6rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .msg_section .msg_card:first-child,
+  .msg_section .msg_card_me:first-child {
+    margin-top: calc(9vh + 1.6rem);
+  }
+  .msg_section .msg_card:last-child,
+  .msg_section .msg_card_me:last-child {
+    margin-bottom: 1.6rem;
+  }
+  .msg_card, .msg_card_me {
+    max-width: calc(100% - 1rem);
+  }
+}
 @font-face {
   font-family: "Roboto";
   src: url("../resources/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
@@ -261,7 +329,7 @@ body {
 }
 
 header .top-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   flex-direction: row;
@@ -459,10 +527,42 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
   }
   header .li-pc a:not(.top-a) p {
     font-size: clamp(10px, 3.5vw, 16px);
-    padding: 0;
+    margin: 0px !important;
+    padding: 0px !important;
   }
   header .li-pc-extra {
     margin-right: 30px;
+  }
+}
+.section_prestamo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9vh;
+}
+.section_prestamo .custom_form {
+  background-color: none;
+  margin-top: 1rem;
+  width: 90%;
+}
+.section_prestamo .btn-primary {
+  background-color: #5AC75E !important;
+  border-color: #5AC75E !important;
+}
+.section_prestamo .btn-primary:hover {
+  background-color: #3cb241 !important; /* Hacemos el color más oscuro al hacer hover */
+  border-color: #3cb241 !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .section_prestamo {
+    margin-top: calc(16vh + 1rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .section_prestamo {
+    margin-top: 8vh;
   }
 }
 * {
