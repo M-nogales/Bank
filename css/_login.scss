@@ -1,6 +1,5 @@
 @import "var";
 .gradient_bg{
-  background: linear-gradient(to bottom, #77A3E0, #3457C8 50%, #000454);
   display: flex;
   height: 100vh;
 }
@@ -15,8 +14,6 @@
   margin-right: 1rem;
 }
 .login_form{
-  background-color: rgba(0, 0, 0, 0.053); /* Ajusta el valor alfa para controlar la opacidad */
-
   border-radius: 1rem;
   h1{
     color: $palette-White !important;
@@ -39,4 +36,14 @@
 .log_width{
   max-width: 500px;
   padding: 1rem;
+}
+@media only screen and (min-width: 768px) {
+  .section_prestamo{
+    margin-top: calc(16vh + 1rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .section_prestamo{
+    margin-top:8vh;
+  }
 }
