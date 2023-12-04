@@ -44,7 +44,6 @@ CREATE TABLE Solicitar (
     FOREIGN KEY (Prestamo_ID) REFERENCES Prestamos(ID)
 );
 
-
 CREATE TABLE Operaciones(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Cantidad INT,
@@ -65,7 +64,6 @@ CREATE TABLE Enviar (
     FOREIGN KEY (DestinatarioID) REFERENCES Users(ID)
 
 );
-
 
 CREATE TABLE Admins(
     ID INT PRIMARY KEY AUTO_INCREMENT,
