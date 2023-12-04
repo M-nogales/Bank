@@ -3,13 +3,9 @@
 
 .welcome_banner{
 margin-top: 9vh;
+
 }
-.img_banner{
-  background-image: url('../resources/imgs/jovenes.png');
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
+
 @media only screen and (min-width: 768px) {
   .welcome_banner{
     margin-top: calc(16vh + 1rem);
