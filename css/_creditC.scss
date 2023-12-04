@@ -4,8 +4,8 @@
 .section_card{
   @include flex-align-justify;
   margin-top: 8vh;
+  margin-bottom: 8vh;
   width: 100%;
-  height: 100vh;
 
   .credit_card{
     @include flex-column-align-justify;

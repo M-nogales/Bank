@@ -147,8 +147,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 8vh;
+  margin-bottom: 8vh;
   width: 100%;
-  height: 100vh;
 }
 .section_card .credit_card {
   display: flex;
@@ -585,6 +585,27 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
 @media only screen and (min-width: 1024px) {
   .form_ajustes {
     margin-top: 8vh;
+  }
+}
+.welcome_banner {
+  margin-top: 9vh;
+}
+
+.img_banner {
+  background-image: url("../resources/imgs/jovenes.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .welcome_banner {
+    margin-top: calc(16vh + 1rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .welcome_banner {
+    margin-top: 9vh;
   }
 }
 * {
