@@ -1,0 +1,88 @@
+@import "var";
+@import "mixins";
+
+body {
+  background-color: $palette-Blue !important;
+}
+.saldo{
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: $money-size;
+  padding-top: 1vh;
+  .icon{
+    display: none;
+    width: calc($icon-xl-top + 10vw);
+    min-width: 15vw;
+    max-width: 10vw;
+    max-height: 10vh;
+  }
+  .select_moneda{
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: $select;
+    .form_select{
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+.operaciones{
+margin-top: 10vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+  .card{
+    margin-top: 1rem;
+    background-color: $palette-Light-Blue;
+    border-radius: 18px;
+    padding: 18px;
+    width: 75%;
+    .benef_cant{
+      display: flex;
+      flex-direction: row;
+
+      .card_cant{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .card_date{
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+@media only screen and (min-width: 768px) {
+  .saldo{
+    margin-top: 16vh;
+
+    .icon{
+      display: flex;
+      margin: 0 1vw;
+    }
+    .select_moneda{
+      margin-left: 0vw;
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .saldo{
+    margin-top: 8vh;
+    .select_moneda{
+      margin-left: 0;
+    }
+  }
+  .operaciones{
+    .card{
+      width: 60%;
+    }
+  }
+}

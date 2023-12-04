@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operaciones</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="/resources/imgs/">
-
-  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
-
-  <title>User view</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
-
 <body>
   <header>
     <nav class="top-nav">
@@ -48,9 +43,10 @@
             <p>Operaciones</p>
           </a></li>
         <li class="li-pc"><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-        </svg>
-            <p>Mensajes</p>
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0
+       .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z" />
+            </svg>
+            <p>Tarjetas</p>
           </a></li>
         <li class="li-pc li-pc-extra"><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
               viewBox="0 0 16 16">
@@ -95,9 +91,10 @@
           <p>Operaciones</p>
         </a></li>
       <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-      </svg>
-          <p>Mensajes</p>
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0
+         .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z" />
+          </svg>
+          <p>Tarjetas</p>
         </a></li>
       <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
@@ -109,42 +106,23 @@
 
     </ul>
   </nav>
-  <main>
-    <section class="saldo">
-      <h3>7000$</h3>
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-        <path
-          d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z" />
-      </svg>
-      <div class="select_moneda">
-        <label for="moneda" class="form-label label-text">Divisa</label>
-        <select id="moneda" name="moneda" class="form_select">
-          <option selected>Euros</option>
-          <option>Dólares</option>
-          <option>Libras</option>
-          <option>Yenes</option>
-          <option>Rublos</option>
-        </select>
-      </div>
-    </section>
-    <section class="operaciones">
-      <div class="card">
-        <div class="benef_cant">
-          <p class="card_beneficiario">Juan</p>
-          <p class="card_cant">50$</p>
+  <section class="section_operaciones">
+    <main class="w-100 m-auto log_width">
+      <form class="p-5" action="sql/consults/registro_consult.php" method="POST">
+        <p> Escribe "yo" o "me" para añadirte o quitarte saldo a ti mismo</p>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="Destinatario" name="Destinatario" placeholder="Nombre de ejemplo">
+          <label for="Destinatario">Destinatario</label>
         </div>
-        <p class="card_date">17/08/2022</p>
-      </div>
-      <div class="card">
-        <div class="benef_cant">
-          <p class="card_beneficiario">Juan</p>
-          <p class="card_cant">50$</p>
+        <p class="mt-2">Una cantidad negativa quitará saldo, una positiva añadirá</p>
+        <div class="form-floating mt-2 mb-4">
+          <input type="number" class="form-control pt-4" id="Cantidad" name="Cantidad" placeholder="Clave">
+          <label for="Cantidad">Cantidad</label>
         </div>
-        <p class="card_date">17/08/2022</p>
-      </div>
-    </section>
-  </main>
-</body>
 
+        <button class="btn btn-primary w-100 mb-3 mt-2" type="submit">Realizar Operación</button>
+      </form>
+    </main>
+  </section>
+</body>
 </html>

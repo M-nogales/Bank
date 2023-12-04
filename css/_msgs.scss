@@ -1,0 +1,78 @@
+@import "var";
+@import "mixins";
+
+.msg_card{
+  border: 1px solid $palette-Green;
+  background-color: #E8F5E9;
+  padding: 20px;
+  max-width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-top: 1.6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.4rem;
+  p{
+    padding-bottom: 0.5rem ;
+  }
+}
+.msg_card_me{
+  border: 1px solid #9C27B0; /* Modificar*/
+  background-color: #F3E5F5; /* Modificar*/
+  padding: 20px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  p{
+    padding-bottom: 0.5rem;
+  }
+
+}
+.msg_date{
+  @include flex-align-justify(row,space-between);
+  p{
+    padding-bottom: 0px;
+  }
+}
+// el último hijo de la seccion, ya sea msg_card o .._me se le aplica un margen superior
+.msg_section .msg_card:last-child,
+.msg_section .msg_card_me:last-child {
+  margin-bottom: calc(9vh + 1.6rem);
+}
+// mismo para el primero
+.msg_section .msg_card:first-child,
+.msg_section .msg_card_me:first-child {
+ margin-top: calc(9vh + 1.6rem);
+}
+
+@media only screen and (min-width: 768px) {
+ .msg_card,.msg_card_me{
+  max-width: calc(100% - 1rem) ;
+ }
+
+ .msg_section .msg_card:first-child,
+ .msg_section .msg_card_me:first-child {
+  margin-top: calc(18vh + 1.6rem);
+}
+.msg_section .msg_card:last-child,
+.msg_section .msg_card_me:last-child {
+  margin-bottom: 1.6rem;
+}
+}
+
+@media only screen and (min-width: 1024px) {
+  .msg_section .msg_card:first-child,
+  .msg_section .msg_card_me:first-child {
+   margin-top: calc(9vh + 1.6rem);
+ }
+ .msg_section .msg_card:last-child,
+.msg_section .msg_card_me:last-child {
+  margin-bottom: 1.6rem;
+}
+.msg_card,.msg_card_me{
+  max-width: calc(100% - 1rem) ;
+ }
+
+}

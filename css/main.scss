@@ -1,0 +1,18 @@
+
+@use 'bucles';
+@use 'mixins';
+@use 'login';
+@use 'saldo';
+@use 'operac';
+@use 'creditC';
+@use 'msgs';
+@use 'header';
+@use 'prestamos';
+@use 'ajustes';
+@use 'bienvenida';
+@use 'footer';
+
+*{
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,31 @@
+@import "var";
+@import "mixins";
+
+.section_prestamo{
+  @include flex-align-justify;
+  margin-top: 9vh;
+  .custom_form{
+    background-color: none;
+    margin-top: 1rem;
+    width: 90%;
+  }
+  .btn-primary{
+    background-color: $palette-Green !important;
+    border-color:$palette-Green !important;
+  }
+  .btn-primary:hover {
+    background-color: darken($palette-Green, 10%) !important; /* Hacemos el color más oscuro al hacer hover */
+    border-color:darken($palette-Green, 10%) !important;
+  }
+
+}
+@media only screen and (min-width: 768px) {
+  .section_prestamo{
+    margin-top: calc(16vh + 1rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .section_prestamo{
+    margin-top:8vh;
+  }
+}
