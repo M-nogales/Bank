@@ -51,8 +51,7 @@ CREATE TABLE Transigir (
     Motivo TEXT,
     Cantidad DECIMAL(10, 2),
     Tipo TEXT,
-
-    Fecha_operacion DATE,
+    Fecha_operacion DATETIME,
     FOREIGN KEY (Remitente_ID) REFERENCES Users(ID),
     FOREIGN KEY (Destinatario_ID) REFERENCES Users(ID)
 );
@@ -65,7 +64,6 @@ CREATE TABLE Enviar (
     DestinatarioID INT,
     FOREIGN KEY (RemitenteID) REFERENCES Users(ID),
     FOREIGN KEY (DestinatarioID) REFERENCES Users(ID)
-
 );
 
 CREATE TABLE Admins(
@@ -234,6 +232,8 @@ FROM
     Users
 JOIN
     Direcciones ON Users.Direcciones_ID = Direcciones.ID;
+select * from enviar;
+select * from Transigir;
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
