@@ -15,16 +15,16 @@ function getIdUsersWithKey($conn, $clave) {
       return null;
   }
 }
+$clave=123;
 $idUser = getIdUsersWithKey($conn, $clave);
-
-// Inserta la dirección
-$sql_insert_direccion = "INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad, Direccion) VALUES ('$provincia', '$cod_postal', '$ciudad', '$direccion')";
+echo "$idUser </br>";
 
 
 function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $motivo) {
     // Meter nuevo préstamos en la tabla Prestamos
     $insertPrestamos = "INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Mensualidad, Motivo, Aceptada) 
-                        VALUES ('$idUsuario', '$cantidadSolicitada', '$mensualidad', '$motivo', null)";
+                        VALUES ($idUsuario, $cantidadSolicitada, $mensualidad,'$motivo', null)";
+                        echo $insertPrestamos;
     mysqli_query($conn, $insertPrestamos) or die("Error al insertar préstamo en la base de datos");
 
     // Obtener el ID del préstamo recién insertado
@@ -42,9 +42,9 @@ function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $mot
 $idUsuario = 1;
 $cantidadSolicitada = 1000.00;
 $mensualidad = 150.00;
-$motivo = "Gastos médicos";
+$motivo = "Gastos médicos 2";
 
 //!sin conectar con func anterior
-applyForLoan($con, $idUsuario, $cantidadSolicitada, $mensualidad, $motivo);
+applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $motivo);
 
 

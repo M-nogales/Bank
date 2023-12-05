@@ -44,15 +44,18 @@ CREATE TABLE Solicitar (
     FOREIGN KEY (Prestamo_ID) REFERENCES Prestamos(ID)
 );
 
-CREATE TABLE Operaciones(
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    Cantidad INT,
-    Tipo VARCHAR(20),
-    Usuario_ID INT,
-    Fecha_operacion DATE,
-    FOREIGN KEY (Usuario_ID) REFERENCES Users(ID)
-);
+CREATE TABLE Transigir (
+    Transigir_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Remitente_ID INT,
+    Destinatario_ID INT,
+    Motivo TEXT,
+    Cantidad DECIMAL(10, 2),
+    Tipo TEXT,
 
+    Fecha_operacion DATE,
+    FOREIGN KEY (Remitente_ID) REFERENCES Users(ID),
+    FOREIGN KEY (Destinatario_ID) REFERENCES Users(ID)
+);
 CREATE TABLE Enviar (
     Enviar_ID INT PRIMARY KEY AUTO_INCREMENT,
     Contenido TEXT NOT NULL,
@@ -95,7 +98,7 @@ SET @ultimaDireccionID = LAST_INSERT_ID();
 
 -- El trigger asignará automáticamente un nuevo ID a la nueva dirección
 INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Clave, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-VALUES ('Ana 2', 'Gómez 2', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '123', 2000.00, '1985-10-20', @ultimaDireccionID);
+VALUES ('Ana 2', 'Gómez 2', '987654321', 'ana@example.com', 'ES98765432109876543210', 'url_foto_ana', '1234', 2000.00, '1985-10-20', @ultimaDireccionID);
 
 INSERT INTO Direcciones (Pais, Provincia, Cod_Postal, Ciudad)
 VALUES ('España', 'Barcelona', '08001', 'Barcelona');
@@ -193,33 +196,44 @@ JOIN Solicitar ON Prestamos.ID = Solicitar.Prestamo_ID
 WHERE Solicitar.Usuario_ID = 2;
 
 
-SET @usuarioOrigenID = 1;  -- ID del usuario que realiza la operación
-SET @usuarioDestinoID = 3;  -- ID del usuario cuyo saldo se modificará
+-- Operación para aumentar el saldo al mismo usuario (ID 1)
+INSERT INTO Transigir (Remitente_ID, Destinatario_ID, Cantidad,Motivo, Tipo, Fecha_operacion)
+VALUES (1, 1, 0.1, 'Aumento de Saldo','Transferencia', CURRENT_DATE);
 
--- Definir la cantidad que se sumará o restará al saldo
-SET @cantidadOperacion = 500.00;  -- Puedes ajustar esta cantidad según la operación que desees realizar
+-- Operación para aumentar el saldo del usuario 2 al usuario 3
+INSERT INTO Transigir (Remitente_ID, Destinatario_ID,Motivo, Cantidad, Tipo, Fecha_operacion)
+VALUES (2, 3, 0.3, 'Aumento de Saldo','Bizum', CURRENT_DATE);
 
--- Obtener el saldo actual del usuario de destino
-SET @saldoDestinoActual = (SELECT Saldo_total FROM Users WHERE ID = @usuarioDestinoID);
+SELECT *
+FROM Transigir;
+-- falta logica para unir cantidad de transigir y  selectid
+SELECT ID, Nombre, Apellidos, Saldo_total
+FROM Users
+WHERE ID = 3;
 
--- Realizar la actualización del saldo del usuario de destino
-UPDATE Users
-SET Saldo_total = @saldoDestinoActual + @cantidadOperacion
-WHERE ID = @usuarioDestinoID;
 
--- Registrar la operación en la tabla de Operaciones
-INSERT INTO Operaciones (Cantidad, Tipo, Usuario_ID, Fecha_operacion)
-VALUES (@cantidadOperacion, 'Transferencia', @usuarioOrigenID, NOW());
-
--- Verificar el resultado
+select * from prestamos;
+select * from users where id =1;
 SELECT
     Users.ID AS Usuario_ID,
     Users.Nombre,
-    Users.Saldo_total
+    Users.Apellidos,
+    Users.DNI,
+    Users.Email,
+    Users.IBAN,
+    Users.Foto,
+    Users.Clave,
+    Users.Saldo_total,
+    Users.Fecha_Nacimiento,
+    Direcciones.ID AS Direccion_ID,
+    Direcciones.Pais,
+    Direcciones.Provincia,
+    Direcciones.Cod_Postal,
+    Direcciones.Ciudad
 FROM
     Users
-WHERE
-    Users.ID IN (@usuarioOrigenID, @usuarioDestinoID);
+JOIN
+    Direcciones ON Users.Direcciones_ID = Direcciones.ID;
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
