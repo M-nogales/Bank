@@ -33,3 +33,41 @@ $sql_insert_usuario = "INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, F
 en el alfabeto de cada una de las primeras cuatro letras del nombre del usuario y concatenándolas.
  En caso de tener menos de 4 letras el nombre se añadirán “z”s hasta llegar a las 4 requeridas.
   En caso existir uno ya en base de datos se añadirá “1”s o “0”s a hasta que sea único)*/
+//? awd
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $uploadedFile = $_FILES["archivo"];
+
+  // Verifica si se subió un archivo
+  if (isset($uploadedFile) && $uploadedFile["error"] === UPLOAD_ERR_OK) {
+    $fileName = $uploadedFile["name"];
+    $fileType = $uploadedFile["type"];
+    $fileSize = $uploadedFile["size"];
+    $fileTmpName = $uploadedFile["tmp_name"];
+    // echo $fileTmpName."<br/>";
+    // Comprueba que el tipo de archivo sea permitido
+    $allowedExtensions = array("jpg", "png", "jpeg");
+    $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+    $file_dir = "FotosPerfil/";
+    if (!file_exists("FotosPerfil")) {
+      mkdir("FotosPerfil");
+    }
+    $destination = $file_dir . $fileName;
+    // echo $destination."<br/>";
+    move_uploaded_file($fileTmpName, $destination);
+    if (in_array($fileExtension, $allowedExtensions)) {
+      // Muestra información del archivo
+      echo "Nombre del archivo: $fileName<br>";
+      echo "Tipo de archivo: $fileType<br>";
+      echo "Tamaño del archivo: $fileSize bytes<br>";
+
+      // Mueve el archivo a una ubicación deseada (por ejemplo, al directorio de carga)
+      echo '<img src="' . $destination . '" alt="Imagen subida"">';
+    } else {
+      echo "El tipo de archivo no es válido. Solo se permiten archivos jpg, png y jpeg.";
+    }
+  } else {
+    echo "Error al subir el archivo.";
+  }
+}
