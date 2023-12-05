@@ -26,7 +26,7 @@ body {
 
 header {
   .top-nav {
-    position: sticky;
+    position: fixed;
     top: 0;
     display: flex;
     flex-direction: row;
@@ -50,6 +50,7 @@ header {
         max-height: 8vh;
       }
       h1 {
+        @include antibootstrap-h1;
         font-size: $logo-text;
       }
     }
@@ -61,7 +62,7 @@ header {
       list-style: none;
       width: 100%;
       height: 100%;
-      margin: 0 10px;
+      @include antibootstrap;
       .top-li {
         display: flex;
         justify-content: flex-end;
@@ -110,6 +111,7 @@ nav:not(.top-nav) {
     justify-content: space-around;
     align-items: center;
     list-style: none;
+    @include antibootstrap;
     li:not(.top-li) {
       display: flex;
       align-items: center;
@@ -130,6 +132,7 @@ nav:not(.top-nav) {
         p {
           font-size: $nav-text;
           padding: 0 0 5px 0;
+          margin: 0px;
         }
       }
     }
@@ -190,6 +193,7 @@ nav:not(.top-nav) {
           align-items: center;
           margin-right: $margin-nav-li;
           height: 100%;
+
           .top-a {
             display: flex;
             justify-content: flex-end;
@@ -210,7 +214,7 @@ nav:not(.top-nav) {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5vw;
+      padding-right: 1.5vw;
       height: 100%;
       a:not(.top-a) {
         display: flex;
@@ -226,7 +230,7 @@ nav:not(.top-nav) {
         }
         p {
           font-size: $nav-text;
-          padding: 0;
+          @include antibootstrap-h1;
         }
       }
     }

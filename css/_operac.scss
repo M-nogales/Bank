@@ -1,0 +1,7 @@
+@import "var";
+@import "mixins";
+
+.form-operac{
+  display: flex;
+  flex-direction: column;
+}

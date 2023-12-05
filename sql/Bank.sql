@@ -51,6 +51,7 @@ CREATE TABLE Transigir (
     Motivo TEXT,
     Cantidad DECIMAL(10, 2),
     Tipo TEXT,
+
     Fecha_operacion DATE,
     FOREIGN KEY (Remitente_ID) REFERENCES Users(ID),
     FOREIGN KEY (Destinatario_ID) REFERENCES Users(ID)

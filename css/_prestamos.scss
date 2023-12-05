@@ -1,22 +1,13 @@
 @import "var";
-.gradient_bg{
-  display: flex;
-  height: 100vh;
-}
-.div_logo{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.logo_login{
-  width: 5rem;
-  margin-right: 1rem;
-}
-.login_form{
-  border-radius: 1rem;
-  h1{
-    color: $palette-White !important;
+@import "mixins";
+
+.section_prestamo{
+  @include flex-align-justify;
+  margin-top: 9vh;
+  .custom_form{
+    background-color: none;
+    margin-top: 1rem;
+    width: 90%;
   }
   .btn-primary{
     background-color: $palette-Green !important;
@@ -26,16 +17,7 @@
     background-color: darken($palette-Green, 10%) !important; /* Hacemos el color más oscuro al hacer hover */
     border-color:darken($palette-Green, 10%) !important;
   }
-  p{
-    color: $palette-White;
-  }
-}
-.label-text{
-  color: $palette-White;
-}
-.log_width{
-  max-width: 500px;
-  padding: 1rem;
+
 }
 @media only screen and (min-width: 768px) {
   .section_prestamo{

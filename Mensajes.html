@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajustes</title>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <title>Mensajes</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -43,9 +42,10 @@
             <p>Operaciones</p>
           </a></li>
         <li class="li-pc"><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-        </svg>
-            <p>Mensajes</p>
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0
+       .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z" />
+            </svg>
+            <p>Tarjetas</p>
           </a></li>
         <li class="li-pc li-pc-extra"><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
               viewBox="0 0 16 16">
@@ -75,6 +75,7 @@
   <!-- bottom navbar-->
   <nav>
     <ul>
+
       <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
             <path
               d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
@@ -89,9 +90,10 @@
           <p>Operaciones</p>
         </a></li>
       <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-      </svg>
-          <p>Mensajes</p>
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0
+         .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z" />
+          </svg>
+          <p>Tarjetas</p>
         </a></li>
       <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
@@ -103,82 +105,36 @@
 
     </ul>
   </nav>
-  <main class="w-100 m-auto log_width">
-    <form class="form_ajustes row g-3" action="sql/consults/registro_consult.php" method="POST">
-      <h1 class="h3 text-center">Formulario de registro</h1>
-      <div class="col-6">
-        <label for="usuario" class="form-label label-text">Nombre</label>
-        <input type="text" class="form-control" id="usuario" name="usuario">
+  <section class="msg_section">
+    <div class="msg_card">
+      <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>
+      <div class="msg_date">
+        <p>fecha</p>
+        <p>Leido</p>
       </div>
-      <div class="col-6">
-        <label for="apellidos" class="form-label label-text">Apellidos</label>
-        <input type="text" class="form-control" id="apellidos" name="apellidos">
+    </div>
+    <div class="msg_card_me">
+      <p>Mensaje en sí</p>
+      <div class="msg_date">
+        <p>fecha</p>
+        <p>Leido</p>
       </div>
-      <div class="col-6">
-        <label for="fecha_nacimiento" class="form-label label-text">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+    </div>
+    <div class="msg_card">
+      <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>
+      <div class="msg_date">
+        <p>fecha</p>
+        <p>Leido</p>
       </div>
-      <div class="col-6">
-        <label for="saldo_inicial" class="form-label label-text">Saldo inicial</label>
-        <input type="number" class="form-control" id="saldo_inicial" name="saldo_inicial">
+    </div>
+    <div class="msg_card">
+      <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>
+      <div class="msg_date">
+        <p>fecha</p>
+        <p>Leido</p>
       </div>
-      <div class="col-12">
-        <label for="email" class="form-label label-text">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="ejemplo123@gmail.com">
-      </div>
-      <div class="col-12">
-        <label for="dni" class="form-label label-text">DNI</label>
-        <input type="text" class="form-control" id="dni" placeholder="29431510 X">
-      </div>
-      <div class="col-6">
-        <label for="direccion" class="form-label label-text">Dirección</label>
-        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Calle Europa, Edificio Portugal">
-      </div>
-      <div class="col-6">
-        <label for="provincia" class="form-label label-text">Provincia</label>
-        <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Cuenca">
-      </div>
-      <div class="col-6">
-        <label for="inputCity" class="form-label label-text">Ciudad</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="col-4">
-        <label for="pais" class="form-label label-text">País de nacimiento</label>
-        <select id="pais" name="pais" class="form-select">
-          <option selected>España</option>
-          <option>Alemania</option>
-          <option>Argentina</option>
-          <option>Australia</option>
-          <option>Brasil</option>
-          <option>Canadá</option>
-          <option>China</option>
-          <option>Corea del Sur</option>
-          <option>Egipto</option>
-          <option>Estados Unidos</option>
-          <option>Francia</option>
-          <option>India</option>
-          <option>Italia</option>
-          <option>Japón</option>
-          <option>México</option>
-          <option>Portugal</option>
-          <option>Reino Unido</option>
-          <option>Rusia</option>
-          <option>Sudáfrica</option>
-          <option>Turquía</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <label for="inputZip" class="form-label label-text">CP</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
-      <div class="col-12">
-        <label for="foto" class="form-label label-text">Foto</label>
-        <input type="file" class="form-control" id="foto" name="foto">
-      </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </div>
-    </form>
-  </main>
+    </div>
+  
+  </section>
 </body>
 </html>

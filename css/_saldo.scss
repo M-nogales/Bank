@@ -2,10 +2,10 @@
 @import "mixins";
 
 body {
-  background-color: $palette-Blue;
+  background-color: $palette-Blue !important;
 }
 .saldo{
-  margin-top: 5vh;
+  margin-top: 8vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -46,9 +46,7 @@ justify-content: center;
     .benef_cant{
       display: flex;
       flex-direction: row;
-      .card_benediciario{
-        
-      }
+
       .card_cant{
         width: 100%;
         display: flex;
@@ -64,7 +62,7 @@ justify-content: center;
 }
 @media only screen and (min-width: 768px) {
   .saldo{
-    margin-top: 10vh;
+    margin-top: 16vh;
 
     .icon{
       display: flex;
@@ -77,7 +75,7 @@ justify-content: center;
 }
 @media only screen and (min-width: 1024px) {
   .saldo{
-    margin-top: 0;
+    margin-top: 8vh;
     .select_moneda{
       margin-left: 0;
     }

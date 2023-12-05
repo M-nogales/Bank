@@ -1,8 +1,10 @@
 $palette-Light-Blue: #77A3E0;
 $palette-Blue: #3457C8;
-$palette-Green: #5AC75E;
+$palette-Green: #5AC75E;//#E6B637
 $palette-White: #EBF0F2;
 $palette-Black: #000454;
+
+$gradient-light-regular:linear-gradient(-45deg, $palette-Light-Blue , $palette-Black);
 
 //$special-font-size:calc(7rem + 3vw);//fontsize MNS start
 $font-path1: '../resources/fonts/Roboto/Roboto-Bold.ttf';
@@ -28,5 +30,5 @@ $icon-sm-md-top:calc(#{$navbar-icon-size-top} * 1.3vw);
 $navbar-icon-size-xl-top:2;
 $icon-xl-top:calc(#{$navbar-icon-size-xl-top} * 1.3vw);
 
-$margin-nav-li:16px;
+$margin-nav-li:10px;
 
