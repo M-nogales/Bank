@@ -17,7 +17,7 @@ CREATE TABLE Users (
     Apellidos VARCHAR(50) NOT NULL,
     DNI VARCHAR(9) UNIQUE NOT NULL,
     Email VARCHAR(50) UNIQUE NOT NULL,
-    IBAN VARCHAR(30) NOT NULL,
+    IBAN VARCHAR(32) NOT NULL UNIQUE,
     Foto VARCHAR(255),
     Clave VARCHAR(50) NOT NULL,
     Saldo_total DECIMAL(10, 2)NOT NULL,
@@ -160,6 +160,14 @@ JOIN
     
 INSERT INTO Enviar (Contenido, FechaEnvio, RemitenteID, DestinatarioID)
 VALUES ('Contenido del mensaje', NOW(), 1, 3);
+INSERT INTO Enviar (Contenido, FechaEnvio, Leido, RemitenteID, DestinatarioID)
+VALUES ('¡Hola Usuario2!', NOW(), 1, 1, 2);
+
+INSERT INTO Enviar (Contenido, FechaEnvio, Leido, RemitenteID, DestinatarioID)
+VALUES ('¡Hola de nuevo Usuario1!', NOW(), 0, 2, 1);
+
+INSERT INTO Enviar (Contenido, FechaEnvio, Leido, RemitenteID, DestinatarioID)
+VALUES ('¿Cómo estás?', NOW(), 1, 3, 1);
 
 SELECT Enviar.Contenido, Enviar.FechaEnvio, Enviar.Leido, 
        Remitente.Nombre AS RemitenteNombre, Remitente.Apellidos AS RemitenteApellidos,
@@ -234,6 +242,7 @@ JOIN
     Direcciones ON Users.Direcciones_ID = Direcciones.ID;
 select * from enviar;
 select * from Transigir;
+
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
 Prestamos, si es null aparecerá que está en proceso,y si es true o false
