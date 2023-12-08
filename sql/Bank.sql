@@ -6,6 +6,7 @@ use clear_bank;
 CREATE TABLE Direcciones (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Pais VARCHAR(10) NOT NULL,
+    Direccion varchar(30),
     Provincia VARCHAR(50),
     Cod_Postal VARCHAR(10),
     Ciudad VARCHAR(50)

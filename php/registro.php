@@ -1,7 +1,8 @@
 <?php
+include_once('conex.php');
 // Recupera los datos de la dirección
 $provincia = $_POST["provincia"];
-$cod_postal = $_POST["cod_postal"];
+$cod_postal = $_POST["CP"];
 $direccion = $_POST["direccion"];
 $ciudad = $_POST["ciudad"];
 
@@ -10,24 +11,11 @@ $nombre = $_POST["nombre"];
 $apellidos = $_POST["apellidos"];
 $dni = $_POST["dni"];
 $email = $_POST["email"];
-$pais_nacimiento = $_POST["pais_nacimiento"];
+$pais_nacimiento = $_POST["pais"];
 $fecha_nacimiento = $_POST["fecha_nacimiento"];
 
-// Manejo de la foto
-$foto_nombre = $_FILES["foto"]["name"];
-$foto_temp = $_FILES["foto"]["tmp_name"];
-$ruta_foto = "carpeta_destino/" . $foto_nombre;
-move_uploaded_file($foto_temp, $ruta_foto);
+$saldo = $_POST["saldo_inicial"];
 
-// Otros datos
-$saldo = $_POST["saldo"];
-
-
-// Inserta la dirección
-$sql_insert_direccion = "INSERT INTO Direcciones (Provincia, Cod_Postal, Ciudad, Direccion) VALUES ('$provincia', '$cod_postal', '$ciudad', '$direccion')";
-
-// Inserta los datos del usuario
-$sql_insert_usuario = "INSERT INTO Users (Nombre, Apellidos, DNI, Email, Pais, Fecha_Nacimiento, Foto, Saldo, Direccion_ID) VALUES ('$nombre', '$apellidos', '$dni', '$email', '$pais_nacimiento', '$fecha_nacimiento', '$ruta_foto', $saldo, $direccion_id)";
 
 /*IBAN (obligatorio, único, autogenerado. Se calcula pasando a binario la posición 
 en el alfabeto de cada una de las primeras cuatro letras del nombre del usuario y concatenándolas.
@@ -63,12 +51,27 @@ en el alfabeto de cada una de las primeras cuatro letras del nombre del usuario 
 
     return $iban;
 }
+$iban= calcIBAN($conn,$nombre);
+//?insert de usuario y direcciones
+function insertUsersDirecciones($conn, $provincia, $cod_postal, $direccion, $ciudad, $nombre, $apellidos, $dni, $email, $pais_nacimiento, $fecha_nacimiento, $saldo, $iban, $foto)
+{
+    // Insert data into Direcciones table
+    $insertDirecciones = "INSERT INTO Direcciones (Pais, Direccion, Provincia, Cod_Postal, Ciudad)
+                             VALUES ('$pais_nacimiento', '$direccion','$provincia', '$cod_postal', '$ciudad')";
+    mysqli_query($conn, $insertDirecciones);
 
-//? awd
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Get the ID of the last inserted row in Direcciones table
+    $direccionID = mysqli_insert_id($conn);
 
+    // Insert data into Users table
+    $insertUsers = "INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
+                         VALUES ('$nombre', '$apellidos', '$dni', '$email', '$iban', '$foto', $saldo, '$fecha_nacimiento', $direccionID)";
+    mysqli_query($conn, $insertUsers);
+}
+//?
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $uploadedFile = $_FILES["archivo"];
+  $uploadedFile = $_FILES["foto"];
+  $file_dir = "FotosPerfil/";
 
   // Verifica si se subió un archivo
   if (isset($uploadedFile) && $uploadedFile["error"] === UPLOAD_ERR_OK) {
@@ -77,9 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Comprueba que el tipo de archivo sea permitido
     $allowedExtensions = array("jpg", "png", "jpeg");
     $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-    $file_dir = "FotosPerfil/";
-    if (!file_exists("FotosPerfil")) {
-      mkdir("FotosPerfil");
+    if (!file_exists($file_dir)) {
+      mkdir($file_dir);
     }
     $destination = $file_dir . $fileName;
     move_uploaded_file($fileTmpName, $destination);
@@ -87,12 +89,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       // Muestra información del archivo
       echo "Nombre del archivo: $fileName<br>";
 
-      // Mueve el archivo a la carpeta de imagenes
-      echo '<img src="' . $destination . '" alt="Imagen subida"">';
+      // echo '<img src="' . $destination . '" alt="Imagen subida"">';
     } else {
       echo "El tipo de archivo no es válido. Solo se permiten archivos jpg, png y jpeg.";
+      //glob() busca ficheros cuyo nombre sigue un patron empezado por $file_dir,que contengan jpg,png,jpeg y los guarda en un array
+      $defaultImages = glob($file_dir . 'default_*.{jpg,png,jpeg}', GLOB_BRACE);
+      if (!empty($defaultImages)) {
+        // coge un valor aleatorio del array
+          $destination = $defaultImages[array_rand($defaultImages)];
+      }
+      echo '<img src="' . $destination . '" alt="Imagen subida"">';
     }
   } else {
     echo "Error al subir el archivo.";
+    $defaultImages = glob($file_dir . 'default_*.{jpg,png,jpeg}', GLOB_BRACE);
+    if (!empty($defaultImages)) {
+        $destination = $defaultImages[array_rand($defaultImages)];
+    }
+    echo '<img src="' . $destination . '" alt="Imagen subida"">';
+
   }
 }
+//! comentado evitar subir a ddbb
+// insertUsersDirecciones($conn, $provincia, $cod_postal, $direccion,
+//  $ciudad, $nombre, $apellidos, $dni, $email, $pais_nacimiento, $fecha_nacimiento,
+//   $saldo, $iban, $destination);
+  //https://www.php.net/manual/es/function.glob.php
