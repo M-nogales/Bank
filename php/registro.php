@@ -16,7 +16,27 @@ $fecha_nacimiento = $_POST["fecha_nacimiento"];
 
 $saldo = $_POST["saldo_inicial"];
 
+//! 7 numeros + letra en mayus (no ñ) en posi aleatoria
+function createClave() {
+  // Generar 7 números aleatorios
+  $numeros = '';
+  for ($i = 0; $i < 7; $i++) {
+      $numeros .= mt_rand(0, 9);
+  }
 
+  // Elegir una posición aleatoria para la letra
+  $posicionLetra = mt_rand(0, 6);
+
+  $letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $letra = $letras[mt_rand(0, strlen($letras) - 1)];
+
+  // Insertar la letra en la posición aleatoria
+  $clave = substr_replace($numeros, $letra, $posicionLetra, 0);
+
+  return $clave;
+}
+
+// $clave = createClave();
 /*IBAN (obligatorio, único, autogenerado. Se calcula pasando a binario la posición 
 en el alfabeto de cada una de las primeras cuatro letras del nombre del usuario y concatenándolas.
  En caso de tener menos de 4 letras el nombre se añadirán “z”s hasta llegar a las 4 requeridas.
@@ -51,13 +71,13 @@ en el alfabeto de cada una de las primeras cuatro letras del nombre del usuario 
 
     return $iban;
 }
-$iban= calcIBAN($conn,$nombre);
+$iban = calcIBAN($conn,$nombre);
 //?insert de usuario y direcciones
 function insertUsersDirecciones($conn, $provincia, $cod_postal, $direccion, $ciudad, $nombre, $apellidos, $dni, $email, $pais_nacimiento, $fecha_nacimiento, $saldo, $iban, $foto)
 {
     // Insert data into Direcciones table
     $insertDirecciones = "INSERT INTO Direcciones (Pais, Direccion, Provincia, Cod_Postal, Ciudad)
-                             VALUES ('$pais_nacimiento', '$direccion','$provincia', '$cod_postal', '$ciudad')";
+    VALUES ('$pais_nacimiento', '$direccion','$provincia', '$cod_postal', '$ciudad')";
     mysqli_query($conn, $insertDirecciones);
 
     // Get the ID of the last inserted row in Direcciones table
@@ -65,7 +85,7 @@ function insertUsersDirecciones($conn, $provincia, $cod_postal, $direccion, $ciu
 
     // Insert data into Users table
     $insertUsers = "INSERT INTO Users (Nombre, Apellidos, DNI, Email, IBAN, Foto, Saldo_total, Fecha_Nacimiento, Direcciones_ID)
-                         VALUES ('$nombre', '$apellidos', '$dni', '$email', '$iban', '$foto', $saldo, '$fecha_nacimiento', $direccionID)";
+    VALUES ('$nombre', '$apellidos', '$dni', '$email', '$iban', '$foto', $saldo, '$fecha_nacimiento', $direccionID)";
     mysqli_query($conn, $insertUsers);
 }
 //?
