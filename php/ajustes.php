@@ -1,7 +1,7 @@
 <?php
 include_once('conex.php');
 // modificar ddbb, operaciones idem enviar, relación-tabla reflexiva
-function changeSettings($conn,$id_user,$fecha_nacimiento,$foto,$dirección,$codigoPostal,$ciudad,$provincia,$pais){
+function changeSettings($conn,$id_user,$fecha_nacimiento,$foto,$direccion,$codigoPostal,$ciudad,$provincia,$pais){
     // Actualizar datos en la tabla Users
     $updateUsers = "UPDATE Users 
                     SET Fecha_Nacimiento = '$fecha_nacimiento', Foto = '$foto'
@@ -17,7 +17,7 @@ function changeSettings($conn,$id_user,$fecha_nacimiento,$foto,$dirección,$codi
 
     // Actualizar datos en la tabla Direcciones
     $updateDirecciones = "UPDATE Direcciones 
-                          SET Pais = '$pais', Provincia = '$provincia', Cod_Postal = '$codigoPostal', Ciudad = '$ciudad'
+                          SET Pais = '$pais', Direccion= '$direccion' , Provincia = '$provincia', Cod_Postal = '$codigoPostal', Ciudad = '$ciudad'
                           WHERE ID = $direccionID";
 
     mysqli_query($conn, $updateDirecciones) or die("Error al actualizar datos en Direcciones");
