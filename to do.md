@@ -9,7 +9,7 @@
  - [ ] mensajes relacion a si mismos
  - [ ] user,direccion mensaje 
  ## Problemas
- - [ ] identificar usuarios de forma segura
+ - [x] identificar usuarios de forma segura
 # NOTAS
 ### Registro
 el usuario se regitra con intorduciendo todo lo necesario de la tabla user (DNI Opcional) y se le dará una **clave** de inicio de sesión

@@ -211,8 +211,7 @@ VALUES (1, 1, 0.1, 'Aumento de Saldo','Transferencia', CURRENT_DATE);
 INSERT INTO Transigir (Remitente_ID, Destinatario_ID,Motivo, Cantidad, Tipo, Fecha_operacion)
 VALUES (2, 3, 0.3, 'Aumento de Saldo','Bizum', CURRENT_DATE);
 
-SELECT *
-FROM Transigir;
+SELECT * FROM Transigir;
 -- falta logica para unir cantidad de transigir y  selectid
 SELECT ID, Nombre, Apellidos, Saldo_total
 FROM Users
@@ -241,8 +240,6 @@ FROM
     Users
 JOIN
     Direcciones ON Users.Direcciones_ID = Direcciones.ID;
-select * from enviar;
-select * from Transigir;
 
 /*
 los usuarios ven si tienen aceptada o no el prestamo según el valor Aceptada en 
