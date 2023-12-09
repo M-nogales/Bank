@@ -1,13 +1,17 @@
 <?php
-function getTransigir($conn, $idUsuario) {
-  $consulta = "SELECT * FROM Transigir WHERE Remitente_ID = '$idUsuario' OR Destinatario_ID = '$idUsuario'";
-  $resultado = mysqli_query($conn, $consulta) or die("Error en la consulta a la base de datos");
-
-  if (mysqli_num_rows($resultado) > 0) {
-      $datosTransigir = mysqli_fetch_assoc($resultado);
-      return $datosTransigir;
-  } else {
-      echo "No se encontraron transacciones para el usuario en la base de datos";
-      return null;
+function getTransigir($conn, $userID) {
+  $consult = "SELECT * FROM Transigir WHERE Remitente_ID = $userID OR Destinatario_ID = $userID";
+  $resultado = mysqli_query($conn, $consult);
+  return $resultado;
+}
+function getNombreUser($conn, $userID) {
+  $consult = "SELECT Nombre FROM Users WHERE ID = $userID";
+  $resultado = mysqli_query($conn, $consult);
+  
+  if ($resultado && mysqli_num_rows($resultado) > 0) {
+      $row = mysqli_fetch_assoc($resultado);
+      return $row['Nombre'];
   }
+
+  return 'Usuario Desconocido';
 }

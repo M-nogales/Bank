@@ -1,23 +1,10 @@
 <?php 
 include_once('php/conex.php');
-// getTransigir($conn, $idUsuario)
+// getTransigir($conn, $userID)
+// getNombreUser($conn, $userID)
 include_once('php/select_operaciones.php');
 
-session_start();
-$datosTransigir = getTransigir($conn, $_SESSION["id"]);
 
-if ($datosTransigir !== null) {
-    // Almacena los datos de transacciones en sesiones individuales
-    $_SESSION['Remitente_ID'] = $datosTransigir['Remitente_ID'];
-    $_SESSION['Destinatario_ID'] = $datosTransigir['Destinatario_ID'];
-    $_SESSION['Motivo'] = $datosTransigir['Motivo'];
-    $_SESSION['Cantidad'] = $datosTransigir['Cantidad'];
-    $_SESSION['Tipo'] = $datosTransigir['Tipo'];
-    $_SESSION['Fecha_operacion'] = $datosTransigir['Fecha_operacion'];
-    echo "Datos de transacciones almacenados en sesiones";
-} else {
-    echo "Error al obtener los datos de transacciones";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +119,8 @@ if ($datosTransigir !== null) {
   </nav>
   <main>
     <section class="saldo">
-      <h3>7000$</h3>
+      <!-- si no se actualiza re hacer login:$_SESSION['Saldo_total'] = $datosUser['Saldo_total']; -->
+      <h3><?php $_SESSION["Saldo_total"] ?></h3>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
         <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
         <path
@@ -150,20 +138,33 @@ if ($datosTransigir !== null) {
       </div>
     </section>
     <section class="operaciones">
-      <div class="card">
-        <div class="benef_cant">
-          <p class="card_beneficiario">Juan</p>
-          <p class="card_cant">50$</p>
-        </div>
-        <p class="card_date">17/08/2022</p>
-      </div>
-      <div class="card">
-        <div class="benef_cant">
-          <p class="card_beneficiario">Juan</p>
-          <p class="card_cant">50$</p>
-        </div>
-        <p class="card_date">17/08/2022</p>
-      </div>
+    <?php 
+    session_start();
+    $resultado = getTransigir($conn, $_SESSION["id"]);
+
+    // Verifica si hay resultados
+    if (mysqli_num_rows($resultado) > 0) {
+      // Recorre los resultados y genera el código HTML
+      while ($row = mysqli_fetch_assoc($resultado)) {
+          $nombreUser = getNombreUser($conn, $row['Destinatario_ID']);
+          $idUser = $row['Destinatario_ID'];
+          $cantidad = $row['Cantidad'];
+          $date = $row['Fecha_operacion'];
+  
+          // Genera el código HTML
+          echo '<div class="card">';
+          echo '  <div class="benef_cant">';
+          echo '    <p class="card_beneficiario">' . $nombreUser . '</p>';
+          echo '    <p class="card_cant">' . $cantidad . '</p>';
+          echo '  </div>';
+          echo '  <p class="card_date">' . $date . '</p>';
+          echo '</div>';
+      }
+  } else {
+      // Mensaje si no hay transacciones
+      echo '<p>No hay transacciones para este usuario.</p>';
+  }
+    ?>
     </section>
   </main>
 </body>
