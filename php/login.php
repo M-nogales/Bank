@@ -39,13 +39,11 @@ if(mysqli_num_rows($result_admin)>0){
   $datosUser = getUserData($conn, $clave);
   if ($datosUser !== null) {
     // Almacena todos los datos en sesiones individuales
-    $_SESSION['Nombre'] = $datosUser['Nombre'];
     $_SESSION['Apellidos'] = $datosUser['Apellidos'];
     $_SESSION['DNI'] = $datosUser['DNI'];
     $_SESSION['Email'] = $datosUser['Email'];
     $_SESSION['IBAN'] = $datosUser['IBAN'];
     $_SESSION['Foto'] = $datosUser['Foto'];
-    $_SESSION['Clave'] = $datosUser['Clave'];
     $_SESSION['Saldo_total'] = $datosUser['Saldo_total'];
     $_SESSION['Fecha_Nacimiento'] = $datosUser['Fecha_Nacimiento'];
     $_SESSION['Direcciones_ID'] = $datosUser['Direcciones_ID'];

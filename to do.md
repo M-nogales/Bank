@@ -25,5 +25,13 @@ acordion cerrado en el que se ve un resumen, al darle se muestran todos los dato
     1. $_SESSION["usuario"] = nombre de user (login)
     2. $_SESSION["clave"] = clave user (login)
     3. $_SESSION["accesoUser"]=false; acceso Users
+    4. $_SESSION['Apellidos'] = ape user (login)
+    5. $_SESSION['DNI'] = dni user (login)
+    6. $_SESSION['Email'] = email user (login)
+    7. $_SESSION['IBAN'] = iban user (login)
+    8. $_SESSION['Foto'] = dirección a foto user (login)
+    9. $_SESSION['Saldo_total'] = saldo user (login)
+    10. $_SESSION['Fecha_Nacimiento'] = fecha nacimiento user (login)
+    11. $_SESSION['Direcciones_ID'] = id de la tabla de direcciones asociada (login)  
 3. Admin
     1. $_SESSION["accesoAdmin"]=false; acceso admins 
