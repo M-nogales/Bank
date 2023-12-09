@@ -1,4 +1,6 @@
 <?php
+include_once('php/conex.php');
+include_once('php/get_id.php');
 
 session_start();
 //guardamos en sesiones el nombre y clave del usuario
@@ -6,7 +8,8 @@ $_SESSION["usuario"]=$_POST["usuario"];
 $nombre=$_SESSION["usuario"];
 $_SESSION["clave"]=$_POST["clave"];
 $clave=$_SESSION["clave"];
-$_SESSION["acceso"]=false;
+$_SESSION["accesoAdmin"]=false;
+$_SESSION["accesoUser"]=false;
 
 $nombre=$_SESSION["usuario"];
 $clave=$_SESSION["clave"];
@@ -21,15 +24,18 @@ $result_user = mysqli_query($conn, $usuario) or die("Has hecho una mala consulta
 
 //si existe 1 admin con ese nombre le lleva a la vista de admins,si no comprueba users y si no da error
 if(mysqli_num_rows($result_admin)>0){
-  $_SESSION["acceso"]=true;
+  $_SESSION["accesoAdmin"]=true;
+  $_SESSION["id"]=getIdUsersWithKey($conn, $clave);
   echo "admin detectado";
   // header("Location: admin_view.html");
 }elseif(mysqli_num_rows($result_user)>0){
-  $_SESSION["acceso"]=true;
+  $_SESSION["accesoUser"]=true;
+  $_SESSION["id"]=getIdUsersWithKey($conn, $clave);
   echo "user detectado";
   // header("Location: bienvenida.html");
 }else{
-  $_SESSION["acceso"]=false;
+  $_SESSION["accesoUser"]=false;
+  $_SESSION["accesoAdmin"]=false;
   echo "no registrado";
   // header("Location: login.html");
 }

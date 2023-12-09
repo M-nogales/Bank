@@ -1,25 +1,4 @@
 <?php
-
-include_once ('conex.php');
-
-function getIdUsersWithKey($conn, $clave) {
-  $consulta = "SELECT ID FROM Users WHERE Clave = '$clave'";
-  $resultado = mysqli_query($conn, $consulta) or die("Error en la consulta a la base de datos");
-
-  if (mysqli_num_rows($resultado) > 0) {
-      $fila = mysqli_fetch_assoc($resultado);
-      $idUsuario = $fila['ID'];
-      return $idUsuario;
-  } else {
-     echo "no resultado ddbb id where clave";
-      return null;
-  }
-}
-$clave=123;
-$idUser = getIdUsersWithKey($conn, $clave);
-echo "$idUser </br>";
-
-
 function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $motivo) {
     // Meter nuevo préstamos en la tabla Prestamos
     $insertPrestamos = "INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Mensualidad, Motivo, Aceptada) 
@@ -37,14 +16,3 @@ function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $mot
 
     echo "Solicitud de préstamo realizada con éxito.";
 }
-
-// debugging poner getter y setters
-$idUsuario = 1;
-$cantidadSolicitada = 1000.00;
-$mensualidad = 150.00;
-$motivo = "Gastos médicos 2";
-
-//!sin conectar con func anterior
-applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $motivo);
-
-

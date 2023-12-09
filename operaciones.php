@@ -108,10 +108,11 @@
   </nav>
   <section class="section_operaciones">
     <main class="w-100 m-auto log_width">
-      <form class="p-5" action="sql/consults/registro_consult.php" method="POST">
-        <p> Escribe "yo" o "me" para añadirte o quitarte saldo a ti mismo</p>
+      <form class="p-5" action="php/operaciones.php" method="POST">
+        <p> Escribe "yo" o "me" para añadirte o quitarte saldo a ti mismo d</p>
+        <p> falta textarea con motivo</p>
         <div class="form-floating">
-          <input type="text" class="form-control" id="Destinatario" name="Destinatario" placeholder="Nombre de ejemplo">
+          <input type="text" class="form-control" id="Destinatario" name="Destinatario" placeholder="mns5221@gmail.com">
           <label for="Destinatario">Destinatario</label>
         </div>
         <p class="mt-2">Una cantidad negativa quitará saldo, una positiva añadirá</p>

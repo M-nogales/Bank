@@ -18,19 +18,18 @@ $saldo = $_POST["saldo_inicial"];
 
 //! 7 numeros + letra en mayus (no ñ) en posi aleatoria
 function createClave() {
-  // Generar 7 números aleatorios
+  // mt_rand mejor que rand, usa el algoritmo Mersenne Twister
   $numeros = '';
   for ($i = 0; $i < 7; $i++) {
       $numeros .= mt_rand(0, 9);
   }
 
-  // Elegir una posición aleatoria para la letra
+  // posición aleatoria para la letra 
   $posicionLetra = mt_rand(0, 6);
 
   $letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   $letra = $letras[mt_rand(0, strlen($letras) - 1)];
 
-  // Insertar la letra en la posición aleatoria
   $clave = substr_replace($numeros, $letra, $posicionLetra, 0);
 
   return $clave;

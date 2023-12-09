@@ -12,5 +12,3 @@ function getIdUsersWithKey($conn, $clave) {
       return null;
   }
 }
-$clave=123;
-$idUser = getIdUsersWithKey($conn, $clave);
