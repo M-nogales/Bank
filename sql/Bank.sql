@@ -51,7 +51,6 @@ CREATE TABLE Transigir (
     Destinatario_ID INT,
     Motivo TEXT,
     Cantidad DECIMAL(10, 2),
-    Tipo TEXT,
     Fecha_operacion DATETIME,
     FOREIGN KEY (Remitente_ID) REFERENCES Users(ID),
     FOREIGN KEY (Destinatario_ID) REFERENCES Users(ID)
@@ -204,12 +203,12 @@ WHERE Solicitar.Usuario_ID = 2;
 
 
 -- Operación para aumentar el saldo al mismo usuario (ID 1)
-INSERT INTO Transigir (Remitente_ID, Destinatario_ID, Cantidad,Motivo, Tipo, Fecha_operacion)
-VALUES (1, 1, 0.1, 'Aumento de Saldo','Transferencia', CURRENT_DATE);
+INSERT INTO Transigir (Remitente_ID, Destinatario_ID, Cantidad, Motivo, Fecha_operacion)
+VALUES (1, 1, 0.1, 'Aumento de Saldo', CURRENT_DATE);
 
 -- Operación para aumentar el saldo del usuario 2 al usuario 3
-INSERT INTO Transigir (Remitente_ID, Destinatario_ID,Motivo, Cantidad, Tipo, Fecha_operacion)
-VALUES (2, 3, 0.3, 'Aumento de Saldo','Bizum', CURRENT_DATE);
+INSERT INTO Transigir (Remitente_ID, Destinatario_ID,Motivo, Cantidad, Fecha_operacion)
+VALUES (2, 3, 0.3, 'Aumento de Saldo', CURRENT_DATE);
 
 SELECT * FROM Transigir;
 -- falta logica para unir cantidad de transigir y  selectid

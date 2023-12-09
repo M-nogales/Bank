@@ -16,3 +16,8 @@ function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $mensualidad, $mot
 
     echo "Solicitud de préstamo realizada con éxito.";
 }
+function obtenerPrestamosUsuario($conn, $usuarioID) {
+    $query = "SELECT * FROM Prestamos WHERE User_ID = $usuarioID";
+    $resultado = mysqli_query($conn, $query);
+    return $resultado;
+}
