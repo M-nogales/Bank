@@ -5,7 +5,7 @@ include_once('php/conex.php');
 // getSaldoUser($conn, $userID)
 include_once('php/select_operaciones.php');
 session_start();
-$_SESSION["Saldo_total"]= getSaldoUser($conn, $_SESSION["id"]);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,7 +121,10 @@ $_SESSION["Saldo_total"]= getSaldoUser($conn, $_SESSION["id"]);
   <main>
     <section class="saldo">
       <!-- si no se actualiza re hacer login:$_SESSION['Saldo_total'] = $datosUser['Saldo_total']; -->
-      <h3><?php $_SESSION["Saldo_total"] ?></h3>
+      <h3><?php
+        $_SESSION["Saldo_total"]= getSaldoUser($conn, $_SESSION["id"]);
+        echo $_SESSION["Saldo_total"];
+        ?></h3>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
         <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
         <path
