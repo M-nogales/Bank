@@ -29,7 +29,15 @@ function insertOperation($conn, $id_remitente, $id_destinatario, $motivo, $canti
 
   mysqli_query($conn, $insertTransigir) or die("Error al insertar operación en la base de datos");
 
-  echo "Operación registrada con éxito.";
+  // Actualizar saldo del remitente 
+  $updateSaldoRemitente = "UPDATE Users SET Saldo_total = Saldo_total - $cantidad WHERE ID = $id_remitente";
+  mysqli_query($conn, $updateSaldoRemitente) or die("Error al actualizar saldo del remitente");
+
+  // Actualizar saldo del destinatario 
+  $updateSaldoDestinatario = "UPDATE Users SET Saldo_total = Saldo_total + $cantidad WHERE ID = $id_destinatario";
+  mysqli_query($conn, $updateSaldoDestinatario) or die("Error al actualizar saldo del destinatario");
+
+  echo "Operación registrada con éxito. Saldo actualizado.";
 }
 $id_user = getIdUsersWithKey($conn, $clave);
 $destinatario == $id_user ||$destinatario =="yo" || $destinatario=="me" ? $id_destinatario=$id_user : $id_destinatario=getIdUsersWithEmail($conn,$destinatario);

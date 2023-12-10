@@ -2,9 +2,10 @@
 include_once('php/conex.php');
 // getTransigir($conn, $userID)
 // getNombreUser($conn, $userID)
+// getSaldoUser($conn, $userID)
 include_once('php/select_operaciones.php');
-
-
+session_start();
+$_SESSION["Saldo_total"]= getSaldoUser($conn, $_SESSION["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,7 +140,7 @@ include_once('php/select_operaciones.php');
     </section>
     <section class="operaciones">
     <?php 
-    session_start();
+    
     $resultado = getTransigir($conn, $_SESSION["id"]);
 
     // Verifica si hay resultados

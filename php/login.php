@@ -1,9 +1,9 @@
 <?php
-include_once('php/conex.php');
+include_once('conex.php');
 //getIdUsersWithKey($conn, $clave)
-include_once('php/get_id.php');
+include_once('get_id.php');
 //getUserData($conn, $clave)
-include_once('php/get_all.php');
+include_once('get_all.php');
 
 session_start();
 

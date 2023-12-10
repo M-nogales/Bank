@@ -1,3 +1,17 @@
+<?php 
+  include_once('php/conex.php');
+  // send_msg($conn,$id_user,$id_destino,$fechaEnvio,$contenido)
+  // getMensajesUsers($conn, $remitenteID, $destinatarioID)
+  // getUsersExcept($conn, $excluirID)
+  include_once('php/mensajes.php');
+
+$id_user=1;
+$id_destino=2;
+$fechaEnvio=date("Y-m-d H:i:s");
+$contenido="que dise niño";
+send_msg($conn,$id_user,$id_destino,$fechaEnvio,$contenido);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +125,23 @@
       <button type="submit" class="btn btn-secondary">Redeem</button>
     </div>
   </form> -->
+  <?php 
+  session_start();
+  $mensajes = getMensajesUsers($conn, $remitenteID, $destinatarioID);
+
+  foreach ($mensajes as $mensaje) {
+    echo "Contenido: " . $mensaje['contenido'] . "<br>";
+    echo "Fecha de envío: " . $mensaje['fechaEnvio'] . "<br>";
+    echo "Leído: " . ($mensaje['leido'] ? 'Sí' : 'No') . "<br>";
+    echo "<hr>";
+  }
+  $usuarios = getUsersExcept($conn, $_SESSION["id"]);
+
+// Mostrar la lista de usuarios
+foreach ($usuarios as $usuario) {
+  echo 'ID: ' . $usuario['id'] . ', Nombre: ' . $usuario['nombre'] . '<br>';
+}
+  ?>
   <section class="msg_section">
     <div class="msg_card">
       <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>

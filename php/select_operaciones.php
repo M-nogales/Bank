@@ -15,3 +15,14 @@ function getNombreUser($conn, $userID) {
 
   return 'Usuario Desconocido';
 }
+function getSaldoUser($conn, $userID) {
+  $consultaSaldo = "SELECT Saldo_total FROM Users WHERE ID = $userID";
+  $resultadoSaldo = mysqli_query($conn, $consultaSaldo);
+  
+  if (mysqli_num_rows($resultadoSaldo) > 0) {
+      $rowSaldo = mysqli_fetch_assoc($resultadoSaldo);
+      return $rowSaldo['Saldo_total'];
+  }
+
+  return 0; // Retorna 0 si el usuario no existe o no tiene saldo registrado
+}

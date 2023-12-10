@@ -23,7 +23,6 @@ function changeSettings($conn,$id_user,$fecha_nacimiento,$foto,$direccion,$codig
     mysqli_query($conn, $updateDirecciones) or die("Error al actualizar datos en Direcciones");
 
     echo "Datos actualizados con éxito.";
-    
 
 }
 //!sacar de funcion
