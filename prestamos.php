@@ -141,7 +141,7 @@ session_start();
     if ($prestamos) {
         while ($row = mysqli_fetch_assoc($prestamos)) {
             echo 'Cantidad solicitada: ' . $row['Cantidada_solicitada'] . '<br>';
-            echo 'Mensualidad: ' . $row['Mensualidad'] . '<br>';
+            echo 'Cuota: ' . $row['Cuota'] . '<br>';
             echo 'Motivo: ' . $row['Motivo'] . '<br>';
             echo 'Aceptada: ' . $row['Aceptada'] . '<br>';
             echo '----------------------------------------<br>';
