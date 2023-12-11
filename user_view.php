@@ -15,7 +15,6 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/resources/imgs/">
-
   <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
 
   <title>User view</title>
@@ -62,6 +61,7 @@ session_start();
             </svg>
             <p>Prestamos</p>
           </a></li>
+          <!-- funciona sin round circle -->
         <li class="top-li"><a class="top-a" href=""><img src="https://github.com/mdo.png" alt="" class="rounded-circle">
           </a></li>
         <li class="top-li"><a class="top-a" href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
