@@ -118,13 +118,13 @@ session_start();
   <main class="section_prestamo">
     <form action="php/insert_prestamos.php" class="d-flex flex-column align-items-center custom_form">
       <div class="col-sm-6">
-        <label for="MoneyRange" class="form-label">¿Cuanto dinero necesitas 2?</label>
+        <label for="MoneyRange" class="form-label">¿Cuanto dinero necesitas?</label>
         <input id="MoneyRange" min="0" max="50" step="0.5" type="range" class="form-range" /> 
         <h4> Current Value: <span id="currMoney"></span> </h4> 
       </div>
       <div class="col-sm-6">
         <label for="DaysRange" class="form-label">¿Cuanto lo quieres devolver ?</label>
-        <input id="DaysRange" min="0" max="60" step="0.5" type="range" class="form-range" /> 
+        <input id="DaysRange" min="0" max="60" step="1" type="range" class="form-range" /> 
         <h4> Current Value: <span id="currDays"></span> </h4> 
       </div>
 
