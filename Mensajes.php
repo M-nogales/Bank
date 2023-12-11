@@ -2,18 +2,29 @@
 include_once('php/conex.php');
 // send_msg($conn,$id_user,$id_destino,$fechaEnvio,$contenido)
 // getMensajesUsers($conn, $remitenteID, $destinatarioID)
+// updateMensajesLeidos($conn, $remitenteID, $destinatarioID)
 // getUsersExcept($conn, $excluirID)
 include_once('php/mensajes.php');
 session_start();
+$usuarios = getUsersExcept($conn, $_SESSION["id"]);
+
+// Obtener el primer usuario de la lista
+$primerUser = reset($usuarios);
+$id_destino = isset($_GET['userId']) ? $_GET['userId'] : $primerUser["id"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Procesar los datos del formulario
   $mensaje = $_POST["Mensaje"] ?? "";
-  $id_destino = $_POST["id"] ?? "";
+  $id_remitente = $_SESSION["id"];
   $fechaEnvio = date("Y-m-d H:i:s");
-  $id_remitente=$_SESSION["id"];
-  $mensaje != "" && $id_destino !=""?send_msg($conn, $id_remitente, $id_destino, $fechaEnvio, $mensaje):null;
+
+  if ($mensaje != "" && $id_destino != "") {
+    send_msg($conn, $id_remitente, $id_destino, $fechaEnvio, $mensaje);
+    header("Location: mensajes.php?userId=$id_destino"); // Redirige después de enviar el mensaje
+    exit();
+  }
 }
+
 
 ?>
 
@@ -114,79 +125,76 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </ul>
   </nav>
-  <?php
-
-  $remitenteID = 1;
-  $destinatarioID = 2;
-  $mensajes = getMensajesUsers($conn, $remitenteID, $destinatarioID);
-
-  foreach ($mensajes as $mensaje) {
-    echo "Contenido: " . $mensaje['contenido'] . "<br>";
-    echo "Fecha de envío: " . $mensaje['fechaEnvio'] . "<br>";
-    echo "Leído: " . ($mensaje['leido'] ? 'Sí' : 'No') . "<br>";
-    echo "<hr>";
-  }
-  $usuarios = getUsersExcept($conn, $_SESSION["id"]);
-
-  // Mostrar la lista de usuarios
-  foreach ($usuarios as $usuario) {
-    echo 'ID: ' . $usuario['id'] . ', Nombre: ' . $usuario['nombre'] . '<br>';
-  }
-  ?>
   <section class="msg_section">
-    <div class="msg_card">
-      <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>
-      <div class="msg_date">
-        <p>fecha</p>
-        <p>Leido</p>
-      </div>
-    </div>
-    <div class="msg_card_me">
-      <p>Mensaje en sí</p>
-      <div class="msg_date">
-        <p>fecha</p>
-        <p>Leido</p>
-      </div>
-    </div>
-    <div class="msg_card">
-      <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>
-      <div class="msg_date">
-        <p>fecha</p>
-        <p>Leido</p>
-      </div>
-    </div>
-    <div class="msg_card">
-      <p>Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí Mensaje en sí</p>
-      <div class="msg_date">
-        <p>fecha</p>
-        <p>Leido</p>
-      </div>
-    </div>
+    <?php
+
+    // por cada uno de los usuarios crea una url a la que enviamos el id de ese user
+    // $usuarios procede de la linea (9) para evitar error al entrar en mensajes.php por primera vez
+    foreach ($usuarios as $usuario) {
+      echo '<a href="?userId=' . $usuario['id'] . '">ID: ' . $usuario['id'] . ', Nombre: ' . $usuario['nombre'] . '</a><br>';
+    }
+    //coge el id del destinatario de la url, en caso de que entres por primera vez coge el url del primer user
+    $destinatarioID = isset($_GET['userId']) ? $_GET['userId'] : $primerUser["id"];
+    $mensajes = getMensajesUsers($conn, $_SESSION["id"], $destinatarioID);
+
+    // marca los mensajes como leidos en caso de que el otro usuario los vea
+    updateMensajesLeidos($conn, $destinatarioID, $_SESSION["id"]);
+
+    // imprime los mensajes como tal, les aplica un estilo dependiendo de quien los haya enviado y cual sea el user actual
+    // el mensaje se muestra como leido si de la base de datos sale como true
+    foreach ($mensajes as $mensaje) {
+      echo '<div class="mensaje' . ($mensaje['remitenteID'] == $_SESSION["id"] ? ' msg_card_me' : ' msg_card') . '" data-usuario="' . $_SESSION["id"] . '">';
+      echo '<p>' . $mensaje['contenido'] . '</p>';
+      echo '<div class="msg_date">';
+      echo '<p>Fecha de envío: ' . $mensaje['fechaEnvio'] . '</p>';
+      echo '<p>Leído: ' . ($mensaje['leido'] ? 'Sí' : 'No') . '</p>';
+      echo '</div>';
+      echo '</div>';
+    }
+    ?>
 
   </section>
   <!-- col se fumó un porro -->
   <section class="d-flex justify-content-center align-items-center ">
     <form action="" method="post" class="w-100 row g-3">
-      <div class="col-md-8 col-sm-8  col-lg-8 mt-0">
+      <div class="col-md-10 col-sm-10 col-lg-10 mt-0">
         <div class="form-floating">
           <input type="text" class="form-control" id="Mensaje" name="Mensaje" placeholder="Mensaje">
           <label for="Mensaje">Mensaje</label>
         </div>
       </div>
 
-      <div class="col-md-2 col-sm-2 col-lg-2 mt-0">
-        <div class="form-floating">
-          <input type="text" class="form-control" id="id" name="id" placeholder="id">
-          <label for="id">id</label>
-        </div>
-      </div>
-
-      <div class="col-md-2 col-sm-2  col-lg-2 mt-0 d-flex align-items-center">
+      <div class="col-md-2 col-sm-2 col-lg-2 mt-0 d-flex align-items-center">
         <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </form>
 
   </section>
+  <!-- No puedo hacerlo a traves de js debido a que no funcionaría el codigo php -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // pasamos el id del usuario del que queremos mostrar los mensajes con php
+      var userId = <?php echo isset($_GET['userId']) ? $_GET['userId'] : 0; ?>;
+
+      
+      if (userId > 0) {
+        // Oculta todos los mensajes que tengan de clase mensaje
+        var mensajes = document.querySelectorAll('.mensaje');
+        mensajes.forEach(function(mensaje) {
+          mensaje.style.display = 'none';
+        });
+
+        // Muestra solo los mensajes del usuario seleccionado gracias al atributo que 
+        // hemos asignado a la hora de mostrar los mensajes
+        var mensajesUsuario = document.querySelectorAll('.mensaje[data-usuario="' + <?php echo $_SESSION["id"]; ?> + '"]');
+        mensajesUsuario.forEach(function(mensajeUsuario) {
+          mensajeUsuario.style.display = 'block';
+        });
+      }
+    });
+  </script>
+
+
 </body>
 
 </html>
