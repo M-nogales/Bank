@@ -2,6 +2,8 @@
 include_once('php/conex.php');
 //getLoanUsers($conn, $userID);
 include_once('php/select_prestamos.php');
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,13 +135,11 @@ include_once('php/select_prestamos.php');
   </main>
   <section>
     <?php
-    session_start();
     $prestamos = getLoanUsers($conn, $_SESSION["id"]);
 
     // Imprime los resultados o realiza la lógica que necesites
     if ($prestamos) {
         while ($row = mysqli_fetch_assoc($prestamos)) {
-            echo 'ID del préstamo: ' . $row['ID'] . '<br>';
             echo 'Cantidad solicitada: ' . $row['Cantidada_solicitada'] . '<br>';
             echo 'Mensualidad: ' . $row['Mensualidad'] . '<br>';
             echo 'Motivo: ' . $row['Motivo'] . '<br>';

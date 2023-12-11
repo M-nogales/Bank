@@ -31,7 +31,9 @@ CREATE TABLE Prestamos (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     User_ID INT,
     Cantidada_solicitada DECIMAL(10, 2),
-    Mensualidad DECIMAL(10, 2),
+    Cuota DECIMAL(10, 2),
+    Deuda DECIMAL(10, 2),
+    Vencimiento DATETIME,
     Motivo TEXT,
     Aceptada boolean,
     FOREIGN KEY (User_ID) REFERENCES Users(ID)
@@ -128,15 +130,6 @@ FROM
 JOIN
     Direcciones ON Users.Direcciones_ID = Direcciones.ID;
 
-UPDATE Direcciones
-SET
-    Pais = 'España',
-    Provincia = 'Valencia',
-    Cod_Postal = '46003',
-    Ciudad = 'Valencia'
-WHERE
-    ID = (SELECT Direcciones_ID FROM Users WHERE ID = 2);
-
 SELECT
     Users.ID AS Usuario_ID,
     Users.Nombre,
@@ -184,22 +177,12 @@ JOIN Users AS Destinatario ON Enviar.DestinatarioID = Destinatario.ID
 WHERE Enviar.DestinatarioID = 3; -- Este sería el ID del destinatario (en este caso, 3)
 
 -- Crear un préstamo para el usuario con ID 2
-INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Mensualidad, Motivo, Aceptada)
-VALUES (2, 1000.00, 150.00, 'Préstamo para gastos médicos', null);
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, Vencimiento, Motivo, Aceptada)
+VALUES (2, 1000.00, 150.00, 0.00, null, 'Préstamo para gastos médicos', null);
 
 -- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
 INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
 VALUES (2, LAST_INSERT_ID());
-
--- Ver los préstamos del usuario con ID 2
-SELECT Prestamos.ID AS Prestamo_ID,
-       Prestamos.Cantidada_solicitada,
-       Prestamos.Mensualidad,
-       Prestamos.Motivo,
-       Prestamos.Aceptada
-FROM Prestamos
-JOIN Solicitar ON Prestamos.ID = Solicitar.Prestamo_ID
-WHERE Solicitar.Usuario_ID = 2;
 
 
 -- Operación para aumentar el saldo al mismo usuario (ID 1)
