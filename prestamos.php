@@ -8,10 +8,10 @@ $userId = $_SESSION["id"];
 $paymentSuccess = false;
 // Procesar el pago de la cuota si se envió el formulario
 if (isset($_POST['pay_loan'])) {
-    $loanId = $_POST['loan_id'];
-    // Lógica para pagar cuota
-    payLoan($conn, $userId, $loanId);
-    $paymentSuccess = true;
+  $loanId = $_POST['loan_id'];
+  // Lógica para pagar cuota
+  payLoan($conn, $userId, $loanId);
+  $paymentSuccess = true;
 }
 ?>
 <!DOCTYPE html>
@@ -109,18 +109,23 @@ if (isset($_POST['pay_loan'])) {
     </ul>
   </nav>
   <main class="section_prestamo">
-    <form action="php/insert_prestamos.php" class="d-flex flex-column align-items-center custom_form">
+    <form action="php/insert_prestamos.php" method="post" class="d-flex flex-column align-items-center custom_form">
       <div class="col-sm-6">
         <label for="MoneyRange" class="form-label">¿Cuanto dinero necesitas?</label>
-        <input id="MoneyRange" min="0" max="50" step="0.5" type="range" class="form-range" />
+        <input id="MoneyRange" min="0" max="2000" step="1" type="range" name="cantidad" class="form-range" />
         <h4> Current Value: <span id="currMoney"></span> </h4>
       </div>
       <div class="col-sm-6">
-        <label for="DaysRange" class="form-label">¿Cuanto lo quieres devolver ?</label>
-        <input id="DaysRange" min="0" max="60" step="1" type="range" class="form-range" />
+        <label for="DaysRange" class="form-label">¿Cuanto en cada cuota?</label>
+        <input id="DaysRange" min="100" max="1000" step="1" type="range" name="cuota" class="form-range" />
         <h4> Current Value: <span id="currDays"></span> </h4>
       </div>
-
+      <div class="col-sm-6">
+        <div class="form-floating mt-2 mb-4">
+          <textarea class="form-control" placeholder="Motivo de la operacion" id="motivo" name="motivo"></textarea>
+          <label for="motivo">Motivo</label>
+        </div>
+      </div>
       <div class="col-12 d-flex justify-content-center mt-4">
         <button type="submit" class="btn btn-primary">PIDELO YA</button>
       </div>
@@ -136,21 +141,32 @@ if (isset($_POST['pay_loan'])) {
               ¡El pago se ha realizado con éxito!
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
-  }
-  $loans = getLoanUsers($conn, $userId);
+    }
+    $loans = getLoanUsers($conn, $userId);
     foreach ($loans as $loan) {
       echo "<div class='border mb-4 p-4'>";
       echo "<p class='mb-2'>ID del Préstamo: {$loan['ID']}</p>";
       echo "<p class='mb-2'>Cantidad Solicitada: {$loan['Cantidada_solicitada']}</p>";
       echo "<p class='mb-2'>Cuota: {$loan['Cuota']}</p>";
       echo "<p class='mb-2'>Deuda: {$loan['Deuda']}</p>";
-      echo "<p class='mb-2'>Fecha de Vencimiento: {$loan['Vencimiento']}</p>";
+      if ($loan['Aceptada'] === null) {
+        echo "<p class='mb-2'>Estado: Pendiente de revisión</p>";
+        // No mostrar el botón si está pendiente de revisión
+      } elseif ($loan['Aceptada'] === "0") {
+        echo "<p class='mb-2'>Estado: Denegada</p>";
+        // No mostrar el botón si está denegada
+      } else {
+        // Si Aceptada es true, mostrar la información adicional
+        echo "<p class='mb-2'>Estado: Aceptada</p>";
+        echo "<p class='mb-2'>Fecha de Vencimiento: {$loan['Vencimiento']}</p>";
 
-      // Botón para pagar cuota con clases de Bootstrap
-      echo "<form method='post' action='' class='mb-0'>
-              <input type='hidden' name='loan_id' value='{$loan['ID']}'>
-              <button type='submit' name='pay_loan' class='btn btn-primary'>Pagar Cuota</button>
-          </form>";
+        // Botón para pagar cuota con clases de Bootstrap
+        echo "<form method='post' action='' class='mb-0'>
+                    <input type='hidden' name='loan_id' value='{$loan['ID']}'>
+                    <button type='submit' name='pay_loan' class='btn btn-primary'>Pagar Cuota</button>
+                </form>";
+      }
+
       echo "</div>";
     }
     ?>
