@@ -21,10 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($mensaje != "" && $id_destino != "") {
     send_msg($conn, $id_remitente, $id_destino, $fechaEnvio, $mensaje);
     header("Location: mensajes.php?userId=$id_destino"); // Redirige después de enviar el mensaje
-    exit();
+    exit();// evitamos que se envie el mismo mensaje una y otra vez al recargar,limpiamos post
   }
 }
-
 
 ?>
 
