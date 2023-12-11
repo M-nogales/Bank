@@ -398,6 +398,12 @@ header .top-nav .top-ul .top-li .top-a svg {
   max-height: 8vh;
   margin: 5px 0;
 }
+header .top-nav .top-ul .top-li .top-a img {
+  width: calc(7 * 1.3vw);
+  max-height: 8vh;
+  margin: 5px 0;
+  border-radius: 50%;
+}
 header .top-nav .top-ul .li-tablet {
   display: none;
 }
@@ -513,6 +519,12 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
     width: calc(2 * 1.3vw);
     max-height: 8vh;
     margin: 5px 0;
+  }
+  header .top-nav .top-ul .top-li .top-a img {
+    width: calc(2 * 1.3vw);
+    max-height: 8vh;
+    margin: 5px 0;
+    border-radius: 50%;
   }
   header .li-pc {
     display: flex;

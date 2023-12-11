@@ -81,6 +81,12 @@ header {
             max-height: 8vh;
             margin: 5px 0; // Añade margen inferior al icono SVG
           }
+          img{
+              width: $icon-sm-md-top; //calc(#{$navbar-icon-size} * 1.3vw);
+              max-height: 8vh;
+              margin: 5px 0; // Añade margen inferior al icono SVG
+              border-radius: 50%;
+          }
         }
       }
       .li-tablet {
@@ -205,6 +211,12 @@ nav:not(.top-nav) {
               width: $icon-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
               max-height: 8vh;
               margin: 5px 0; // Añade margen inferior al icono SVG
+            }
+            img{
+              width: $icon-xl-top; //calc(#{$navbar-icon-size} * 1.3vw);
+              max-height: 8vh;
+              margin: 5px 0; // Añade margen inferior a la imagen
+              border-radius: 50%;
             }
           }
         }
