@@ -178,7 +178,7 @@ WHERE Enviar.DestinatarioID = 3; -- Este sería el ID del destinatario (en este 
 
 -- Crear un préstamo para el usuario con ID 2
 INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, Vencimiento, Motivo, Aceptada)
-VALUES (2, 1000.00, 150.00, 0.00, null, 'Préstamo para gastos médicos', null);
+VALUES (2, 1000.00, 150.00, 1000.00, null, 'Préstamo para gastos médicos', null);
 
 -- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
 INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)

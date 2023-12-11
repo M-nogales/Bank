@@ -2,7 +2,7 @@
 function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $cuota, $motivo, $vencimiento) {
     // Insertar nuevo préstamo en la tabla Prestamos
     $insertPrestamo = "INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Motivo, Aceptada, Deuda, Vencimiento) 
-                       VALUES ('$idUsuario', '$cantidadSolicitada', '$cuota', '$motivo', null, 0.00, '$vencimiento')";
+                       VALUES ('$idUsuario', '$cantidadSolicitada', '$cuota', '$motivo', null, '$cantidadSolicitada', '$vencimiento')";
     mysqli_query($conn, $insertPrestamo) or die("Error al insertar préstamo en la base de datos");
 
     // Obtener el ID del préstamo recién insertado
