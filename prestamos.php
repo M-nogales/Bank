@@ -121,10 +121,8 @@ if (isset($_POST['pay_loan'])) {
         <h4> Current Value: <span id="currDays"></span> </h4>
       </div>
       <div class="col-sm-6">
-        <div class="form-floating mt-2 mb-4">
-          <textarea class="form-control" placeholder="Motivo de la operacion" id="motivo" name="motivo"></textarea>
-          <label for="motivo">Motivo</label>
-        </div>
+        <label for="motivo" class="form-label label-text">Motivo</label>
+        <input type="text" class="form-control" id="motivo" name="motivo" placeholder="Gastos médicos">
       </div>
       <div class="col-12 d-flex justify-content-center mt-4">
         <button type="submit" class="btn btn-primary">PIDELO YA</button>
