@@ -33,10 +33,10 @@ CREATE TABLE Prestamos (
     Cantidada_solicitada DECIMAL(10, 2),
     Cuota DECIMAL(10, 2),
     Deuda DECIMAL(10, 2),
-    Vencimiento DATETIME,
-    Motivo TEXT,
-    Aceptada boolean,
     fecha_de_creacion DATETIME,
+    Motivo TEXT,
+    Vencimiento DATETIME,
+    Aceptada boolean,
     FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
 
@@ -185,7 +185,13 @@ VALUES (2, 1000.00, 150.00, 1000.00, null, 'Préstamo para gastos médicos', nul
 INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
 VALUES (2, LAST_INSERT_ID());
 
+-- Crear un préstamo para el usuario con ID 2
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, Vencimiento, Motivo, Aceptada)
+VALUES (1, 2000.00,200.00, 2000.00, null, 'juan juan juan', null);
 
+-- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
+INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
+VALUES (1, LAST_INSERT_ID());
 -- Operación para aumentar el saldo al mismo usuario (ID 1)
 INSERT INTO Transigir (Remitente_ID, Destinatario_ID, Cantidad, Motivo, Fecha_operacion)
 VALUES (1, 1, 0.1, 'Aumento de Saldo', CURRENT_DATE);
