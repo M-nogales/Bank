@@ -5,7 +5,7 @@ function cambiarMoneda() {
   // coge el valor del select
   let seleccionMoneda = document.getElementById("moneda").value;
 
-  //coge el valor ya convertido usando la funcion changeDivisa
+  //coge el valor ya convertido usando la funcion changeDivisa + 2 decimales
   let saldoFinal = changeDivisa(saldoOriginal, seleccionMoneda).toFixed(2);
 
   // cambia el valor del h3 al correcto y le añade el simbolo de la moneda seleccionada
