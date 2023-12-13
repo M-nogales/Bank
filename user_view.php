@@ -16,7 +16,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/resources/imgs/">
   <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
-
+  <script defer src="js/localStorage.js"></script> 
   <title>User view</title>
 </head>
 
@@ -103,8 +103,7 @@ session_start();
   </nav>
   <main>
     <section class="saldo">
-      <!-- si no se actualiza re hacer login:$_SESSION['Saldo_total'] = $datosUser['Saldo_total']; -->
-      <h3><?php
+      <h3 id="saldoTotal"><?php
           $_SESSION["Saldo_total"] = getSaldoUser($conn, $_SESSION["id"]);
           echo $_SESSION["Saldo_total"];
           ?></h3>
@@ -114,7 +113,7 @@ session_start();
       </svg>
       <div class="select_moneda">
         <label for="moneda" class="form-label label-text">Divisa</label>
-        <select id="moneda" name="moneda" class="form_select">
+        <select id="moneda" name="moneda" class="form_select" onchange="cambiarMoneda()">
           <option selected>Euros</option>
           <option>Dólares</option>
           <option>Libras</option>
