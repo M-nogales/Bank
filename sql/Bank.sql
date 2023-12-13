@@ -36,6 +36,7 @@ CREATE TABLE Prestamos (
     Vencimiento DATETIME,
     Motivo TEXT,
     Aceptada boolean,
+    fecha_de_creacion DATETIME,
     FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
 

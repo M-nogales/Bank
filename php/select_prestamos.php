@@ -1,6 +1,6 @@
 <?php
 function getLoanUsers($conn, $userID) {
-    $query = "SELECT * FROM Prestamos WHERE User_ID = $userID";
+    $query = "SELECT * FROM Prestamos WHERE User_ID = $userID ORDER BY fecha_de_creacion DESC";
     $resultado = mysqli_query($conn, $query);
     return $resultado;
 }

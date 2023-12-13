@@ -6,12 +6,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cantidad = $_POST["cantidad"];
     $cuota = $_POST["cuota"];
     $motivo = $_POST["motivo"];
-    applyForLoan($conn,$_SESSION["id"],$cantidad,$cuota,$motivo);
+    applyForLoan($conn, $_SESSION["id"], $cantidad, $cuota, $motivo);
 }
-function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $cuota, $motivo) {
+function applyForLoan($conn, $idUsuario, $cantidadSolicitada, $cuota, $motivo)
+{
+    $fechaCreacion = date("Y-m-d H:i:s");
     // Insertar nuevo préstamo en la tabla Prestamos
-    $insertPrestamo = "INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Motivo, Aceptada, Deuda, Vencimiento) 
-                       VALUES ('$idUsuario', '$cantidadSolicitada', '$cuota', '$motivo', null, '$cantidadSolicitada', null)";
+    $insertPrestamo = "INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Motivo, Aceptada, Deuda, Vencimiento, fecha_de_creacion) 
+                       VALUES ('$idUsuario', '$cantidadSolicitada', '$cuota', '$motivo', null, '$cantidadSolicitada', null, '$fechaCreacion')";
+
     mysqli_query($conn, $insertPrestamo) or die("Error al insertar préstamo en la base de datos");
 
     // Obtener el ID del préstamo recién insertado
