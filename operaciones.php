@@ -1,5 +1,10 @@
 <?php 
 session_start();
+// if ($_SESSION["accesoUser"] !== true) {
+//   // Redirigir a inicio_sesion.html si no tiene acceso
+//   header("Location: inicio_sesion.html");
+//   exit();
+// }
 //! ruta img perfil, en todos
 $urlperfil = "php/".$_SESSION['Foto'];
 ?>

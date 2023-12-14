@@ -7,6 +7,11 @@ include_once('php/select_operaciones.php');
 session_start();
 //! ruta img perfil, en todos
 $urlperfil = "php/".$_SESSION['Foto'];
+// if ($_SESSION["accesoUser"] !== true) {
+//   // Redirigir a inicio_sesion.html si no tiene acceso
+//   header("Location: inicio_sesion.html");
+//   exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

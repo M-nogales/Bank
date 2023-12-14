@@ -4,6 +4,11 @@ include_once('php/conex.php');
 //payLoan($conn, $userId, $loanId) {
 include_once('php/select_prestamos.php');
 session_start();
+// if ($_SESSION["accesoUser"] !== true) {
+//   // Redirigir a inicio_sesion.html si no tiene acceso
+//   header("Location: inicio_sesion.html");
+//   exit();
+// }
 $userId = $_SESSION["id"];
 $paymentSuccess = false;
 

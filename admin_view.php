@@ -3,7 +3,13 @@ include_once('php/conex.php');
 //getAllUsers($conn);
 //getAllLoans($conn);
 include_once('php/admin.php');
+session_start();
 
+// if ($_SESSION["accesoAdmin"] !== true) {
+//     // Redirigir a inicio_sesion.html si no tiene acceso
+//     header("Location: inicio_sesion.html");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
