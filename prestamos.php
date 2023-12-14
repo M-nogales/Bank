@@ -6,13 +6,14 @@ include_once('php/select_prestamos.php');
 session_start();
 $userId = $_SESSION["id"];
 $paymentSuccess = false;
-// Procesar el pago de la cuota si se envió el formulario
+
 if (isset($_POST['pay_loan'])) {
   $loanId = $_POST['loan_id'];
   // Lógica para pagar cuota
   payLoan($conn, $userId, $loanId);
   $paymentSuccess = true;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
