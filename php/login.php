@@ -32,7 +32,7 @@ if(mysqli_num_rows($result_admin)>0){
   $_SESSION["id"]=getIdUsersWithKey($conn, $clave);
   
   echo "admin detectado";
-  // header("Location: admin_view.html");
+  header("Location: ../admin_view.php");
 }elseif(mysqli_num_rows($result_user)>0){
   $_SESSION["accesoUser"]=true;
   $_SESSION["id"]=getIdUsersWithKey($conn, $clave);
@@ -52,10 +52,10 @@ if(mysqli_num_rows($result_admin)>0){
     echo "Error al obtener los datos del usuario";
 }
   echo "user detectado";
-  // header("Location: bienvenida.html");
+  header("Location: ../user_view.php");
 }else{
   $_SESSION["accesoUser"]=false;
   $_SESSION["accesoAdmin"]=false;
   echo "no registrado";
-  // header("Location: login.html");
+  header("Location: ../registro.php");
 }

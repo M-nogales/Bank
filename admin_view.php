@@ -46,9 +46,9 @@ include_once('php/admin.php');
     <?php
     $resultado1  = getAllLoans($conn);
 
-    echo "<form method='post' action='actualizar_datos.php'>"; // Formulario para actualizar datos
+    echo "<form method='post' action='php/actualizar_datos.php'>"; // Formulario para actualizar datos
 
-    echo "<table class=\"table table-bordered table-hover Main-table-border mb-0\">";
+    echo "<table class=\"table table-bordered table-hover Main-table-border mt-5\">";
     echo "<thead><tr>";
     
     // Obtenemos los nombres de las columnas

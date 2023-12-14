@@ -1,6 +1,6 @@
 <?php
 
-include_once('php/conex.php');
+include_once('conex.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar'])) {
   $prestamoID = $_POST['actualizar'];
@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar'])) {
 
         // Validación: Si la fecha de vencimiento es null o vacía, no permite la actualización
         if ($nuevaFechaVencimiento === null || $nuevaFechaVencimiento === '') {
-          header("Location: admin_view.php?error=1");
+          //mostrar alert con error,pero falta tiempo
+          header("Location: ../admin_view.php?error=1");
           exit;
         }
 
@@ -52,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar'])) {
         mysqli_query($conn, $update3);
         //debuging
         echo "Nueva fecha de vencimiento para el préstamo $prestamoID: $nuevaFechaVencimiento <br>";
+
       }
     } else {
       // Si hemos rechazado (value=0), actualizamos la fecha de vencimiento a '0000-00-00'
@@ -74,8 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar'])) {
     echo "Préstamo $prestamoID ";
     echo ($estado == '1') ? "Aceptado" : "Rechazado";
     echo "<br>";
+    header("Location: ../admin_view.php");
   } else {
-    header("Location: admin_view.php?error=2");
+    // mostrar alert con el error pero falta de tiempo
+    header("Location: ../admin_view.php?error=2");
     exit;
   }
 }
