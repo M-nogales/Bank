@@ -5,7 +5,8 @@ include_once('php/conex.php');
 // getSaldoUser($conn, $userID)
 include_once('php/select_operaciones.php');
 session_start();
-
+//! ruta img perfil, en todos
+$urlperfil = "php/".$_SESSION['Foto'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +65,7 @@ session_start();
             <p>Prestamos</p>
           </a></li>
           <!-- funciona sin round circle -->
-        <li class="top-li"><a class="top-a" href=""><img src="https://github.com/mdo.png" alt="" class="rounded-circle">
+        <li class="top-li"><a class="top-a" href=""><img src="<?php echo $urlperfil; ?>" alt="foto de perfil" class="rounded-circle">
           </a></li>
         <li class="top-li"><a class="top-a" href=""><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
               <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
@@ -166,7 +167,7 @@ echo "<h2>Hola $nombre, hoy es $diaSemanaEsp $fecha </h2>"; ?>
           echo '<div class="card">';
           echo '  <div class="benef_cant">';
           echo '    <p class="card_beneficiario">' . $nombreUser . '</p>';
-          echo '    <p class="card_cant">' . $cantidad . '</p>';
+          echo '    <p class="card_cant">' . $cantidad ."€". '</p>';
           echo '  </div>';
           echo '  <p class="card_date">' . $date . '</p>';
           echo '</div>';

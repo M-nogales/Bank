@@ -55,5 +55,29 @@ $id_user = getIdUsersWithKey($conn, $_SESSION["clave"]);
 $destinatario == $id_user || $destinatario == "yo" || $destinatario == "me" ? $id_destinatario = $id_user : $id_destinatario = getIdUsersWithEmail($conn, $destinatario);
 
 $fecha = date("Y-m-d H:i:s");
-//$id_user de func en prestamo - conn de conex ddbb - resto post
-insertOperation($conn, $id_user, $id_destinatario, $motivo, $cantidad, $fecha);
+
+// Función para obtener el saldo actual del remitente
+function getSaldoRemitente($conn, $id_remitente)
+{
+  $consultaSaldo = "SELECT Saldo_total FROM Users WHERE ID = $id_remitente";
+  $resultadoSaldo = mysqli_query($conn, $consultaSaldo) or die("Error al obtener el saldo del remitente");
+
+  if (mysqli_num_rows($resultadoSaldo) > 0) {
+    $filaSaldo = mysqli_fetch_assoc($resultadoSaldo);
+    return $filaSaldo['Saldo_total'];
+  } else {
+    return null;
+  }
+}
+
+// Validar si el remitente tiene suficiente saldo antes de realizar la operación
+$saldo_remitente = getSaldoRemitente($conn, $id_user);
+echo $saldo_remitente;
+if ($cantidad >= 0 || ($cantidad < 0 && abs($cantidad) <= $saldo_remitente)) {
+  // Retirar la cantidad del remitente y actualizar el saldo del destinatario
+  insertOperation($conn, $id_user, $id_destinatario, $motivo, $cantidad, $fecha);
+  header("Location: ../user_view.php");
+} else {
+  echo "Error: No hay saldo suficiente para realizar la operación.";
+  header("Location: ../user_view.php");
+}

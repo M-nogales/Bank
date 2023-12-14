@@ -17,27 +17,28 @@
         <h1 class="h3 text-center">Formulario de registro</h1>
         <div class="col-6">
           <label for="nombre" class="form-label label-text">Nombre</label>
-          <input type="text" class="form-control" id="nombre" name="nombre">
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
         <div class="col-6">
           <label for="apellidos" class="form-label label-text">Apellidos</label>
-          <input type="text" class="form-control" id="apellidos" name="apellidos">
+          <input type="text" class="form-control" id="apellidos" name="apellidos" required>
         </div>
+        <!-- requerido por que es necesario para saber edad en prestamos -->
         <div class="col-6">
           <label for="fecha_nacimiento" class="form-label label-text">Fecha de nacimiento</label>
-          <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+          <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
         </div>
         <div class="col-6">
           <label for="saldo_inicial" class="form-label label-text">Saldo inicial</label>
-          <input type="number" class="form-control" id="saldo_inicial" name="saldo_inicial">
+          <input type="number" class="form-control" id="saldo_inicial" name="saldo_inicial" min="0">
         </div>
         <div class="col-12">
           <label for="email" class="form-label label-text">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo123@gmail.com">
+          <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo123@gmail.com" required>
         </div>
         <div class="col-12">
           <label for="dni" class="form-label label-text">DNI</label>
-          <input type="text" class="form-control" id="dni" name="dni" placeholder="29431510 X">
+          <input type="text" class="form-control" id="dni" name="dni" placeholder="29431510 X" required>
         </div>
         <div class="col-6">
           <label for="direccion" class="form-label label-text">Dirección</label>
@@ -50,11 +51,11 @@
         </div>
         <div class="col-6">
           <label for="ciudad" class="form-label label-text">Ciudad</label>
-          <input type="text" class="form-control" id="ciudad" name="ciudad">
+          <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Sevilla">
         </div>
         <div class="col-4">
           <label for="pais" class="form-label label-text">País de nacimiento</label>
-          <select id="pais" name="pais" class="form-select">
+          <select id="pais" name="pais" class="form-select" required>
             <option selected>España</option>
             <option>Alemania</option>
             <option>Argentina</option>
