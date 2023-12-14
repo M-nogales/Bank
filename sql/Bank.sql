@@ -178,20 +178,36 @@ JOIN Users AS Destinatario ON Enviar.DestinatarioID = Destinatario.ID
 WHERE Enviar.DestinatarioID = 3; -- Este sería el ID del destinatario (en este caso, 3)
 
 -- Crear un préstamo para el usuario con ID 2
-INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, Vencimiento, Motivo, Aceptada)
-VALUES (2, 1000.00, 150.00, 1000.00, null, 'Préstamo para gastos médicos', null);
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda,fecha_de_creacion, Vencimiento, Motivo, Aceptada)
+VALUES (2, 1000.00, 150.00, 1000.00, '2023-12-20', null, 'Préstamo para gastos médicos', null);
 
 -- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
 INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
 VALUES (2, LAST_INSERT_ID());
 
 -- Crear un préstamo para el usuario con ID 2
-INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, Vencimiento, Motivo, Aceptada)
-VALUES (1, 2000.00,200.00, 2000.00, null, 'juan juan juan', null);
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda,fecha_de_creacion, Vencimiento, Motivo, Aceptada)
+VALUES (1, 2000.00,200.00, 2000.00, '2023-01-01', null, 'juan juan juan', null);
 
 -- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
 INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
 VALUES (1, LAST_INSERT_ID());
+
+-- Crear un préstamo para el usuario con ID 2
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, fecha_de_creacion, Vencimiento, Motivo, Aceptada)
+VALUES (1, 500.00,50.00, 500.00, '2023-01-01', null, 'juan juan ', null);
+
+-- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
+INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
+VALUES (1, LAST_INSERT_ID());
+
+INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, fecha_de_creacion, Motivo, Vencimiento, Aceptada)
+VALUES (1, 500.00, 100.00, 500.00, '2023-01-01', 'Préstamo de ejemplo', '2022-12-01', NULL);
+
+-- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
+INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
+VALUES (1, LAST_INSERT_ID());
+
 -- Operación para aumentar el saldo al mismo usuario (ID 1)
 INSERT INTO Transigir (Remitente_ID, Destinatario_ID, Cantidad, Motivo, Fecha_operacion)
 VALUES (1, 1, 0.1, 'Aumento de Saldo', CURRENT_DATE);
