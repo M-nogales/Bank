@@ -19,12 +19,12 @@
     color: $palette-White !important;
   }
   .btn-primary{
-    background-color: $palette-Green !important;
-    border-color:$palette-Green !important;
+    background-color: $palette-Yellow !important;
+    border-color:$palette-Yellow !important;
   }
   .btn-primary:hover {
-    background-color: darken($palette-Green, 10%) !important; /* Hacemos el color más oscuro al hacer hover */
-    border-color:darken($palette-Green, 10%) !important;
+    background-color: darken($palette-Yellow, 10%) !important; /* Hacemos el color más oscuro al hacer hover */
+    border-color:darken($palette-Yellow, 10%) !important;
   }
   p{
     color: $palette-White;

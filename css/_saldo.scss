@@ -13,11 +13,7 @@ body {
   font-size: $money-size;
   padding-top: 1vh;
   .icon{
-    display: none;
-    width: calc($icon-xl-top + 10vw);
-    min-width: 15vw;
-    max-width: 10vw;
-    max-height: 10vh;
+    @include saldo_icon;
   }
   .select_moneda{
     margin-left: 1rem;

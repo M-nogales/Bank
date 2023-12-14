@@ -1,6 +1,10 @@
+// variables +6
+// 4 calc + 6 _msgs
+// selectores en _header o _msgs
+// 6 mixins en _mixins
 $palette-Light-Blue: #77A3E0;
 $palette-Blue: #3457C8;
-$palette-Green: #5AC75E;//#E6B637
+$palette-Yellow: #E6B637;//#E6B637
 $palette-White: #EBF0F2;
 $palette-Black: #000454;
 
@@ -21,6 +25,7 @@ $logo-text:clamp(10px, 4vw, 20px);
 $money-size:clamp(2rem, 15vw, 7rem);
 $select:clamp(1rem,5vw,2rem);
 
+// 4 calc + 6 _msgs
 $navbar-icon-size-bottom:6;
 $icon-sm-md-bottom:calc(#{$navbar-icon-size-bottom} * 1.3vw);
 

@@ -34,7 +34,7 @@ header {
     align-items: center;
     width: 100%;
     height: 9vh;
-    background-color: $palette-Green;
+    background-color: $palette-Light-Blue;
     .logo {
       display: flex;
       flex-direction: row;
@@ -45,9 +45,7 @@ header {
       height: 100%;
       margin-left: 3vw;
       svg {
-        width: $icon-sm-md-top; //calc(#{$navbar-icon-size} * 1.3vw);
-        margin: 5px 0; // Añade margen inferior al icono SVG
-        max-height: 8vh;
+      @include icono-estilos();
       }
       h1 {
         @include antibootstrap-h1;
@@ -108,7 +106,7 @@ nav:not(.top-nav) {
   align-items: center;
   width: 100%;
   height: 9vh;
-  background-color: $palette-Green;
+  background-color: $palette-Light-Blue;
   ul:not(.top-ul) {
     width: 100%;
     height: 100%;

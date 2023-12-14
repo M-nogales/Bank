@@ -1,33 +1,40 @@
 @import 'var';
-// @mixin size-md-xl-icons($width-icons, $height-icons: null){
-//   @if $height-icons {
-//     height: $height-icons;
-//   }
-//   width: $width-icons;
-// }
-// @mixin size-sm-icons($width-icons, $height-icons: null){
-//   @if $height-icons {
-//     height: $height-icons;
-//   }
-//   width: $width-icons;
-// }
+// mixins 6
+//_header (63)...
 @mixin antibootstrap{
   margin:0 10px 0 0  !important;
   padding: 0px !important;
 }
+//_header (51)...
 @mixin antibootstrap-h1{
   margin: 0px !important; 
   padding: 0px !important;
 }
+//_creditC (5),(16)...
 @mixin flex-align-justify($direction: row, $justify-content: center, $align-items: center) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify-content;
   align-items: $align-items;
 }
+// _creditC (11)
 @mixin flex-column-align-justify{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+// _header (48)
+@mixin icono-estilos($icon-size: $navbar-icon-size-top, $factor-de-tamano: 1.3vw, $max-height: 8vh, $margin-inferior: 5px) {
+  width: calc(#{$icon-size} * #{$factor-de-tamano});
+  max-height: $max-height;
+  margin: $margin-inferior 0;
+}
+//_saldo.scss (16)
+@mixin saldo_icon {
+  display: none;
+  width: calc(#{$icon-xl-top} + 10vw);
+  min-width: 15vw;
+  max-width: 10vw;
+  max-height: 10vh;
 }
