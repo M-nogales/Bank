@@ -35,7 +35,7 @@ CREATE TABLE Prestamos (
     Deuda DECIMAL(10, 2),
     fecha_de_creacion DATETIME,
     Motivo TEXT,
-    Vencimiento DATETIME,
+    Vencimiento DATE,
     Aceptada boolean,
     FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
@@ -202,7 +202,7 @@ INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
 VALUES (1, LAST_INSERT_ID());
 
 INSERT INTO Prestamos (User_ID, Cantidada_solicitada, Cuota, Deuda, fecha_de_creacion, Motivo, Vencimiento, Aceptada)
-VALUES (1, 500.00, 100.00, 500.00, '2023-01-01', 'Préstamo de ejemplo', '2022-12-01', NULL);
+VALUES (1, 500.00, 100.00, 500.00, '2023-01-01', 'Préstamo de ejemplo', NULL, NULL);
 
 -- Asociar el préstamo al usuario con ID 2 mediante la tabla Solicitar
 INSERT INTO Solicitar (Usuario_ID, Prestamo_ID)
