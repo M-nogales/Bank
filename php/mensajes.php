@@ -1,7 +1,6 @@
 <?php
 // modificar ddbb, operaciones idem enviar, relación-tabla reflexiva
 function send_msg($conn,$id_user,$id_destino,$fechaEnvio,$contenido){
-  // Insertar mensaje en la tabla Enviar
   $insertEnviar = "INSERT INTO Enviar (Contenido, FechaEnvio, RemitenteID, DestinatarioID) 
                    VALUES ('$contenido', '$fechaEnvio', $id_user, $id_destino)";
 

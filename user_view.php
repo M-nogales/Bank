@@ -207,14 +207,15 @@ echo "<h2>Hola $nombre, hoy es $diaSemanaEsp $fecha </h2>"; ?>
         </svg>
       </div>
       <div class="card_num">
-        <p>1234 1234 1234 1234</p>
+      <!-- 1234 1234 1234 1234 -->
+        <p><?php echo $_SESSION["IBAN"]; ?></p>
       </div>
       <div class="card_cvv">
         <p>Válido hasta: 07/08</p>
         <p>033</p>
       </div>
       <div class="card_nom">
-        <p>Virginia Santos Guillem</p>
+        <p><?php echo $_SESSION["usuario"]." ".$_SESSION["Apellidos"]; ?></p>
       </div>
     </div>
   </section>

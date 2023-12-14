@@ -11,19 +11,20 @@ $urlperfil = "php/".$_SESSION['Foto'];
 
 $usuarios = getUsersExcept($conn, $_SESSION["id"]);
 
-// Obtener el primer usuario de la lista
+// cogemos el primer usuario de la lista
 $primerUser = reset($usuarios);
 $id_destino = isset($_GET['userId']) ? $_GET['userId'] : $primerUser["id"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Procesar los datos del formulario
+  
   $mensaje = $_POST["Mensaje"] ?? "";
   $id_remitente = $_SESSION["id"];
   $fechaEnvio = date("Y-m-d H:i:s");
 
   if ($mensaje != "" && $id_destino != "") {
     send_msg($conn, $id_remitente, $id_destino, $fechaEnvio, $mensaje);
-    header("Location: mensajes.php?userId=$id_destino"); // Redirige después de enviar el mensaje
+    // ponemos el id de destino para no tener que escribir manualmente a donde enviamos el mensaje
+    header("Location: mensajes.php?userId=$id_destino");
     exit();// evitamos que se envie el mismo mensaje una y otra vez al recargar,limpiamos post
   }
 }
@@ -37,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mensajes</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script defer src="js/bootstrap.bundle.js"></script>
   <script defer src="js/manipulacion.js"></script>
 </head>
