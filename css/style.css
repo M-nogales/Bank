@@ -4,6 +4,10 @@
   height: 100vh;
 }
 
+.color {
+  color: #000454;
+}
+
 .div_logo {
   display: flex;
   flex-direction: row;
