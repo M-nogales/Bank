@@ -656,6 +656,21 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
   align-items: center;
 }
 
+.video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.video iframe {
+  margin-top: 2rem;
+  width: 50%;
+  height: auto;
+  aspect-ratio: 16/9;
+  border-radius: 1rem;
+}
+
 @media only screen and (min-width: 768px) {
   .welcome_banner {
     margin-top: calc(16vh + 1rem);

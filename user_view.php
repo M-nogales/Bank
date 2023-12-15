@@ -169,7 +169,7 @@ echo "<h2>Hola $nombre, hoy es $diaSemanaEsp $fecha </h2>"; ?>
           $date = $row['Fecha_operacion'];
 
           // Genera el código HTML
-          echo '<div class="card">';
+          echo '<div class="card position-static">';
           echo '  <div class="benef_cant">';
           echo '    <p class="card_beneficiario">' . $nombreUser . '</p>';
           echo '    <p class="card_cant">' . $cantidad ."€". '</p>';
@@ -182,6 +182,11 @@ echo "<h2>Hola $nombre, hoy es $diaSemanaEsp $fecha </h2>"; ?>
         echo '<p>No hay transacciones para este usuario.</p>';
       }
       ?>
+    </section>
+    <section class="video">
+      <h2>Importancia de la transparencia</h2>
+      <!-- lo intenté con un video pero github tiene un limite de 50mb para los videos -->
+      <iframe  src="https://www.youtube.com/embed/cz2cS0ltl1c?start=55" frameborder="0" allowfullscreen></iframe>
     </section>
     <section class="section_card">
     <h2>Tu Tarjeta personal</h2>
