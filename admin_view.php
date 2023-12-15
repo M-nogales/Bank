@@ -53,7 +53,7 @@ session_start();
   </header>
   <!-- bottom navbar-->
 
-  <div class="table-responsive">
+  <div class="table-responsive top_table">
     <?php
     $resultado1 = getAllUsers($conn);
 

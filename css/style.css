@@ -666,6 +666,10 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
     margin-top: 9vh;
   }
 }
+.top_table {
+  margin-top: calc(9vh + 1rem);
+}
+
 h1 {
   font-family: "Roboto", sans-serif;
 }
@@ -725,6 +729,102 @@ a:hover svg {
 }
 a svg {
   fill: #7c5c07;
+}
+
+table tbody tr td:nth-child(1):hover {
+  background-color: #d5afaf;
+}
+
+table tbody tr td:nth-child(2):hover {
+  background-color: #d5afaf;
+}
+
+table tbody tr td:nth-child(3):hover {
+  background-color: #d5afaf;
+}
+
+table tbody tr td:nth-child(4):hover {
+  background-color: #d5afaf;
+}
+
+table tbody tr td:nth-child(5):hover {
+  background-color: #d5afaf;
+}
+
+table tbody tr td:nth-child(6):hover {
+  background-color: #d5afaf;
+}
+
+table tbody tr td:nth-child(7):hover {
+  background-color: #72878e;
+}
+
+table tbody tr td:nth-child(8):hover {
+  background-color: #72878e;
+}
+
+table tbody tr td:nth-child(9):hover {
+  background-color: #72878e;
+}
+
+table tbody tr td:nth-child(10):hover {
+  background-color: #72878e;
+}
+
+table tbody tr td:nth-child(11):hover {
+  background-color: #72878e;
+}
+
+table tbody tr td:nth-child(12):hover {
+  background-color: #72878e;
+}
+
+table tbody tr td:nth-child(1):hover {
+  border: 2px solid #EBF0F2;
+}
+
+table tbody tr td:nth-child(2):hover {
+  border: 2px solid #000454;
+}
+
+table tbody tr td:nth-child(3):hover {
+  border: 2px solid #EBF0F2;
+}
+
+table tbody tr td:nth-child(4):hover {
+  border: 2px solid #000454;
+}
+
+table tbody tr td:nth-child(5):hover {
+  border: 2px solid #EBF0F2;
+}
+
+table tbody tr td:nth-child(6):hover {
+  border: 2px solid #000454;
+}
+
+table tbody tr td:nth-child(7):hover {
+  border: 2px solid #EBF0F2;
+}
+
+table tbody tr td:nth-child(8):hover {
+  border: 2px solid #000454;
+}
+
+table tbody tr td:nth-child(9):hover {
+  border: 2px solid #EBF0F2;
+}
+
+table tbody tr td:nth-child(10):hover {
+  border: 2px solid #000454;
+}
+
+table tbody tr td:nth-child(11):hover {
+  border: 2px solid #EBF0F2;
+}
+
+table tbody tr td:nth-child(12):hover {
+  border: 2px solid #000454;
 }
 
 * {
