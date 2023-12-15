@@ -355,6 +355,7 @@ Bank
 │    └── imgs
 │        ├── chip.png
 │        ├── Clear_Bank_more_resoluc.png
+│        ├── Logo.png
 │        ├── mockup
 │        │   ├── ajustes.png
 │        │   ├── bienvenida.png

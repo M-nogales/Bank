@@ -21,8 +21,8 @@ $urlperfil = "php/".$_SESSION['Foto'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- <link rel="icon" type="image/png" sizes="32x32" href="/resources/imgs/">
-  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg"> -->
+  <link rel="icon" type="image/png" sizes="32x32" href="resources/imgs/Logo.png">
+
   <script defer src="js/bootstrap.bundle.js"></script>
   <script defer src="js/localStorage.js"></script> 
   <title>Welcome</title>
