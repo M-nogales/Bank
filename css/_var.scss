@@ -1,0 +1,39 @@
+// variables +6
+// 4 calc + 6 _msgs
+// selectores en _header o _msgs
+// 6 mixins en _mixins
+$palette-Light-Blue: #77A3E0;
+$palette-Blue: #3457C8;
+$palette-Yellow: #7c5c07;//#E6B637
+$palette-White: #EBF0F2;
+$palette-Black: #000454;
+
+$gradient-light-regular:linear-gradient(-45deg, $palette-Light-Blue , $palette-Black);
+
+//$special-font-size:calc(7rem + 3vw);//fontsize MNS start
+$font-path1: '../resources/fonts/Roboto/Roboto-Bold.ttf';
+$font-path2: '../resources/fonts/Muesli/Mulish-Regular.ttf';
+
+$font-family-Roboto:'Roboto',sans-serif;
+$font-family-Muesli:'Muesli',sans-serif;
+
+// tamaño icons
+$nav-text:clamp(10px, 3.5vw, 16px);
+$nav-text-md:clamp(16px, 3.5vw, 20px);
+
+$logo-text:clamp(10px, 4vw, 20px);
+$money-size:clamp(2rem, 15vw, 7rem);
+$select:clamp(1rem,5vw,2rem);
+
+// 4 calc + 6 _msgs
+$navbar-icon-size-bottom:6;
+$icon-sm-md-bottom:calc(#{$navbar-icon-size-bottom} * 1.3vw);
+
+$navbar-icon-size-top:7;
+$icon-sm-md-top:calc(#{$navbar-icon-size-top} * 1.3vw);
+
+$navbar-icon-size-xl-top:2;
+$icon-xl-top:calc(#{$navbar-icon-size-xl-top} * 1.3vw);
+
+$margin-nav-li:10px;
+

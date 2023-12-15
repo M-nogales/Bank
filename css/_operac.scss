@@ -1,0 +1,11 @@
+@import "var";
+@import "mixins";
+
+.form-operac{
+  display: flex;
+  flex-direction: column;
+}
+.section_operaciones{
+  margin-top: calc(15vh + 1rem);
+
+}

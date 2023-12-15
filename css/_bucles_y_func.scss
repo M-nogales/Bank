@@ -1,0 +1,98 @@
+@import "var";
+
+// funciones 4
+// bucles 4, 3 for + 1 each
+
+// aplicamos esa fuente a todos los h
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: $font-family-Roboto;
+  }
+}
+//--------------------------------------------------------------//
+// a estas tags le damos la fuente muesli
+$elementos-texto: "button", "input", "textarea", "select", "p";
+
+@each $elemento in $elementos-texto {
+  #{$elemento} {
+    font-family: $font-family-Muesli;
+  }
+}
+//--------------------------------------------------------------//
+// font weight personalizada <p> que esten dentro de <a>
+@function aplicar-font-weight($valor) {
+  $font-weight: $valor * 100;
+  @return $font-weight;
+}
+
+@mixin aplicar-estilos-enlaces-con-p($font-weight) {
+  a {
+    p {
+      font-weight: aplicar-font-weight($font-weight);
+    }
+  }
+}
+
+@include aplicar-estilos-enlaces-con-p(7);
+
+//--------------------------------------------------------------//
+// cambiar color texto de los enlaces y svg al hacer hover oscurecemos el color de antes
+@mixin aplicar-color-enlaces-svg($color) {
+  a {
+    color: $color;
+
+    &:hover {
+      color: oscurecer($color, 10%);
+      svg {
+        fill: oscurecer($color, 10%);
+      }
+    }
+
+    svg {
+      fill: $color;
+    }
+  }
+}
+
+@function oscurecer($color, $porcentaje) {
+  @return darken($color, $porcentaje);
+}
+
+@include aplicar-color-enlaces-svg($palette-Yellow);
+
+//--------------------------------------------------------------//
+// apartir de la columna 7 el hover tiene un color, antes otro
+@function calcular-color($columna-hover, $umbral) {
+  @if $columna-hover < $umbral {
+    @return #d5afaf; // Cambiar a color 1 si el número de columna es menor que el umbral
+  } @else {
+    @return #72878e; // Cambiar a color 2 si el número de columna es mayor o igual al umbral
+  }
+}
+
+$umbral-columnas: 7;
+
+$numero-de-columnas: 12;
+
+@for $i from 1 through $numero-de-columnas {
+  table tbody tr td:nth-child(#{$i}):hover {
+    background-color: calcular-color($i, $umbral-columnas);
+  }
+}
+//--------------------------------------------------------------//
+// cambiamos el color del borde y el tamaño segun la posicion
+@function calcular-color-borde($columna) {
+  @if $columna % 2 == 0 {
+    @return $palette-Black; 
+  } @else {
+    @return $palette-White; 
+  }
+}
+
+$numero-de-columnas: 12;
+
+@for $i from 1 through $numero-de-columnas {
+  table tbody tr td:nth-child(#{$i}):hover {
+    border: 2px solid calcular-color-borde($i);
+  }
+}

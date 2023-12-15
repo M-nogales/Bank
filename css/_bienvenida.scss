@@ -1,0 +1,38 @@
+@import "var";
+@import "mixins";
+
+.welcome_banner {
+  margin-top: 9vh;
+  img {
+    width: 100%;
+  }
+  margin-bottom: 2rem;
+}
+.welcome_text {
+  @include flex-align-justify;
+}
+.video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  iframe {
+    margin-top: 2rem;
+    width: 50%;
+    height: auto;
+    aspect-ratio: 16 / 9;//mantiene la relación de tamaño si no altura se va a la puta
+    border-radius: 1rem;
+
+  }
+}
+@media only screen and (min-width: 768px) {
+  .welcome_banner {
+    margin-top: calc(16vh + 1rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .welcome_banner {
+    margin-top: 9vh;
+  }
+}
