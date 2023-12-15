@@ -44,7 +44,7 @@ $urlperfil = "php/".$_SESSION['Foto'];
             <path d="M31.835 9.233l-4.371-8.358c-0.255-0.487-0.915-0.886-1.464-0.886h-10.060c-0.011-0.001-0.022-0.003-0.033-0.004-0.009 0-0.018 0.003-0.027 0.004h-9.88c-0.55 0-1.211 0.398-1.47 0.883l-4.359 8.197c-0.259 0.486-0.207 1.248 0.113 1.696l15.001 20.911c0.161 0.224 0.375 0.338 0.588 0.338 0.212 0 0.424-0.11 0.587-0.331l15.247-20.758c0.325-0.444 0.383-1.204 0.128-1.691zM29.449 8.988h-5.358l2.146-6.144zM17.979 1.99h6.436l-1.997 5.716zM20.882 8.988h-9.301l4.396-6.316zM9.809 8.034l-2.006-6.044h6.213zM21.273 10.988l-5.376 15.392-5.108-15.392h10.484zM13.654 25.971l-10.748-14.983h5.776zM23.392 10.988h5.787l-11.030 15.018zM5.89 2.575l2.128 6.413h-5.539z" style="fill: url(#grad)"></path>
           </g>
         </svg>
-        <h1>Clear Bank</h1>
+        <h1 class="font-roboto-h1">Clear Bank</h1>
       </a>
       <ul class="top-ul">
         <li class="li-pc"><a href="user_view.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
@@ -111,9 +111,9 @@ $urlperfil = "php/".$_SESSION['Foto'];
   </nav>
   <main>
     <section class="welcome_banner">
-      <img src="" alt="">
+      <img src="resources/imgs/Clear_Bank_more_resoluc.png" alt="banner clear bank">
     </section>
-    <section>
+    <section class="welcome_text">
 <?php
 $nombre = strtoupper($_SESSION["usuario"]);
 
@@ -135,10 +135,10 @@ $fecha = date("d/m/Y");
 echo "<h2>Hola $nombre, hoy es $diaSemanaEsp $fecha </h2>"; ?>
     </section>
     <section class="saldo">
-      <h3 id="saldoTotal"><?php
+      <h2 id="saldoTotal"><?php
           $_SESSION["Saldo_total"] = getSaldoUser($conn, $_SESSION["id"]);
           echo $_SESSION["Saldo_total"];
-          ?></h3>
+          ?></h2>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
         <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
         <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z" />

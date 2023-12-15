@@ -1,19 +1,24 @@
 @import "var";
 @import "mixins";
 
-.welcome_banner{
-margin-top: 9vh;
-
+.welcome_banner {
+  margin-top: 9vh;
+  img {
+    width: 100%;
+  }
+  margin-bottom: 2rem;
+}
+.welcome_text {
+  @include flex-align-justify;
 }
 
 @media only screen and (min-width: 768px) {
-  .welcome_banner{
+  .welcome_banner {
     margin-top: calc(16vh + 1rem);
   }
 }
 @media only screen and (min-width: 1024px) {
-  .welcome_banner{
+  .welcome_banner {
     margin-top: 9vh;
   }
-
 }

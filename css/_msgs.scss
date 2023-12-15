@@ -20,7 +20,7 @@
   border: 1px solid #9C27B0; /* Modificar*/
   background-color: #F3E5F5; /* Modificar*/
   padding: 20px;
-  max-width: 90%;
+  max-width: 70%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   margin-left: 1rem;
@@ -35,6 +35,32 @@
   p{
     padding-bottom: 0px;
   }
+}
+.msg_section{
+  margin-top: calc(15vh + 1rem);
+  .msg_profiles {
+    @include flex-align-justify;
+    flex-wrap: wrap;
+  }
+  
+  .msg_profiles a {
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-right: 1rem;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .msg_profiles a:hover {
+    background-color: #ddd;
+  }
+}
+.msg_enviar{
+  margin-bottom: calc(9vh + 1.6rem); ;
 }
 // el último hijo de la seccion, ya sea msg_card o .._me se le aplica un margen superior
 .msg_section .msg_card:last-child,
@@ -51,7 +77,9 @@
  .msg_card,.msg_card_me{
   max-width: calc(100% - 1rem) ;
  }
-
+ .msg_section{
+  margin-top: calc(18vh + 1rem);
+ }
  .msg_section .msg_card:first-child,
  .msg_section .msg_card_me:first-child {
   margin-top: calc(18vh + 1.6rem);

@@ -1,0 +1,65 @@
+@import "var";
+
+// funciones 2
+// bucles 2
+
+// aplicamos esa fuente a todos los h
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: $font-family-Roboto;
+  }
+}
+
+// a estas tags le damos la fuente muesli
+$elementos-texto: "button", "input", "textarea", "select", "p";
+
+@each $elemento in $elementos-texto {
+  #{$elemento} {
+    font-family: $font-family-Muesli;
+  }
+}
+
+
+// font weight personalizada p en a`s
+@function aplicar-font-weight($valor) {
+  $font-weight: $valor * 100;
+  @return $font-weight;
+}
+
+@mixin aplicar-estilos-enlaces-con-p($font-weight) {
+  a {
+    p {
+      font-weight: aplicar-font-weight($font-weight);
+    }
+  }
+}
+
+// Uso del mixin para aplicar estilos a los enlaces con párrafos
+@include aplicar-estilos-enlaces-con-p(7); 
+
+
+
+// dar color a enlaces svg
+@mixin aplicar-color-enlaces-svg($color) {
+  a {
+    color: $color;
+
+    &:hover {
+      color: oscurecer($color, 10%);
+      svg {
+        fill: oscurecer($color, 10%);
+      }
+    }
+
+    svg {
+      fill: $color; 
+    }
+  }
+}
+
+@function oscurecer($color, $porcentaje) {
+  @return darken($color, $porcentaje);
+}
+
+// Uso del mixin para aplicar el color a los enlaces con svg
+@include aplicar-color-enlaces-svg($palette-Yellow);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 // if ($_SESSION["accesoUser"] !== true) {
 //   // Redirigir a inicio_sesion.html si no tiene acceso
@@ -6,7 +6,7 @@ session_start();
 //   exit();
 // }
 //! ruta img perfil, en todos
-$urlperfil = "php/".$_SESSION['Foto'];
+$urlperfil = "php/" . $_SESSION['Foto'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +15,13 @@ $urlperfil = "php/".$_SESSION['Foto'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operaciones</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 
 <body>
-<header>
+  <header>
     <nav class="top-nav">
       <a class="logo" href="user_view.php"><svg fill="url(#grad)" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -35,7 +36,7 @@ $urlperfil = "php/".$_SESSION['Foto'];
             <path d="M31.835 9.233l-4.371-8.358c-0.255-0.487-0.915-0.886-1.464-0.886h-10.060c-0.011-0.001-0.022-0.003-0.033-0.004-0.009 0-0.018 0.003-0.027 0.004h-9.88c-0.55 0-1.211 0.398-1.47 0.883l-4.359 8.197c-0.259 0.486-0.207 1.248 0.113 1.696l15.001 20.911c0.161 0.224 0.375 0.338 0.588 0.338 0.212 0 0.424-0.11 0.587-0.331l15.247-20.758c0.325-0.444 0.383-1.204 0.128-1.691zM29.449 8.988h-5.358l2.146-6.144zM17.979 1.99h6.436l-1.997 5.716zM20.882 8.988h-9.301l4.396-6.316zM9.809 8.034l-2.006-6.044h6.213zM21.273 10.988l-5.376 15.392-5.108-15.392h10.484zM13.654 25.971l-10.748-14.983h5.776zM23.392 10.988h5.787l-11.030 15.018zM5.89 2.575l2.128 6.413h-5.539z" style="fill: url(#grad)"></path>
           </g>
         </svg>
-        <h1>Clear Bank</h1>
+        <h1 class="font-roboto-h1">Clear Bank</h1>
       </a>
       <ul class="top-ul">
         <li class="li-pc"><a href="user_view.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
@@ -60,7 +61,7 @@ $urlperfil = "php/".$_SESSION['Foto'];
             </svg>
             <p>Prestamos</p>
           </a></li>
-          <!-- funciona sin round circle -->
+        <!-- funciona sin round circle -->
         <li class="top-li"><a class="top-a" href=""><img src="<?php echo $urlperfil; ?>" alt="foto de perfil" class="rounded-circle">
           </a></li>
         <li class="top-li"><a class="top-a" href="ajustes.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
@@ -104,7 +105,6 @@ $urlperfil = "php/".$_SESSION['Foto'];
     <main class="w-100 m-auto log_width">
       <form class="p-5" action="php/insert_operaciones.php" method="POST">
         <p> Escribe "yo" o "me" para añadirte o quitarte saldo a ti mismo d</p>
-        <p> falta textarea con motivo</p>
         <div class="form-floating">
           <input type="text" class="form-control" id="Destinatario" name="Destinatario" placeholder="mns5221@gmail.com">
           <label for="Destinatario">Destinatario</label>

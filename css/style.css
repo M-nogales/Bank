@@ -23,12 +23,12 @@
   color: #EBF0F2 !important;
 }
 .login_form .btn-primary {
-  background-color: #5AC75E !important;
-  border-color: #5AC75E !important;
+  background-color: #7c5c07 !important;
+  border-color: #7c5c07 !important;
 }
 .login_form .btn-primary:hover {
-  background-color: #3cb241 !important; /* Hacemos el color más oscuro al hacer hover */
-  border-color: #3cb241 !important;
+  background-color: #4c3804 !important; /* Hacemos el color más oscuro al hacer hover */
+  border-color: #4c3804 !important;
 }
 .login_form p {
   color: #EBF0F2;
@@ -68,7 +68,7 @@ body {
 }
 .saldo .icon {
   display: none;
-  width: calc(2 * 1.3vw + 10vw);
+  width: calc(calc(2 * 1.3vw) + 10vw);
   min-width: 15vw;
   max-width: 10vw;
   max-height: 10vh;
@@ -141,13 +141,17 @@ body {
   flex-direction: column;
 }
 
+.section_operaciones {
+  margin-top: calc(15vh + 1rem);
+}
+
 .section_card {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 8vh;
-  margin-bottom: 8vh;
+  margin-bottom: calc(15vh + 1rem);
   width: 100%;
 }
 .section_card .credit_card {
@@ -159,6 +163,7 @@ body {
   border-radius: 8px;
   padding: 8px;
   box-shadow: 11px 13px 23px 0px rgba(0, 0, 0, 0.5);
+  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -179,6 +184,7 @@ body {
 .section_card .credit_card .card_logo h2 {
   margin: 0px !important;
   padding: 0px !important;
+  color: #7c5c07;
 }
 .section_card .credit_card .card_chip {
   display: flex;
@@ -237,7 +243,7 @@ body {
   }
 }
 .msg_card {
-  border: 1px solid #5AC75E;
+  border: 1px solid #7c5c07;
   background-color: #E8F5E9;
   padding: 20px;
   max-width: 90%;
@@ -256,7 +262,7 @@ body {
   border: 1px solid #9C27B0; /* Modificar*/
   background-color: #F3E5F5; /* Modificar*/
   padding: 20px;
-  max-width: 90%;
+  max-width: 70%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   margin-left: 1rem;
@@ -276,6 +282,35 @@ body {
   padding-bottom: 0px;
 }
 
+.msg_section {
+  margin-top: calc(15vh + 1rem);
+}
+.msg_section .msg_profiles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.msg_section .msg_profiles a {
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-right: 1rem;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.msg_section .msg_profiles a:hover {
+  background-color: #ddd;
+}
+
+.msg_enviar {
+  margin-bottom: calc(9vh + 1.6rem);
+}
+
 .msg_section .msg_card:last-child,
 .msg_section .msg_card_me:last-child {
   margin-bottom: calc(9vh + 1.6rem);
@@ -289,6 +324,9 @@ body {
 @media only screen and (min-width: 768px) {
   .msg_card, .msg_card_me {
     max-width: calc(100% - 1rem);
+  }
+  .msg_section {
+    margin-top: calc(18vh + 1rem);
   }
   .msg_section .msg_card:first-child,
   .msg_section .msg_card_me:first-child {
@@ -320,7 +358,7 @@ body {
 }
 @font-face {
   font-family: "Muesli";
-  src: url("../resources/fonts/Muesli/regular.ttf") format("truetype");
+  src: url("../resources/fonts/Muesli/Mulish-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -345,7 +383,7 @@ header .top-nav {
   align-items: center;
   width: 100%;
   height: 9vh;
-  background-color: #5AC75E;
+  background-color: #77A3E0;
 }
 header .top-nav .logo {
   display: flex;
@@ -359,8 +397,8 @@ header .top-nav .logo {
 }
 header .top-nav .logo svg {
   width: calc(7 * 1.3vw);
-  margin: 5px 0;
   max-height: 8vh;
+  margin: 5px 0;
 }
 header .top-nav .logo h1 {
   margin: 0px !important;
@@ -420,7 +458,7 @@ nav:not(.top-nav) {
   align-items: center;
   width: 100%;
   height: 9vh;
-  background-color: #5AC75E;
+  background-color: #77A3E0;
 }
 nav:not(.top-nav) ul:not(.top-ul) {
   width: 100%;
@@ -567,12 +605,16 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
   width: 90%;
 }
 .section_prestamo .btn-primary {
-  background-color: #5AC75E !important;
-  border-color: #5AC75E !important;
+  background-color: #7c5c07 !important;
+  border-color: #7c5c07 !important;
+  font-weight: bold;
+  color: #000454;
 }
 .section_prestamo .btn-primary:hover {
-  background-color: #3cb241 !important; /* Hacemos el color más oscuro al hacer hover */
-  border-color: #3cb241 !important;
+  background-color: #4c3804 !important; /* Hacemos el color más oscuro al hacer hover */
+  border-color: #4c3804 !important;
+  font-weight: bold;
+  color: #EBF0F2;
 }
 
 @media only screen and (min-width: 768px) {
@@ -601,6 +643,17 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
 }
 .welcome_banner {
   margin-top: 9vh;
+  margin-bottom: 2rem;
+}
+.welcome_banner img {
+  width: 100%;
+}
+
+.welcome_text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -613,6 +666,67 @@ nav:not(.top-nav) ul:not(.top-ul) li:not(.top-li) a:not(.top-a) p {
     margin-top: 9vh;
   }
 }
+h1 {
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+}
+
+h5 {
+  font-family: "Roboto", sans-serif;
+}
+
+h6 {
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  font-family: "Muesli", sans-serif;
+}
+
+input {
+  font-family: "Muesli", sans-serif;
+}
+
+textarea {
+  font-family: "Muesli", sans-serif;
+}
+
+select {
+  font-family: "Muesli", sans-serif;
+}
+
+p {
+  font-family: "Muesli", sans-serif;
+}
+
+a p {
+  font-weight: 700;
+}
+
+a {
+  color: #7c5c07;
+}
+a:hover {
+  color: #4c3804;
+}
+a:hover svg {
+  fill: #4c3804;
+}
+a svg {
+  fill: #7c5c07;
+}
+
 * {
   margin: 0;
   padding: 0;

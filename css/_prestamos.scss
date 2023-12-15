@@ -12,10 +12,15 @@
   .btn-primary{
     background-color: $palette-Yellow !important;
     border-color:$palette-Yellow !important;
+    font-weight: bold;
+    color: $palette-Black;
   }
   .btn-primary:hover {
     background-color: darken($palette-Yellow, 10%) !important; /* Hacemos el color más oscuro al hacer hover */
     border-color:darken($palette-Yellow, 10%) !important;
+    font-weight: bold;
+    color: $palette-White;
+
   }
 
 }

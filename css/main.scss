@@ -1,5 +1,5 @@
 
-@use 'bucles';
+
 @use 'mixins';
 @use 'login';
 @use 'saldo';
@@ -10,8 +10,7 @@
 @use 'prestamos';
 @use 'ajustes';
 @use 'bienvenida';
-@use 'footer';
-
+@use 'bucles';
 *{
   margin: 0;
   padding: 0;
