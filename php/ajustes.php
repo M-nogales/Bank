@@ -138,4 +138,4 @@ if ($foto !== "") {
     updateFoto($conn, $id_user, $foto);
 }
 
-header("Location: ../ajustes.html");
+header("Location: ../ajustes.php");
